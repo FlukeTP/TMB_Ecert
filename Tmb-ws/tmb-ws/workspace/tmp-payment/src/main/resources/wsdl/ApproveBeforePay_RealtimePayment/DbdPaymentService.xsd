@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.11-b150616.1732 svn-revision#a247ba216861f2c0baac9a3657c5690bce0c744d. -->
+<xsd:schema xmlns:ns0="http://service.payment.dbd.gov/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://service.payment.dbd.gov/">
+    <xsd:complexType name="approveBeforePay">
+        <xsd:sequence>
+            <xsd:element name="bankCode" type="xsd:string" minOccurs="0" />
+            <xsd:element name="serviceCode" type="xsd:string" minOccurs="0" />
+            <xsd:element name="ref1" type="xsd:string" minOccurs="0" />
+            <xsd:element name="ref2" type="xsd:string" minOccurs="0" />
+            <xsd:element name="amount" type="xsd:float" /></xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="approveBeforePayResponse">
+        <xsd:sequence>
+            <xsd:element name="return" type="xsd:string" minOccurs="0" /></xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="realTimePayment">
+        <xsd:sequence>
+            <xsd:element name="message" type="ns0:paymentPayLoad" minOccurs="0" /></xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="realTimePaymentResponse">
+        <xsd:sequence>
+            <xsd:element name="return" type="xsd:string" minOccurs="0" /></xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="paymentPayLoad">
+        <xsd:sequence>
+            <xsd:element name="serviceCode" type="xsd:string" minOccurs="0" />
+            <xsd:element name="transactionNo" type="xsd:string" minOccurs="0" />
+            <xsd:element name="ref1" type="xsd:string" minOccurs="0" />
+            <xsd:element name="ref2" type="xsd:string" minOccurs="0" />
+            <xsd:element name="bankCode" type="xsd:string" minOccurs="0" />
+            <xsd:element name="branchCode" type="xsd:string" minOccurs="0" />
+            <xsd:element name="paymentType" type="xsd:string" minOccurs="0" />
+            <xsd:element name="payAmount" type="xsd:float" minOccurs="0" />
+            <xsd:element name="paymentDate" type="xsd:dateTime" minOccurs="0" />
+            <xsd:element name="paymentName" type="xsd:string" minOccurs="0" />
+            <xsd:element name="transactionDate" type="xsd:dateTime" minOccurs="0" />
+            <xsd:element name="payloadTS" type="xsd:dateTime" minOccurs="0" /></xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="approveBeforePay" type="ns0:approveBeforePay" />
+    <xsd:element name="approveBeforePayResponse" type="ns0:approveBeforePayResponse" />
+    <xsd:element name="realTimePayment" type="ns0:realTimePayment" />
+    <xsd:element name="realTimePaymentResponse" type="ns0:realTimePaymentResponse" /></xsd:schema>

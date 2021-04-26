@@ -1,0 +1,146 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "semantic-ui-css/semantic.min.css";
+@import "assets/font/fonts.css";
+@import "semantic-ui-calendar/dist/calendar.css";
+.ui.basic.blue.button:hover, .ui.basic.blue.buttons .button:hover {
+    background: 0 0!important;
+    box-shadow: 0 0 0 1px #1678c2 inset!important;
+    color: #1678c2!important;
+}
+
+.ui.basic.blue.button, .ui.basic.blue.buttons .button {
+    box-shadow: 0 0 0 1px #2185d0 inset!important;
+    color: #2185d0!important;
+}
+
+.ui.basic.grey.button, .ui.basic.grey.buttons .button {
+    box-shadow: 0 0 0 1px #767676 inset!important;
+    color: #767676!important;
+}
+
+.ui.basic.grey.button:hover, .ui.basic.grey.buttons .button:hover {
+    box-shadow: 0 0 0 1px #555555 inset!important;
+    color: #555555!important;
+}
+
+th {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    background-color: #1C71B1 !important;
+    color: white !important;
+    text-align: center !important;
+    border: 2px solid white;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #F8F8FF;
+}
+
+.modal {
+    position: absolute !important;
+    margin: 5vh auto !important;
+    top: 0 !important;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .modal {
+        position: absolute !important;
+        margin: 5vh auto !important;
+        margin-left: -450px !important;
+        top: 0 !important;
+    }
+    .modal.mini {
+        margin-left: -180px !important;
+    }
+    .modal.tiny {
+        margin-left: -270px !important;
+    }
+    .modal.small {
+        margin-left: -360px !important;
+    }
+    .modal.large {
+        margin-left: -540px !important;
+    }
+}
+
+.label.grey {
+    color: #767676 !important;
+}
+
+.half.blue {
+    color: rgb(0, 121, 192) !important;
+    opacity: 0.5;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.half-width {
+    width: 50% !important;
+    margin: auto;
+}
+
+.text-left {
+    text-align: left!important;
+}
+
+.text-right {
+    text-align: right!important;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.btn-group>button {
+    margin: 0 0.5em !important;
+}
+
+.scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.ui.active.dimmer:not(.modals) {
+    z-index: 800 !important;
+    position: fixed !important;
+}
+
+.ui.sortable.table thead th.ngsortth:after {
+    content: '\f0dc'
+}
+
+.ui.table thead tr:first-child>th:last-child {
+    border-right: 0 !important;
+}
+
+@media only screen and (max-width: 993px) {
+    .text-left {
+        text-align: left !important;
+    }
+    .text-center {
+        text-align: left !important;
+    }
+    .text-right {
+        text-align: left !important;
+    }
+}
+
+.disabled {
+    pointer-events: none !important;
+}
+
+
+.ui.multiple.selection.dropdown > i.dropdown.icon {
+    display: none !important;
+}

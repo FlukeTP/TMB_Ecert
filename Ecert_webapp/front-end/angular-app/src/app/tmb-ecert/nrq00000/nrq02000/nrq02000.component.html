@@ -1,0 +1,610 @@
+<ui-modal [modal]="allowedModal">
+  <ng-template>
+    <div class="header" style="background:#1678C2">
+      <diV style="color: rgb(255, 255, 255)">ระบุสาเหตุ</diV>
+    </div>
+    <div class="content">
+      <div class="ui one grid centered">
+        <div class="ui thirteen wide form column" [formGroup]="formReject">
+          <div class="inline fields">
+            <div class="four wide field">
+              <label class="full-width text-right">สาเหตุ</label>
+            </div>
+            <div class="eleven wide field" [ngClass]="{ 'error': rejectSubmitted && allowedSelect.invalid }">
+              <ui-dropdown [dropdown]="allowed"></ui-dropdown>
+            </div>
+          </div>
+          <div class="inline fields">
+            <div class="four wide field ">
+              <label class="full-width text-right">Remark Tracking</label>
+            </div>
+            <div class="eleven wide field">
+              <textarea formControlName="otherReason" name="otherReason" rows="2"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui center aligned grid">
+        <div class="seven btn-group wide column">
+          <button type="button" (click)="reject($event)" class="ui blue basic button" [ngClass]="{ 'positive' : allowedSelect.value }"
+            type="button">
+            <i class="check circle outline icon"></i>
+            ตกลง
+          </button>
+          <button type="button" class="ui grey negative basic button" type="button">
+            <i class="times circle outline icon"></i>
+            ยกเลิก
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ui-modal>
+
+<ui-modal [modal]="authForSubmit">
+  <ng-template>
+    <div class="header" style="background:#1678C2">
+      <diV style="color: rgb(255, 255, 255)">ยืนยันการอนุมัติการชำระเงินค่าธรรมเนียม</diV>
+    </div>
+    <div class="content">
+      <div class="ui one grid centered">
+        <div class="ui thirteen wide form column" [formGroup]="formAuth">
+          <div class="inline fields">
+            <div class="four wide field">
+              <label class="full-width text-right">Username</label>
+            </div>
+            <div class="eleven wide field" [ngClass]="{ 'error': authSubmitted && authUsername.invalid }">
+              <input type="text" name="username" formControlName="authUsername">
+            </div>
+          </div>
+          <div class="inline fields">
+            <div class="four wide field">
+              <label class="full-width text-right">Password</label>
+            </div>
+            <div class="eleven wide field" [ngClass]="{ 'error': authSubmitted && authPassword.invalid }">
+              <input type="password" name="password" formControlName="authPassword">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui center aligned grid">
+        <div class="seven btn-group wide column">
+          <button type="button" (click)="auth($event)" class="ui blue basic button" [ngClass]="{ 'positive' : formAuth.valid }"
+            type="button">
+            <i class="check circle outline icon"></i>
+            ตกลง
+          </button>
+          <button type="button" class="ui grey negative basic button" type="button">
+            <i class="times circle outline icon"></i>
+            ยกเลิก
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ui-modal>
+
+<div class="ui grid">
+  <div class="sixteen wide column">
+    <h2 class="ui header">บันทึกคำขอ</h2>
+    <form class="ui form segment" #ngForm="ngForm" [formGroup]="form">
+      <input type="hidden" name="reqFormId" formControlName="reqFormId">
+      <div class="inline fields">
+        <div class="two wide field">
+          <label>วันที่ขอ</label>
+        </div>
+        <div class="five wide field">
+          {{ reqDate | dateString }}
+        </div>
+      </div>
+
+      <div class="inline fields">
+        <div class="two wide field">
+          <label>TMB Req. No.
+          </label>
+        </div>
+        <div class="five wide field">
+          {{ tmbReqFormId | tmbReqNo }}
+        </div>
+      </div>
+
+      <div class="inline fields" *ngIf="data&&data.statusMsg">
+        <div class="two wide field">
+          <label>
+            สถานะ
+          </label>
+        </div>
+        <div class="five wide field">
+          {{ statusMsg | emptyString }}
+        </div>
+      </div>
+
+      <div class="inline fields">
+        <div class="required two wide field">
+          <label>ประเภทคำขอ</label>
+        </div>
+        <div #reqTypeSelect class="five wide field" [ngClass]="{'error': invalid('reqTypeSelect'), 'disabled': isMaker }">
+          <ui-dropdown [selected]="data.cerTypeCode" [dropdown]="dropdownObj.reqType" (valueChange)="reqTypeChange($event)"></ui-dropdown>
+        </div>
+      </div>
+      <!-- scrollable -->
+      <div class="inline field ui-table">
+        <table class="ui segment unstackable small celled table nowrap" style="width: 100%">
+          <thead>
+            <tr style="text-align: center;">
+              <th rowspan="1" colspan="2">รายละเอียด</th>
+              <th rowspan="2">ค่าธรรมเนียมของ DBD</th>
+              <th rowspan="2">ค่าบริการของธนาคาร</th>
+              <th rowspan="2">วันที่รับจด/วันที่รับ/ปีงบการเงิน</th>
+              <th rowspan="2" style="width: 175px">จำนวน : ชุด</th>
+            </tr>
+            <tr style="display: none">
+              <th>1</th>
+              <th>2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="loadTable">
+              <tr class="tableLoader">
+                <td colspan="6" class="ui segment">
+                  <div class="ui active text loader">กำลังโหลด</div>
+                </td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="reqTypeIsNull">
+              <tr [hidden]="loadTable" class="center aligned">
+                <td colspan="6">
+                  <h5> ไม่มีข้อมูลประเภทคำขอ </h5>
+                </td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="!reqTypeIsNull">
+              <ng-container *ngFor="let req of reqTypeChanged; let i = index">
+                <!-- header -->
+                <ng-container *ngIf="!req.code">
+                  <tr [className]="classByCode(req.typeCode)" [hidden]="loadTable">
+                    <td colspan="6">
+                      <h5>{{ req.typeDesc }}</h5>
+                    </td>
+                  </tr>
+                </ng-container>
+
+                <!-- row 1 -->
+                <ng-container *ngIf="req.code&&req.feeDbd">
+                  <tr [hidden]="loadTable">
+                    <td class="center aligned">
+                      <div class="field" [ngClass]="{'error': invalid('chk'+i), 'disabled': isMaker}">
+                        <div class="ui checkbox">
+                          <input #chk type="checkbox" name="chk{{i}}" [disableControl]="isMaker" formControlName="chk{{i}}"
+                            (change)="toggleChk(i)">
+                          <label></label>
+                        </div>
+                      </div>
+                    </td>
+                    <td><label>{{ req.certificate }}</label></td>
+                    <td>{{ req.feeDbd }}</td>
+                    <td>{{ req.feeTmb }}</td>
+                    <td class="center aligned">
+                      <div class="field" *ngIf="req.code=='10006'||req.code=='20006'||req.code=='30005'" [ngClass]="{'error': invalid('cal'+i)}">
+                        <div class="ui input" style="width: 100%">
+                          <ui-calendar style="width: 100%" #cal [calendar]="calend[i]" [disableCalendar]="!form.controls['chk'+i].value || isMaker"
+                            (calendarValue)="calendarValue('cal'+i,$event)"></ui-calendar>
+                        </div>
+                      </div>
+                      <div class="field" *ngIf="req.code=='10007'" [ngClass]="{'error': invalid('cal'+i)}">
+                        <div class="ui input" style="width: 100%">
+                          <ui-calendar style="width: 100%" #cal [calendar]="calend[i]" [disableCalendar]="!form.controls['chk'+i].value || isMaker"
+                            (calendarValue)="calendarValue('cal'+i,$event)"></ui-calendar>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="field" [ngClass]="{'error': invalid('cer'+i) }">
+                        <div class="ui left right labeled input" style="width: 166px">
+                          <div (click)="minus('cer'+i)" class="ui red icon button label" style="width: 32.5px"
+                            [ngClass]="{'disabled': !form.controls['chk'+i].value||form.controls['cer'+i].value == 1 || isMaker}">
+                            <i class="minus icon"></i>
+                          </div>
+                          <input (keypress)="accNoPress($event)" #cer type="text" name="cer{{i}}" [disableControl]="!form.controls['chk'+i].value || isMaker"
+                            formControlName="cer{{i}}" min="1" style="width: 75px;text-align: right !important">
+                          <div (click)="plus('cer'+i)" class="ui green icon button label" style="width: 32.5px"
+                            [ngClass]="{'disabled': !form.controls['chk'+i].value || isMaker}">
+                            <i class="plus icon"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </ng-container>
+
+                <!-- row 1 or row 2 on some condition -->
+                <ng-container *ngIf="req.code&&!req.feeDbd&&req.children">
+                  <!-- parent -->
+                  <ng-container>
+                    <tr [hidden]="loadTable">
+                      <td>
+                        <div class="center aligned field" [ngClass]="{'error': invalid('chk'+i), 'disabled': isMaker}">
+                          <div class="ui checkbox">
+                            <input #chk type="checkbox" [disableControl]="isMaker" name="chk{{i}}" formControlName="chk{{i}}"
+                              (change)="toggleChk(i)">
+                            <label></label>
+                          </div>
+                        </div>
+                      </td>
+                      <td colspan="6"><label>{{ req.certificate }}</label></td>
+                    </tr>
+                  </ng-container>
+
+                  <!-- children -->
+                  <ng-container *ngFor="let item of req.children; let j = index">
+                    <tr [hidden]="loadTable" *ngIf="j>0" [ngClass]="{ 'hidden': !showChildren }">
+                      <td></td>
+                      <td class="left aligned">
+                        <div class="inline field" [ngClass]="{'error': invalid('etc'+i+'Child'+j)||invalid('chk'+i+'Child'+j), 'disabled': isMaker}">
+                          <div class="ui checkbox">
+                            <input #chkChild type="checkbox" [disableControl]="isMaker" name="chk{{i}}Child{{j}}"
+                              (change)="toggleChkChild(i, j,item)" formControlName="chk{{i}}Child{{j}}">
+                            <label>{{ item.certificate }}</label>
+                          </div>
+                          <div class="ui input" *ngIf="item.certificate === 'อื่นๆ'">
+                            <input #etcChild maxlength="255" type="text" formControlName="etc{{i}}Child{{j}}"
+                              [disableControl]="!form.controls['chk'+i+'Child'+j].value || isMaker">
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{ item.feeDbd }}</td>
+                      <td>{{ item.feeTmb }}</td>
+                      <td>
+                        <div *ngIf="!(item.code == '10003' || item.code == '20003' || item.code == '30002')" class="center aligned field"
+                          [ngClass]="{'error': invalid('cal'+i+'Child'+j)}">
+                          <div class="ui input" *ngIf="j!=3">
+                            <ui-calendar #calChild [calendar]="calendar[j]" [disableCalendar]="!form.controls['chk'+i+'Child'+j].value || isMaker"
+                              (calendarValue)="calendarValue('cal'+i+'Child'+j,$event)"></ui-calendar>
+                          </div>
+                          <div class="ui actions input" *ngIf="j==3" [ngClass]="{'disabled': isMaker || !form.controls['chk'+i+'Child'+j].value}">
+                            <select class="ui multiple selection dropdown" [ngClass]="{'disabled': isMaker}"
+                              [disableControl]="isMaker" formControlName="cal{{i}}Child{{j}}" name="cal{{i}}Child{{j}}"
+                              multiple="" id="multi-select">
+                              <option value="{{item}}" *ngFor="let item of list">{{item}}</option>
+                            </select>
+                            <div class="ui calendar" id="multi-calendar">
+                              <button type="button" class="ui icon button" [disabled]="!form.controls['chk'+i+'Child'+j].value || isMaker"><i
+                                  class="calendar icon"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="field" [ngClass]="{'error': invalid('cer'+i+'Child'+j) }">
+                          <div class="ui left right labeled input" style="width: 166px">
+                            <div (click)="minus('cer'+i+'Child'+j)" class="ui red icon button label" style="width: 32.5px"
+                              [ngClass]="{'disabled': !form.controls['chk'+i+'Child'+j].value||form.controls['cer'+i+'Child'+j].value == 1 || isMaker}">
+                              <i class="minus icon"></i>
+                            </div>
+                            <input (keypress)="accNoPress($event)" #cerChild type="text" name="cer{{i}}Child{{j}}"
+                              [disableControl]="!form.controls['chk'+i+'Child'+j].value || isMaker" formControlName="cer{{i}}Child{{j}}"
+                              min="1" style="width: 75px; text-align: right !important">
+                            <div (click)="plus('cer'+i+'Child'+j)" class="ui green icon button label" style="width: 32.5px"
+                              [ngClass]="{'disabled': !form.controls['chk'+i+'Child'+j].value || isMaker}">
+                              <i class="plus icon"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <div class="inline fields">
+        <div class="required four wide field">
+          <label>เลขที่นิติบุคคล
+          </label>
+        </div>
+        <div class="five wide field" [ngClass]="{'error': invalid('corpNo') }">
+          <input type="text" maxlength="20" (keypress)="accNoPress($event)" #corpNo formControlName="corpNo"
+            placeholder="เลขที่นิติบุคคล">
+        </div>
+        <div class="required two wide field">
+          <label>ชื่อนิติบุคคล
+          </label>
+        </div>
+        <div class="five wide field" [ngClass]="{'error': invalid('corpName') }">
+          <input type="text" maxlength="500" #corpName (keypress)="noPipe($event)" formControlName="corpName" (input)="handleCorpName($event)"
+            placeholder="ชื่อนิติบุคคล">
+        </div>
+      </div>
+      <div class="inline fields" [ngClass]="{'hidden': roles(_roles.REQUESTOR)}">
+        <div class="required four wide field">
+          <label>Customer Segment
+          </label>
+        </div>
+        <div #customSegSelect class="five wide field" [ngClass]="{'error': invalid('customSegSelect'), 'disabled': roles(_roles.REQUESTOR) }">
+          <ui-dropdown [selected]="custsegmentCode" [dropdown]="dropdownObj.customSeg" (valueChange)="customSegChange($event)"></ui-dropdown>
+        </div>
+        <div class="two wide field" [ngClass]="{'required': roles(_roles.MAKER)}">
+          <label>เลขที่ CA/มติอนุมัติ
+          </label>
+        </div>
+        <div class="five wide field" [ngClass]="{'error': invalid('acceptNo') }">
+          <input type="text" maxlength="150" (keypress)="accNoPress($event)" #acceptNo formControlName="acceptNo"
+            placeholder="เลขที่ CA/มติอนุมัติ">
+        </div>
+      </div>
+
+      <div class="inline fields" *ngIf="form.controls.customSegSelect.value == '20007'">
+        <div class="four wide field">
+          <label>ชื่อหน่วยงาน
+          </label>
+        </div>
+        <div class="five wide field">
+          <input type="text" maxlength="255" (keypress)="noSymbol($event)" #departmentName formControlName="departmentName"
+            placeholder="ชื่อหน่วยงาน">
+        </div>
+      </div>
+      <div class="inline fields" [ngClass]="{'hidden': roles(_roles.REQUESTOR)}">
+        <div class="required two wide field">
+          <label>วิธีการรับชำระ</label>
+        </div>
+        <div class="two wide field"></div>
+        <div #payMethodSelect class="five wide field" [ngClass]="{'error': invalid('payMethodSelect') }">
+          <ui-dropdown [selected]="data ? data.paidTypeCode : ''" [dropdown]="dropdownObj.payMethod" (valueChange)="payMethodChange($event)"></ui-dropdown>
+        </div>
+        <div class="two wide field">
+          <label>ที่อยู่</label>
+        </div>
+        <div class="five wide field">
+          <textarea maxlength="4000" (keypress)="noPipe($event)" #address formControlName="address" rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="inline fields" [ngClass]="{ 'hidden': form.controls.payMethodSelect.value != '30003' }">
+        <div class="four wide field required">
+          <label>วิธีหักบัญชีจาก</label>
+        </div>
+        <div #subAccMethodSelect class="five wide field" [ngClass]="{'error': invalid('subAccMethodSelect') }">
+          <ui-dropdown [selected]="data ? data.debitAccountType : ''" [dropdown]="dropdownObj.subAccMethod"
+            (valueChange)="subAccMethodChange($event)"></ui-dropdown>
+        </div>
+      </div>
+      <div class="inline fields" [ngClass]="{ 'hidden': form.controls.payMethodSelect.value != '30003' }">
+        <div class="four wide field">
+          <label>Tran Code
+          </label>
+        </div>
+        <div class="five wide field">
+          {{ tranCode }}
+        </div>
+      </div>
+
+      <div class="inline fields" [ngClass]="{ 'hidden': form.controls.payMethodSelect.value != '30003' }">
+        <div class="four wide field">
+          <label>GL Type
+          </label>
+        </div>
+        <div class="five wide field">
+          {{ glType }}
+        </div>
+      </div>
+
+      <div class="inline fields" [ngClass]="{ 'hidden': form.controls.payMethodSelect.value != '30003' }">
+        <div class="four wide field">
+          <label>Account Type
+          </label>
+        </div>
+        <div class="five wide field">
+          {{ accType }}
+        </div>
+      </div>
+
+      <div class="inline fields">
+        <div class="required four wide field">
+          <label>เลขที่บัญชีหักค่าธรรมเนียม</label>
+        </div>
+        <div class="five wide field" [ngClass]="{'error': invalid('accNo') }">
+          <input type="text" formControlName="accNo" minlength="10" maxlength="10" name="accNo" (blur)="accNoBlur()"
+            (focus)="accNoFocus()" #accNo (keypress)="accNoPress($event)" autocomplete="off" placeholder="">
+        </div>
+        <div class="required two wide field">
+          <label>สำนักงานใหญ่/สาขาที่  <br>ของลูกค้า</label>
+        </div>
+        <div class="five wide field" [ngClass]="{'error': invalid('majorNo'), 'disabled': onlyMaker }">
+          <input type="text" (keypress)="accNoPress($event)" maxlength="5" minlength="5" #majorNo formControlName="majorNo"
+            placeholder="สำนักงานใหญ่/สาขาที่">
+        </div>
+      </div>
+      <div class="inline fields">
+        <div class="four wide field">
+          <label>ชื่อบนใบเสร็จธนาคาร TMB</label>
+        </div>
+        <div class="five wide field" [ngClass]="{'error': invalid('corpName1'), 'disabled': isMakerAndSelectPaidType }">
+          <input type="text" (keypress)="noPipe($event)" class="txt-red" #corpName1 formControlName="corpName1"
+            placeholder="ชื่อนิติบุคคล">
+        </div>
+        <div class="required two wide field">
+          <label>ชื่อเจ้าของบัญชี</label>
+        </div>
+        <div class="five wide field" [ngClass]="{'error': invalid('accName'), 'disabled': isMakerAndSelectPaidType }">
+          <input type="text" (keypress)="noPipe($event)" maxlength="255" #accName formControlName="accName"
+            placeholder="ชื่อบัญชี">
+        </div>
+      </div>
+
+      <div class="inline fields">
+        <div class="four wide field">
+          <label>เบอร์โทรผู้ขอ/ลูกค้า (ถ้ามี)</label>
+        </div>
+        <div class="five wide field" [ngClass]="{'error': invalid('telReq') }">
+          <input type="text" maxlength="50" (keypress)="accNoPress($event)" #telReq formControlName="telReq"
+            placeholder="เบอร์โทรผู้ขอ/ลูกค้า">
+        </div>
+      </div>
+
+      <div class="inline field" *ngIf="btnMaker" [ngClass]="{'hidden': hiddenReceipt4}">
+        <h3 class="header space">&nbsp;</h3>
+        <h3 class="header">การชำระเงิน</h3>
+        <div class="ui divider"></div>
+      </div>
+
+      <div class="inline fields" *ngIf="btnMaker" [ngClass]="{'hidden': hiddenReceipt4}">
+        <div class="four wide field required" *ngIf="btnMaker">
+          <label>เลขที่คำขอ (Ref.1)</label>
+        </div>
+        <div class="five wide field" [ngClass]="{ 'error': invalid('ref1') }" *ngIf="btnMaker">
+          <input type="text" (keypress)="accNoPress($event)" (focus)="ref1Focus()" (keyup.enter)="keytab('ref1','ref2')"
+            #ref1 maxlength="50" name="ref1" formControlName="ref1">
+        </div>
+        <div class="three wide field barcode" (click)="focusOn('ref1')" *ngIf="btnMaker">
+          <i class="barcode icon"></i>
+          <span>สแกนบาร์โค้ด</span>
+        </div>
+      </div>
+
+      <div class="inline fields" *ngIf="btnMaker" [ngClass]="{'hidden': hiddenReceipt4}">
+        <div class="four wide field required" *ngIf="btnMaker">
+          <label>เลขที่ตรวจสอบ (Ref.2)</label>
+        </div>
+        <div class="five wide field" [ngClass]="{ 'error': invalid('ref2') }" *ngIf="btnMaker">
+          <input type="text" (keypress)="accNoPress($event)" (keyup.enter)="keytab('ref2','dbd')" #ref2 maxlength="50"
+            name="ref2" formControlName="ref2">
+        </div>
+      </div>
+      <!-- (keypress)="accNoPress($event)" -->
+      <div class="inline fields" *ngIf="btnMaker" [ngClass]="{'hidden': hiddenReceipt4}">
+        <div class="four wide field required" *ngIf="btnMaker">
+          <label>จำนวนเงิน DBD (บาท)</label>
+        </div>
+        <div class="five wide field" [ngClass]="{ 'error': invalid('amountDbd') }" *ngIf="btnMaker">
+          <input type="text" (keyup.enter)="keytab('dbd','tmb')" #dbd maxlength="18" name="amountDbd" (blur)="amountBlur('amountDbd')"
+            (focus)="amountFocus('amountDbd')" (keypress)="accNoPress($event, true)" formControlName="amountDbd">
+        </div>
+      </div>
+
+      <div class="inline fields" *ngIf="btnMaker" [ngClass]="{'hidden': hiddenReceipt4 || hiddenReceipt3}">
+        <div class="four wide field required" *ngIf="btnMaker">
+          <label>จำนวนเงิน TMB (บาท)</label>
+        </div>
+        <div class="five wide field" [ngClass]="{ 'error': invalid('amountTmb') }" *ngIf="btnMaker">
+          <input type="text" maxlength="18" name="amountTmb" (blur)="amountBlur('amountTmb')" (focus)="amountFocus('amountTmb')"
+            (keypress)="accNoPress($event, true)" #tmb formControlName="amountTmb">
+        </div>
+      </div>
+
+      <div class="ui form accordion">
+        <div class="{{ toggleTitle }} inline field header-title" (click)="toggleDocument()" *ngIf="onlyMaker">
+          <h3 class="header space">&nbsp;</h3>
+          <h3 class="header">{{ documentMsg }} <div class="floated right">
+              <i class="angle double down icon" *ngIf="toggleDoc == 'content'"></i>
+              <i class="angle double up icon" *ngIf="toggleDoc == ''"></i>
+            </div>
+          </h3>
+          <div class="ui divider"></div>
+        </div>
+
+        <div class="inline field header-title" *ngIf="onlyRequestor">
+          <h3 class="header space">&nbsp;</h3>
+          <h3 class="header">{{ documentMsg }} </h3>
+          <div class="ui divider"></div>
+        </div>
+
+        <div class="{{ toggleDoc }} inline fields">
+          <div class="required four wide field">
+            <label>ใบคำขอ</label>
+          </div>
+          <div class="five wide field" [ngClass]="{'error': invalid('requestFile') && isdownload, 'hidden': onlyMaker||onlyChecker }">
+            <input type="file" accept="application/pdf" #requestFile (change)="changeUpload('requestFile', $event)"
+              formControlName="requestFile">
+          </div>
+          <div class="two wide field">
+            <a class="download-link" *ngIf="data&&data.requestFormFile" (click)="download(data.requestFormFile)">
+              <u>Download</u>
+            </a>
+          </div>
+        </div>
+
+        <div class="{{ toggleDoc }} inline fields">
+          <div class="required four wide field">
+            <label>สำเนาบัตรประชาชนเจ้าของบัญชี</label>
+          </div>
+          <div class="five wide field" [ngClass]="{'error': invalid('copyFile') && isdownload, 'hidden': onlyMaker||onlyChecker }">
+            <input type="file" accept="application/pdf, image/png, image/jpeg" #copyFile (change)="changeUpload('copyFile', $event)"
+              formControlName="copyFile">
+          </div>
+          <div class="two wide field">
+            <a class="download-link" *ngIf="data&&data.idCardFile" (click)="download(data.idCardFile)">
+              <u>Download</u>
+            </a>
+          </div>
+        </div>
+        <div class="{{ toggleDoc }} inline fields">
+          <div class="four wide field">
+            <label class="half blue">อื่นๆ (ถ้ามี)</label>
+          </div>
+          <div class="five wide field" [ngClass]="{ 'hidden': onlyMaker||onlyChecker }">
+            <input type="file" accept="application/pdf, application/msword, image/png, image/jpeg" (change)="changeUpload('changeNameFile', $event)"
+              formControlName="changeNameFile">
+          </div>
+          <div class="two wide field">
+            <a class="download-link" *ngIf="data&&data.changeNameFile" (click)="download(data.changeNameFile)">
+              <u>Download</u>
+            </a>
+          </div>
+        </div>
+
+        <div class="{{ toggleDoc }} inline fields" [ngClass]="{'hidden': roles(_roles.REQUESTOR)}">
+          <div class="four wide field">
+            <label>หมายเหตุ</label>
+          </div>
+          <div class="five wide field">
+            <textarea rows="2" maxlength="4000" (keypress)="noSymbol($event)" formControlName="note"></textarea>
+          </div>
+        </div>
+        <div class="inline field">
+          <div class="ui one grid">
+            <div class="center aligned one column btn-group">
+              <button class="ui blue basic button" (click)="pdf()" *ngIf="btnRequestor" type="button">
+                <i class="print icon"></i>
+                พิมพ์ใบคำขอ
+              </button>
+              <button (click)="formSubmit(form)" class="ui blue basic button" *ngIf="btnRequestor" [ngClass]="{ 'disabled': !canRequest }"
+                type="button">
+                <i class="file alternate outline icon" *ngIf="btnRequestor"></i>
+                ยื่นใบคำขอ
+              </button>
+              <button (click)="formSubmit(form)" class="ui blue basic button" *ngIf="!btnForPay&&btnMakerApprove"
+                [ngClass]="{ 'disabled': !isdownload }" type="button">
+                <i class="check circle outline icon" *ngIf="btnMaker"></i>
+                ดำเนินการชำระเงิน
+              </button>
+              <button (click)="formSubmit(form)" class="ui blue basic button" *ngIf="btnForPay&&btnMakerApprove"
+                [ngClass]="{ 'disabled': !isdownload }" type="button">
+                <i class="check circle outline icon" *ngIf="btnMaker"></i>
+                ไม่ชำระผ่าน e-Payment
+              </button>
+              <button class="ui blue basic button" (click)="rejectModal()" type="button" *ngIf="btnMakerReject&&fromPayment">
+                <i class="undo icon"></i>
+                ปฏิเสธ
+              </button>
+              <button class="ui grey basic button" (click)="cancel()" type="button" *ngIf="fromPayment">
+                <i class="times circle outline icon"></i>
+                ยกเลิก
+              </button>
+              <button class="ui grey  basic button" type="button" (click)="back()" *ngIf="!fromPayment">
+                <i class="arrow alternate circle left outline icon"></i>
+                ย้อนกลับ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

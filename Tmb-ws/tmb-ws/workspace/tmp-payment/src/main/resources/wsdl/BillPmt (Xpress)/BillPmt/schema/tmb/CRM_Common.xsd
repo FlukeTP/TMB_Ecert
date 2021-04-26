@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ifx="urn:ifxforum-org:XSD:1" xmlns="http://www.fnf.com/xes" xmlns:fnis="http://www.fnf.com/xes" targetNamespace="http://www.fnf.com/xes" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn:ifxforum-org:XSD:1" schemaLocation="../fniscommon/IFX_Common.xsd" />
+	<xsd:include schemaLocation="../fniscommon/FNIS_SubstitutionGroups.xsd" />
+	<!-- Definition for CRM service -->
+	<!-- CRM Profile Infomation -->
+	<xsd:element name="CRMProfileKeys" type="CRMProfileKeys_Type" />
+	<xsd:element name="CRMID" type="CRMDB_Identifier_Type" />
+	<xsd:element name="RMID" type="CRMDB_Identifier_Type" />
+	<xsd:element name="IBUserID" type="IB_Identifier_Type" />
+	<xsd:element name="EBTxnLimitAmt" type="ifx:Decimal_Type" />
+	<xsd:element name="EBMaxLimitAmtCurrent" type="ifx:Decimal_Type" />
+	<xsd:element name="EBMaxLimitAmtHist" type="ifx:Decimal_Type" />
+	<xsd:element name="EBMaxLimitAmtRequest" type="ifx:Decimal_Type" />
+	<xsd:element name="EBAccuUsgAmtDaily" type="ifx:Decimal_Type" />
+	<xsd:element name="FirstActivationDate" type="ifx:DateTime_Type" />
+	<xsd:element name="FirstIBLoginDate" type="ifx:DateTime_Type" />
+	<xsd:element name="FirstMBLoginDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastIBLoginSucessDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastIBLoginFailDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastIBAccessDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastIBLogoutDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastMBLoginSucessDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastMBLoginFailDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastMBAccessDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastMBLogoutDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastIBPasswordChangeDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastMBAccessPasswordChangeDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastMBTxnPwdChangeDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastIBLogoutTimeoutDate" type="ifx:DateTime_Type" />
+	<xsd:element name="LastMBLogoutTimeoutDate" type="ifx:DateTime_Type" />
+	<xsd:element name="IBApplyChannel" type="IBApplyChannel_Type" />
+	<xsd:element name="LanguageCD" type="LangCode_Type" />
+	<xsd:element name="TokenDeviceFlag" type="TokenFlag_Type" />
+	<xsd:element name="FacebookID" type="FacebookID_Type" />
+	<xsd:element name="EBCustomerStatusID" type="CRMDB_StatusID_Type" />
+	<xsd:element name="IBUserStatusID" type="CRMDB_StatusID_Type" />
+	<xsd:element name="MBUserStatusID" type="CRMDB_StatusID_Type" />
+	<xsd:element name="P2PLinkAcctID" type="P2PAcctID_Type" />
+	<!-- Flow Information -->
+	<xsd:element name="UUID" type="CRMDB_UUID_Type" />
+	<xsd:element name="FlowStatusID" type="CRMDB_StatusID_Type" />
+	<xsd:element name="ActionTypeID" type="ActionTypeID_Type" />
+	<xsd:element name="ActivationDate" type="ifx:DateTime_Type" />
+	<xsd:element name="ApplyDate" type="ifx:DateTime_Type" />
+	<xsd:element name="UpdatedDt" type="ifx:DateTime_Type" />
+	<xsd:element name="VerificationCounter" type="ifx:Long_Type" />
+	<xsd:element name="Note" type="FlowNote_Type" />
+	<xsd:element name="LastUpdateEmpId" type="EmpId_Type" />
+	<!-- CRM Account Infomation -->
+	<xsd:element name="PersonalizedID" type="PersonalizedID_Type" />
+	<xsd:element name="PersonalizedAcctID" type="AccountID_Type" />
+	<xsd:element name="BankCD" type="BankCode_Type" />
+	<xsd:element name="PersonalizedAcctNickName" type="AccountNickName_Type" />
+	<xsd:element name="PersonalizedAcctStatus" type="AccountStatus_Type" />
+	<xsd:element name="AcctFavoriteFlag" type="FavoriteFlag_Type" />
+	<xsd:element name="CareAccountInfo" type="CareAccountInfo_Type" />
+	<xsd:element name="BenefitialryName" type="BenefitialryName_Type" />
+	<xsd:element name="BenefitialryRelationship" type="BenefitialryRel_Type" />
+	<xsd:element name="BenefitialryPercentage" type="ifx:Long_Type" />
+	<xsd:element name="DreamAccountInfo" type="DreamAccountInfo_Type" />
+	<xsd:element name="DreamDesc" type="DreamDesc_Type" />
+	<xsd:element name="DreamTargetAmount" type="ifx:Decimal_Type" />
+	<!-- CRM Personalize Information -->
+	<xsd:element name="PersonalizedName" type="PersonalizedName_Type" />
+	<xsd:element name="PersonalizedPictureID" type="PersonalizedPictureID_Type" />
+	<xsd:element name="PersonalizedMailID" type="PersonalizedMailID_Type" />
+	<xsd:element name="PersonalizedMobileNumber" type="PersonalizedMobileNumber_Type" />
+	<xsd:element name="PersonalizedFacebookID" type="FacebookID_Type" />
+	<xsd:element name="PersonalizedStatus" type="PersonalizedStatus_Type" />
+	<!-- Financial activity Infomation -->
+	<xsd:element name="FinTxnRefID" type="FinTxnRefID_Type" />
+	<xsd:element name="FinTxnDate" type="ifx:DateTime_Type" />
+	<xsd:element name="ActivityTypeID" type="ActivityTypeID_Type" />
+	<xsd:element name="TxnTypeID" type="TxnType_Type" />
+	<xsd:element name="FromAcctID" type="ifx:Identifier_Type" />
+	<xsd:element name="ToAcctID" type="ifx:Identifier_Type" />
+	<xsd:element name="FinTxnAmount" type="ifx:Decimal_Type" />
+	<xsd:element name="FinTxnFee" type="ifx:Decimal_Type" />
+	<xsd:element name="FinTxnMemo" type="ifx:Memo_Type" />
+	<xsd:element name="FinTxnStatus" type="CRMDB_StatusID_Type" />
+	<!-- Channel Infomation -->
+	<xsd:element name="ChannelID" type="ChannelID_Type" />
+	<!-- MIB -->
+	<xsd:element name="IBFlowStatusID" type="IBFlowStatusID_Type" />
+	<xsd:element name="MBFlowStatusID" type="MBFlowStatusID_Type" />
+	<xsd:element name="IDType" type="IDType_Type" />
+	<xsd:element name="IDNumber" type="IDNumber_Type" />
+	<xsd:element name="ActivationCode" type="ActivationCode_Type" />
+	<xsd:element name="CustomerType" type="ifx:OpenEnum_Type"/>
+	<!-- MIB Customer -->
+	<xsd:element name="FullNameTH" type="fnis:Name_Type" />
+	<xsd:element name="FullNameENG" type="fnis:Name_Type" />
+	<!-- Sale Force -->
+	<xsd:element name="SaleForceID" type="ifx:Identifier_Type" />
+	<xsd:element name="SaleForceConID" type="ifx:Identifier_Type" />
+	<xsd:element name="AuthorizePersonFlag" type="AuthorizePersonFlag_Type" />
+	<xsd:element name="BoardOfDirectorFlag" type="BoardOfDirectorFlag_Type" />
+	<xsd:element name="Position" type="ifx:OpenEnum_Type" />
+	<xsd:element name="LinkAddr" type="LinkAddr_Type" />
+	<xsd:element name="InterestedAreaContactPerson" type="InterestedAreaContactPerson_Type" />
+	<xsd:element name="ProspectID" type="ifx:Identifier_Type" />
+	<xsd:element name="CustTypeCd" type="CustTypeCd_Type" />
+	<xsd:element name="DelFlag" type="DelFlag_Type" />
+	<xsd:element name="RMOwner" type="RMOwner_Type" />
+	<xsd:element name="SalesValume" type="ifx:Decimal_Type" />
+	<xsd:element name="CompanyUrl" type="CompanyUrl_Type" />
+	<xsd:element name="LinkIn" type="LinkIn_Type" />
+	<xsd:element name="CreateByROCode" type="CreateByROCode_Type" />
+	<xsd:element name="RatingCd" type="RatingCd_Type" />
+	<xsd:element name="BusinessType" type="BusinessType_Type" />
+	<xsd:element name="AgeOfBusiness" type="ifx:Long_Type" />
+	<xsd:element name="PreferredBranch" type="PreferredBranch_Type" />
+	<xsd:element name="GroupCoverage" type="GroupCoverage_Type" />
+	<xsd:element name="CustomerAge" type="ifx:Long_Type" />
+	<xsd:element name="SuggestSegment" type="SuggestSegment_Type" />
+	<xsd:element name="SubSuggestSegment" type="SubSuggestSegment_Type" />
+	<xsd:element name="DecisionMapLevel" type="DecisionMapLevel_Type" />
+	<xsd:element name="ProductDecision" type="ProductDecision_Type" />
+	<xsd:element name="ValueStyle" type="ValueStyle_Type" />
+	<xsd:element name="DifficultyToDeal" type="DifficultyToDeal_Type" />
+	<xsd:element name="TMBCustomerFlag" type="TMBCustomerFlag_Type" />
+	<xsd:element name="MonthOnBook" type="ifx:Date_Type" />
+	<xsd:element name="CustomerGroup" type="CustomerGroup_Type" />
+	<xsd:element name="CustSinceDate" type="ifx:Date_Type" />
+	<xsd:element name="DateFirstAccountOpen" type="ifx:Date_Type" />
+	<xsd:element name="Quadrant" type="Quadrant_Type" />
+	<xsd:element name="NamePrefix" type="NamePrefix_Type" />
+	<xsd:element name="ContactPostAddr" type="ContactPostAddr_Type" />
+	<xsd:element name="Addr5" type="ifx:OpenEnum_Type" />
+	<xsd:element name="ServiceClass" type="ServiceClass_Type" />
+	<xsd:element name="CustomerNote" type="CustomerNote_Type" />
+	<!-- XNG-290: Enhance new field 'P2PAccuUsgAmtDaily' -->
+	<xsd:element name="P2PAccuUsgAmtDaily" type="ifx:Decimal_Type" />
+	
+	<xsd:complexType name="ContactPostAddr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="PostAddr_Type">
+				<xsd:sequence>
+					<xsd:element ref="Addr5" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CRMProfileKeys_Type">
+		<xsd:choice>
+			<xsd:element ref="CRMID" />
+			<xsd:element ref="IBUserID" />
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:simpleType name="CRMDB_Identifier_Type">
+		<xsd:restriction base="ifx:Identifier_Type">
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IB_Identifier_Type">
+		<xsd:restriction base="ifx:Identifier_Type">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CRMDB_StatusID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CRMDB_UUID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="16" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ActionTypeID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LangCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TokenFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FacebookID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="70" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IBApplyChannel_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonalizedID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="33" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AccountID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="16" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AccountNickName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AccountStatus_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BankCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BenefitialryName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BenefitialryRel_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DreamDesc_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonalizedName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonalizedPictureID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="70" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonalizedMailID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="70" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonalizedMobileNumber_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="18" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonalizedStatus_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="P2PAcctID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="16" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FinTxnRefID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ActivityTypeID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ChannelID_Type">
+		<xsd:annotation>
+			<xsd:documentation>Channel ID {01, 02, 03, 04} for request the activation code, OTP Locked, Reset Password</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TxnType_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IBFlowStatusID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MBFlowStatusID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IDType_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="34" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IDNumber_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="25" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ActivationCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FlowNote_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EmpId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FavoriteFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CareAccountInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="BenefitialryName" />
+			<xsd:element ref="BenefitialryRelationship" />
+			<xsd:element ref="BenefitialryPercentage" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DreamAccountInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="DreamDesc" />
+			<xsd:element ref="DreamTargetAmount" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="AuthorizePersonFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BoardOfDirectorFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LinkAddr_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="InterestedAreaContactPerson_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustTypeCd_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RMOwner_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SuggestSegment_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SubSuggestSegment_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DelFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RmOwner_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="WmOwner_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CreateByROCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RatingCd_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BusinessType_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CompanyUrl_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LinkIn_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PreferredBranch_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="GroupCoverage_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DecisionMapLevel_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ProductDecision_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ValueStyle_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DifficultyToDeal_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TMBCustomerFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustomerGroup_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Quadrant_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NamePrefix_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ServiceClass_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustomerNote_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

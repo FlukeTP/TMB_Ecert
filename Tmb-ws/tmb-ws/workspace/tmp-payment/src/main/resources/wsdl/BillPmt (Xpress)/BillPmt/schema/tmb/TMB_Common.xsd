@@ -1,0 +1,1838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ifx="urn:ifxforum-org:XSD:1" xmlns="http://www.fnf.com/xes" xmlns:fnis="http://www.fnf.com/xes" targetNamespace="http://www.fnf.com/xes" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn:ifxforum-org:XSD:1" schemaLocation="../fniscommon/IFX_Common.xsd" />
+	<xsd:include schemaLocation="../fniscommon/FNIS_SubstitutionGroups.xsd" />
+	<xsd:include schemaLocation="CRM_Common.xsd"/>
+	<xsd:element name="OnlinePmtType" type="OnlinePmt_Type" />
+	<xsd:element name="Command" type="Command_Type" />
+	<xsd:element name="BankId" type="ifx:FIIdent_Type" />
+	<xsd:element name="TrnId" type="ifx:Identifier_Type" />
+	<xsd:element name="BankRefId" type="ifx:Identifier_Type" />
+	<xsd:element name="CustRefId" type="ifx:Identifier_Type" />
+	<xsd:element name="BranchId" type="ifx:BranchIdent_Type" />
+	<xsd:element name="MobileNumber" type="ifx:Identifier_Type" />
+	<xsd:element name="TellerId" type="ifx:Identifier_Type" />
+	<xsd:element name="Ref1" type="PmtRef_Type" />
+	<xsd:element name="Ref2" type="PmtRef_Type" />
+	<xsd:element name="Ref3" type="PmtRef_Type" />
+	<xsd:element name="Ref4" type="PmtRef_Type" />
+	<xsd:element name="TranCode" type="TranCode_Type" />
+	<xsd:element name="BillPmtFee" type="ifx:CurAmt_Type" />
+	<xsd:element name="MsgType" type="ifx:OpenEnum_Type" />
+	<xsd:element name="RespCode" type="RespCode_Type" />
+	<xsd:element name="CardAcctLen" type="AcctLen_Type" />
+	<xsd:element name="FromAcctLen" type="AcctLen_Type" />
+	<xsd:element name="CustomerName" type="CustomerName_Type" />
+	<xsd:element name="ToAcctLen" type="AcctLen_Type" />
+	<xsd:element name="TraceNo" type="TraceNum_Type" />
+	<xsd:element name="AcqRoutNum" type="RoutNum_Type" />
+	<xsd:element name="IssuerRoutNum" type="RoutNum_Type" />
+	<xsd:element name="ReversalCode" type="RoutNum_Type" />
+	<xsd:element name="TypeOrig" type="TypeOrig_Type" />
+	<xsd:element name="PCCTraceNum" type="TraceNum_Type" />
+	<xsd:element name="Pin" type="Pin_Type" />
+	<xsd:element name="IssFee" type="ifx:CurAmt_Type" />
+	<xsd:element name="TermId" type="Term_Type" />
+	<xsd:element name="TermRecNum" type="Term_Type" />
+	<xsd:element name="TermType" type="Term_Type" />
+	<xsd:element name="DestBankCode" type="ifx:BranchIdent_Type" />
+	<xsd:element name="TrackToLen" type="Track_Type" />
+	<xsd:element name="TrackToDat" type="Track_Type" />
+	<xsd:element name="RouteStat" type="RouteStat_Type" />
+	<xsd:element name="ProdInd" type="ProdInd_Type" />
+	<xsd:element name="DPCNum" type="DPCNum_Type" />
+	<xsd:element name="RelNum" type="RelNum_Type" />
+	<xsd:element name="BenFee" type="ifx:CurAmt_Type" />
+	<xsd:element name="AcqFee" type="ifx:CurAmt_Type" />
+	<xsd:element name="AvailBal" type="ifx:CurAmt_Type" />
+	<xsd:element name="LedgerBal" type="ifx:CurAmt_Type" />
+	<xsd:element name="SwitchDt" type="ifx:DateTime_Type" />
+	<xsd:element name="BenRoutNum" type="RoutNum_Type" />
+	<xsd:element name="TermOwner" type="Term_Type" />
+	<xsd:element name="ChequeNo" type="ChequeNo_Type" />
+	<xsd:element name="ReqId" type="ReqId_Type" />
+	<xsd:element name="ProdCode" type="ProdCode_Type" />
+	<xsd:element name="Acronym" type="Acronym_Type" />
+	<xsd:element name="CustFullName" type="CustFullName_Type" />
+	<xsd:element name="CardNo" type="CardNo_Type" />
+	<xsd:element name="RMC2Flag" type="RMC2Flag_Type" />
+	<xsd:element name="RMNum" type="RMNum_Type" />
+	<xsd:element name="RespDesc" type="RespDesc_Type" />
+	<xsd:element name="MaxRisk" type="MaxRisk_Type" />
+	<xsd:element name="MaxRiskRM" type="MaxRisk_Type" />
+	<xsd:element name="MsgHedr" type="Msg_Type" />
+	<xsd:element name="MsgDesc" type="Msg_Type" />
+	<xsd:element name="RiskLevel" type="RiskLevel_Type" />
+	<xsd:element name="Remark" type="Msg_Type" />
+	<xsd:element name="PersAccObjOther" type="PersAccObjOther_Type" />
+	<xsd:element name="PersDepSourceOther" type="PersDepSourceOther_Type" />
+	<xsd:element name="NumOfDepTran" type="CustRiskNumTran_Type" />
+	<xsd:element name="AllDepAmt" type="CustRiskAmt_Type" />
+	<xsd:element name="NumOfWithdrawTran" type="CustRiskNumTran_Type" />
+	<xsd:element name="AllWithdrawAmt" type="CustRiskAmt_Type" />
+	<xsd:element name="CustIncomeSourceOther" type="CustIncomeSourceOther_Type" />
+	<xsd:element name="CustEstimateIncome" type="CustRiskAmt_Type" />
+	<xsd:element name="CustAcctObj" type="CustAcctObj_Type" />
+	<xsd:element name="CustDepSource" type="CustDepSource_Type" />
+	<xsd:element name="CustIncomeSource" type="CustIncomeSource_Type" />
+	<xsd:element name="StmtSymbol" type="StmtSymbol_Type" />
+	<xsd:element name="TimeStart" type="Time_Type" />
+	<xsd:element name="TimeStop" type="Time_Type" />
+	<xsd:element name="HomeBranch" type="HomeBranch_Type" />
+	<xsd:element name="RBANo" type="RBANo_Type" />
+	<xsd:element name="XferFee" type="ifx:CurAmt_Type" />
+	<xsd:element name="InterRegionFee" type="ifx:CurAmt_Type" />
+	<xsd:element name="CICSTranCode" type="TranCode_Type" />
+	<xsd:element name="FromAcctName" type="ifx:AcctTitle_Type" />
+	<xsd:element name="ToAcctName" type="ifx:AcctTitle_Type" />
+	<xsd:element name="FeeAmntResult" type="ifx:CurAmt_Type" />
+	<xsd:element name="HoldCode" type="HoldCode_Type" />
+	<xsd:element name="AvailCrLimit" type="ifx:BalAmt_Type" />
+	<xsd:element name="AvailCashAdv" type="ifx:BalAmt_Type" />
+	<xsd:element name="TotalCrLimit" type="ifx:BalAmt_Type" />
+	<xsd:element name="LastPmtAmt" type="ifx:BalAmt_Type" />
+	<xsd:element name="BonusPoint" type="ifx:Long_Type" />
+	<xsd:element name="BonusPointUsed" type="ifx:Long_Type" />
+	<xsd:element name="BonusPointAvail" type="ifx:Long_Type" />
+	<xsd:element name="PayAmtDue" type="ifx:BalAmt_Type" />
+	<xsd:element name="StmtTranCode" type="TranCode_Type" />
+	<xsd:element name="TranAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="LoanStmtId" type="ifx:Identifier_Type" />
+	<xsd:element name="LoanStmtTranCode" type="fnis:LoanStmtTranCode_Type" />
+	<xsd:element name="LoanBalAmt" type="ifx:BalAmt_Type" />
+	<xsd:element name="InterestAmt" type="ifx:BalAmt_Type" />
+	<xsd:element name="OutstandingBalAmt" type="ifx:BalAmt_Type" />
+	<xsd:element name="OutstandingInterestAmt" type="ifx:BalAmt_Type" />
+	<xsd:element name="WithdrawAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="TaxAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="InterestAdj" type="ifx:Decimal_Type" />
+	<xsd:element name="PenaltyAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="PenaltyRate" type="ifx:Decimal_Type" />
+	<xsd:element name="TotalInterest" type="ifx:Decimal_Type" />
+	<xsd:element name="AnticInterest" type="ifx:Decimal_Type" />
+	<xsd:element name="ProdType" type="ProdType_Type" />
+	<xsd:element name="NextMaturityDt" type="ifx:Date_Type" />
+	<xsd:element name="NextInterestDt" type="ifx:Date_Type" />
+	<xsd:element name="FuncName" type="FuncName_Type" />
+	<xsd:element name="MobileNoOld" type="MobileNoOld_Type" />
+	<xsd:element name="MobileNoNew" type="MobileNoNew_Type" />
+	<xsd:element name="SessionId" type="SessionId_Type" />
+	<xsd:element name="TypeCust" type="TypeCust_Type" />
+	<xsd:element name="TranMnemonic" type="TranMnemonic_Type" />
+	<xsd:element name="DebitAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="CreditAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="CurrentBalAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="DepositNo" type="DepositNo_Type" />
+	<xsd:element name="DepositAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="ProductName" type="ProductName_Type" />
+	<xsd:element name="AcctStatusResp" type="AcctStatusResp_Type" />
+	<xsd:element name="DepositDt" type="ifx:Date_Type" />
+	<xsd:element name="MaturityDt" type="ifx:Date_Type" />
+	<xsd:element name="FieldName" type="FieldName_Type" />
+	<xsd:element name="FieldValue" type="FieldValue_Type" />
+	<xsd:element name="AcctMaintField" type="fnis:AcctMaintField_Type" />
+	<xsd:element name="MasterAcctKeys" type="ifx:AcctKeys_Type" />
+	<xsd:element name="RemainingNoFeeCounter" type="ifx:Long_Type" />
+	<xsd:element name="MaxFeeCounter" type="ifx:Long_Type" />
+	<xsd:element name="UsedFeeCounter" type="ifx:Long_Type" />
+	<xsd:element name="FromAcctProdId" type="ifx:ProductIdent_Type" />
+	<xsd:element name="ToAcctProdId" type="ifx:ProductIdent_Type" />
+	<xsd:element name="PmtMethod" type="fnis:PmtMethod_Type" />
+	<xsd:element name="ActionFlag" type="Flag_Type" />
+	<xsd:element name="OriginalDtRegister" type="ifx:Date_Type" />
+	<xsd:element name="LastUpdateTime" type="ifx:DateTime_Type" />
+	<xsd:element name="RespMsg" type="RespMsg_Type" />
+	<xsd:element name="BlockCode" type="BlockCode_Type" />
+	<xsd:element name="DirectDrAcctId" type="ifx:AcctKeys_Type" />
+	<xsd:element name="FlagFeeReg" type="FlagFeeReg_Type" />
+	<xsd:element name="CompCode" type="CompCode_Type" />
+	<xsd:element name="PostedTime" type="PostedTime_Type" />
+	<xsd:element name="WaiveProductCode" type="ifx:OpenEnum_Type" />
+	<xsd:element name="AmountWaived" type="ifx:Long_Type" />
+	<xsd:element name="WaiveRemaining" type="ifx:Long_Type" />
+	<xsd:element name="WaiveUsed" type="ifx:Long_Type" />
+	<xsd:element name="WaiveFlag" type="ifx:OpenEnum_Type" />
+	<xsd:element name="WaiveCode" type="ifx:OpenEnum_Type" />
+	<xsd:element name="ReturnReasonDesc" type="ReturnReasonDesc_Type" />
+	<xsd:element name="ReturnReasonDescTH" type="ReturnReasonDescTH_Type" />
+	<xsd:element name="ReturnChequeAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="NumberOfAcctPayin" type="NumberOfAcctPayin_Type" />
+	<xsd:element name="TotalRecords" type="ifx:Long_Type" />
+	<xsd:element name="CardGroup" type="CardGroup_Type" />
+	<xsd:element name="MiscDataType" type="MiscDataType_Type" />
+	<xsd:element name="CardGroupDesc" type="ifx:OpenEnum_Type" />
+	<xsd:element name="RespDeptCode" type="RespDeptCode_Type" />
+	<xsd:element name="RespDeptName" type="RespDeptName_Type" />
+	<xsd:element name="CreditCardOrg" type="CreditCardOrg_Type" />
+	<xsd:element name="CreditCardType" type="CreditCardType_Type" />
+	<xsd:element name="ReturnChequeId" type="ifx:Identifier_Type" />
+	<xsd:element name="DueDt" type="DueDt_Type" />
+	<xsd:element name="Msg" type="Msg_Type" />
+	<xsd:element name="StmtDt" type="StmtDt_Type" />
+	<xsd:element name="OnlinePmtMiscData" type="MiscData_Type" />
+	<xsd:element name="BBNickName" type="BBName_Type" />
+	<xsd:element name="BBCompCode" type="BBCompCode_Type" />
+	<xsd:element name="MIBFlag" type="Flag_Type" />
+	<xsd:element name="ApplyChannel" type="ApplyChannel_Type" />
+	<xsd:element name="ApplStatus" type="ApplStatus_Type" />
+	<xsd:element name="ApplStatusCode" type="ApplStatusCode_Type" />
+	<xsd:element name="ApplStatusDesc" type="ApplStatusDesc_Type" />
+	<xsd:element name="ApplyTime" type="ApplyTime_Type" />
+	<xsd:element name="FromAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="ToAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="TranferDate" type="ifx:Date_Type" />
+	<xsd:element name="ChannelTranfer" type="ChannelTranfer_Type" />
+	<xsd:element name="TransferStatus" type="TransferStatus_Type" />
+	<xsd:element name="TransferStatusCode" type="TransferStatusCode_Type" />
+	<xsd:element name="TransferStatusDetail" type="TransferStatusDetail_Type" />
+	<xsd:element name="OpeningMethod" type="OpeningMethod_Type" />
+	<xsd:element name="TotalUnbilledAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="ExpiredDt" type="ExpiredDt_Type" />
+	<xsd:element name="CompanyName" type="CompanyName_Type" />
+	<xsd:element name="TrnDesc1" type="ifx:Memo_Type" />
+	<xsd:element name="TrnDesc2" type="ifx:Memo_Type" />
+	<xsd:element name="TrnChannel" type="ChannelPay_Type" />
+	<!--  Xfer -->
+	<xsd:element name="EPAYCode" type="EPAYCode_Type"/>	
+	<xsd:element name="ROCode" type="ROCode_Type" />
+	<xsd:element name="Segment" type="Segment_Type" />
+	<xsd:element name="SubSegment" type="SubSegment_Type" />
+	<xsd:element name="ServiceModel" type="ServiceModel_Type" />
+	<xsd:element name="CustStatus" type="CustStatus_Type" />
+	<xsd:element name="StatusFlag" type="StatusFlag_Type" />
+	<xsd:element name="FullPmtAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="MinPmtAmt" type="ifx:CurAmt_Type" />
+	<xsd:element name="CustFullNameEng" type="CustFullName_Type"/>
+	<xsd:element name="FromAcctIdent" type="ifx:AcctIdent_Type"/>
+	<xsd:element name="ToAcctIdent" type="ifx:AcctIdent_Type"/>
+	<xsd:element name="MinimumPayAmtDue" type="ifx:CurAmt_Type"/>
+	<xsd:element name="CreditAcctCurrentBalance" type="ifx:CurAmt_Type"/>
+	<xsd:element name="ServiceCode" type="ServiceCode_Type"/>
+	<xsd:element name="RemainingPoint" type="ifx:Long_Type"/>
+	<xsd:element name="CVV" type="CVV_Type"/>	
+	<!-- XNG-213: BillPmt via ATM -->	
+	<xsd:element name="SvcCompCode" type="CompCode_Type" />	
+	<xsd:element name="BalanceFlag" type="BalanceFlag_Type" />		
+	<xsd:element name="ATMMsgType" type="ifx:OpenEnum_Type" />		
+	<!-- XNG-222: Enhance for SFProspect -->
+	<xsd:element name="GivenNameEng" type="ifx:GivenName_Type" />
+	<xsd:element name="FamilyNameEng" type="ifx:FamilyName_Type"/>
+	<xsd:element name="DisqualifiedFlag" type="DisqualifiedFlag_Type" />
+	<!-- XNG-221: Enhance for CardDetailInq -->	
+	<xsd:element name="PotSelectCode" type="ifx:Long_Type" />		
+	<xsd:element name="BlockCodeDt" type="OpenDt_Type" />
+	<!-- XNG-273: CardOper -->
+	<xsd:element name="BloodGroup" type="BloodGroup_Type" />
+	<xsd:element name="Faculty" type="Faculty_Type" />
+	<xsd:element name="CardSrcStatus" type="CardOperStat_Type" />
+	<xsd:element name="CardReIssuedStatus" type="CardOperStat_Type" />
+	<xsd:element name="CardLastSrcStatus" type="CardOperStat_Type" />
+	<xsd:element name="CardLastStatus" type="CardOperStat_Type" />	
+	<xsd:element name="CardLastReIssuedStatus" type="CardOperStat_Type" />	
+	<xsd:element name="CardLastDateStatus" type="ifx:DateTime_Type"/>
+	<xsd:element name="FirstIssuedDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="LastIssuedDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="IncorrectPinTry" type="IncorrectPinTry_Type"/>
+	<xsd:element name="HoldAmt" type="ifx:CurrencyAmount_Type"/>
+	<xsd:element name="UserAuthId" type="ifx:Identifier_Type"/>
+	<xsd:element name="CardSubStatus" type="CardOperStat_Type"/>
+	<xsd:element name="CardSubStatusDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="ReissuedFlag" type="ReissuedFlag_Type"/>
+	<xsd:element name="ReturnFee" type="ReturnFee_Type"/>
+	<xsd:element name="SaleDate" type="ifx:DateTime_Type"/>
+	<xsd:element name="NumOfContact" type="NumOfContact_Type"/>
+	<xsd:element name="OverseaFlag" type="Flag_Type"/>
+	<xsd:element name="UserLimitChange" type="UserLimitChange_Type"/>
+	<xsd:element name="LimitChangeDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="Filler" type="Filler_Type"/>
+	<xsd:element name="CardRegisterDt" type="CardRegisterDt_Type"/>
+	
+	<xsd:element name="CalcPnlty" type="CalcPnlty_Type"/>
+	<xsd:element name="DailyIntAmt" type="DailyIntAmt_Type"/>
+	<xsd:element name="PayoffAmt" type="PayoffAmt_Type"/>
+	<xsd:element name="PayoffChngDt" type="PayoffChngDt_Type"/>
+	<xsd:element name="PayoffDetail" type="PayoffDetail_Type"/>
+	<xsd:element name="AdjAmt" type="AdjAmt_Type"/>
+	<xsd:element name="Rebate" type="Rebate_Type"/>
+	<xsd:element name="RptGrp" type="RptGrp_Type"/>
+	<xsd:element name="AnyIDType" type="ifx:OpenEnum_Type"/>
+	<xsd:element name="AnyIDValue" type="AnyIDValue_Type"/>
+	<xsd:element name="AcctUpdFlag" type="AcctUpdFlag_Type"/>
+	<xsd:element name="OnUsUpdFlag" type="OnUsUpdFlag_Type"/>
+	<xsd:element name="OnUsFlag" type="OnUsFlag_Type"/>
+	<xsd:element name="ITMXUpdFlag" type="ITMXUpdFlag_Type"/>
+	<xsd:element name="ITMXFlag" type="ITMXFlag_Type"/>
+	<xsd:element name="RegIdUpdFlag" type="RegIdUpdFlag_Type"/>
+	
+	<!-- XNG-383 : PromptPay service Start -->
+	<xsd:element name="ProxyType" type="ProxyType_Type"/>
+	<xsd:element name="ProxyValue" type="ProxyValue_Type"/>
+	
+	
+	<!-- XNG-293 : ChequeIssue service  -->
+	<xsd:element name="AutoOrder" type="AutoOrder_Type"/>
+	<xsd:element name="UnitStatus" type="UnitStatus_Type"/>
+	<xsd:element name="ReorderAT" type="ReorderAT_Type"/>
+	<xsd:element name="PurgeDay" type="PurgeDay_Type"/>
+	<xsd:element name="LegalVehcl" type="LegalVehcl_Type"/>
+	<xsd:element name="PersonalNameLine" type="PersonalNameLine_Type"/>
+
+	<!-- XNG-307 : AcctDetail service -->
+	<xsd:element name="TotalTenor" type="ifx:Long_Type"/>
+	<xsd:element name="Tenor" type="ifx:Long_Type"/>
+	<xsd:element name="CashChillFlag" type="CashChillFlag_Type"/>
+	<xsd:element name="CashChillStatus" type="CashChillStatus_Type"/>	
+	
+	<!-- XNG-408 : [AcctDetail] Add more output in AcctDetail service -->
+	<xsd:element name="TempLinePeriod" type="ifx:Long_Type"/>
+	
+	<!-- XNG-434 : Create new MegaTran service -->
+	<xsd:element name="DebitItems" type="DebitItems_Type" />
+	<xsd:element name="CreditItems" type="CreditItems_Type" />
+	
+	<!-- XNG:525 PartyUBC service -->
+	<xsd:element name="SACPercent" type="ifx:Decimal_Type"/>
+	<xsd:element name="SACRelation" type="SACRelation_Type"/>
+	
+<!-- END OF DEFINE ELEMENT -->	
+	
+<!-- START OF DEFINE TYPE -->		
+	<xsd:complexType name="ROCode_Type">
+		<xsd:sequence>
+			<xsd:element ref="Segment" minOccurs="0" />
+			<xsd:element ref="SubSegment" minOccurs="0" />
+			<xsd:element ref="ServiceModel" minOccurs="0" />
+			<xsd:element ref="TellerId" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustStatus_Type">
+		<xsd:sequence>
+			<xsd:element ref="StatusFlag" minOccurs="0" />
+			<xsd:element ref="TellerId" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="CreditCardOrg_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CreditCardType_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RespDeptCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RespDeptName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="128" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MiscDataType_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="80" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AcctStatusResp_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ProductName_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DepositNo_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TranMnemonic_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OnlinePmt_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Command_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PmtRef_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RBANo_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TranCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EPAYCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="24" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RespCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HoldCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AcctLen_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TraceNum_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="12" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RoutNum_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TypeOrig_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Pin_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="16" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Term_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="16" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Track_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="37" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RouteStat_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ProdInd_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DPCNum_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RelNum_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ChequeNo_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ReqId_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ProdCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Acronym_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustFullName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="101" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CardNo_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RMC2Flag_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RMNum_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="14" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RespDesc_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MaxRisk_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Msg_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="500" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="MsgSection_Type">
+		<xsd:sequence>
+			<xsd:element ref="MsgDesc" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PersAccObjOther_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="300" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustIncomeSourceOther_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="300" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersDepSourceOther_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="300" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustRiskNumTran_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustRiskAmt_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustAcctObj_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="300" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustDepSource_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="300" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustIncomeSource_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="300" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="WarningListSection_Type">
+		<xsd:sequence>
+			<xsd:element ref="CustFullName" minOccurs="0" />
+			<xsd:element ref="CardNo" minOccurs="0" />
+			<xsd:element ref="RiskLevel" minOccurs="0" />
+			<xsd:element ref="Remark" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustAcctObjSection_Type">
+		<xsd:sequence>
+			<xsd:element ref="CustAcctObj" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustDepSourceSection_Type">
+		<xsd:sequence>
+			<xsd:element ref="CustDepSource" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CustIncomeSourceSection_Type">
+		<xsd:sequence>
+			<xsd:element ref="CustIncomeSource" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="RiskLevel_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Time_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="8" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PayBy_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HomeBranch_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Flag_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StmtSymbol_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LoanStmtTranCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ProdType_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SessionId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="100" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TypeCust_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MobileNoNew_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MobileNoOld_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FuncName_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FieldName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="80" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FieldValue_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="AcctMaintField_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:FieldName" />
+			<xsd:element ref="fnis:FieldValue" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PmtMethod_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="80" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RespMsg_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="62" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BlockCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="PartyAdditionalInfo" type="PartyAdditionalInfo_Type" />
+	<xsd:complexType name="PartyAdditionalInfo_Type">
+		<xsd:sequence>
+			<xsd:element name="EngName" type="EngName_Type" />
+			<xsd:element ref="ifx:Phone" minOccurs="0" />
+			<xsd:element ref="ifx:EmailAddr" minOccurs="0" />
+			<xsd:element name="CustomerType" type="CustomerType_Type" />
+			<xsd:element ref="CustStatus" minOccurs="0"/>
+			<xsd:element ref="ROCode" minOccurs="0"/>
+			<!-- MEXP-5: Party Service -->
+			<xsd:element ref="fnis:Race" minOccurs="0"/>
+			<xsd:element ref="fnis:CountryOfIncome" minOccurs="0"/>
+			<xsd:element ref="fnis:IDDocumentFlag" minOccurs="0"/>
+			<xsd:element ref="fnis:KYCDocumentFlag" minOccurs="0"/>
+			<xsd:element ref="fnis:Nationality2" minOccurs="0"/>				
+			<xsd:element ref="ifx:PartyStatusCode" minOccurs="0"/>
+			<xsd:element ref="ifx:OrgCategory" minOccurs="0"/>			
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="EngName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustomerType_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- MEXP-5: Party Service-->
+	<xsd:element name="CountryOfIncome" type="CountryOfIncome_Type"/>
+	<xsd:element name="IDDocumentFlag" type="DocumentFlag_Type"/>
+	<xsd:element name="KYCDocumentFlag" type="DocumentFlag_Type"/>
+	<xsd:element name="Nationality2" type="ifx:OpenEnum_Type"/>
+	<xsd:simpleType name="CountryOfIncome_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+	<xsd:simpleType name="DocumentFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FlagFeeReg_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CompCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="80" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PostedTime_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="6" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ReturnReasonDesc_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ReturnReasonDescTH_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NumberOfAcctPayin_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CardGroup_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="9" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DueDt_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="12" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StmtDt_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="12" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BBName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BBCompCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="10" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ApplyChannel_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ApplStatus_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ApplStatusCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ApplStatusDesc_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="80" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ApplyTime_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="6" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ChannelTranfer_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="128" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TransferStatus_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TransferStatusCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="6" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TransferStatusDetail_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="PmtStatus" type="PmtStatus_Type" />
+	<xsd:element name="PmtStatusCode" type="PmtStatusCode_Type" />
+	<xsd:element name="PmtStatusDetail" type="PmtStatusDetail_Type" />
+	<xsd:element name="TransactionID" type="TransactionID_Type" />
+	<xsd:element name="ChannelPay" type="ChannelPay_Type" />
+	<xsd:element name="PmtDate" type="ifx:Date_Type" />
+	<xsd:element name="StatusServiceName" type="StatusServiceName_Type" />
+	<xsd:simpleType name="PINCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="PmtFee" type="ifx:CurAmt_Type" />
+	<xsd:simpleType name="PmtStatus_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PmtStatusCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="6" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PmtStatusDetail_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TransactionID_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ChannelPay_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="15" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OpeningMethod_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustomerName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExpiredDt_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="5" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CompanyName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusServiceName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="30" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Cardless Withdrawal -->
+	<xsd:element name="CardlessPin" type="CardlessPin_Type" />
+	<xsd:element name="CardlessRef" type="CardlessRef_Type" />
+	<xsd:element name="DispRefToken" type="DispRefToken_Type" />
+	<xsd:element name="ReverseReasonCd" type="ifx:Long_Type" />
+	<xsd:element name="ReverseRefToken" type="ReverseRefToken_Type" />
+	<xsd:simpleType name="CardlessPin_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="6" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CardlessRef_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="14" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DispRefToken_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="18" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ReverseRefToken_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="18" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- OTP -->
+	<xsd:element name="PolicyId" type="PolicyId_Type" />
+	<xsd:element name="Session" type="Session_Type" />
+	<xsd:element name="TokenUUID" type="TokenUUID_Type" />
+	<xsd:element name="InputSeeds" type="InputSeeds_Type" />
+	<xsd:element name="EventNotificationPolicyId" type="EventNotificationPolicyId_Type" />
+	<xsd:element name="StoreId" type="StoreId_Type" />
+	<xsd:element name="FlagStore" type="FlagStore_Type" />
+	<xsd:element name="OTPProdCode" type="OTPProdCode_Type" />
+	<xsd:element name="RecipientName" type="RecipientName_Type" />
+	<xsd:element name="SMSSubject" type="SMSSubject_Type" />
+	<xsd:element name="HashAlgo" type="HashAlgo_Type" />
+	<xsd:element name="HashSalt" type="HashSalt_Type" />
+	<xsd:element name="OTPMiscData" type="MiscData_Type" />
+	<xsd:element name="OTPTimeout" type="OTPTimeout_Type" />
+	<xsd:element name="ReturnOTPToClient" type="ReturnOTPToClient_Type" />
+	<xsd:element name="DeliverySearch" type="DeliverySearch_Type" />
+	<xsd:element name="ExpiredTimeMilis" type="ExpiredTimeMilis_Type" />
+	<xsd:element name="OTP" type="OTP_Type" />
+	<xsd:element name="Pac" type="Pac_Type" />
+	<xsd:element name="IssueTimeMilis" type="IssueTimeMilis_Type" />
+	<xsd:element name="OTPHash" type="OTPHash_Type" />
+	<xsd:element name="OTPKeysId" type="OTPKeysId_Type" />
+	<xsd:simpleType name="PolicyId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Session_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="181" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TokenUUID_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="InputSeeds_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EventNotificationPolicyId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StoreId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FlagStore_Type">
+		<xsd:restriction base="ifx:Boolean_Type" />
+	</xsd:simpleType>
+	<xsd:simpleType name="OTPProdCode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RecipientName_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SMSSubject_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HashAlgo_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HashSalt_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OTPTimeout_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ReturnOTPToClient_Type">
+		<xsd:restriction base="ifx:Boolean_Type" />
+	</xsd:simpleType>
+	<xsd:simpleType name="DeliverySearch_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExpiredTimeMilis_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OTP_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Pac_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="20" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IssueTimeMilis_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OTPHash_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OTPKeysId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- OTPVerify -->
+	<xsd:element name="Params" type="Params_Type" />
+	<xsd:element name="TokenModel" type="TokenModel_Type" />
+	<xsd:element name="VendorId" type="VendorId_Type" />
+	<xsd:element name="TokenStatus" type="TokenStatus_Type" />
+	<xsd:element name="TokenSerNumber" type="TokenSerNumber_Type" />
+	<xsd:element name="OTPVerifyKeysId" type="OTPVerifyKeysId_Type" />
+	<xsd:simpleType name="Params_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TokenModel_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="VendorId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TokenStatus_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TokenSerNumber_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OTPVerifyKeysId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="255" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- FATCA -->
+	<xsd:element name="FATCAAnswers" type="FATCAAnswers_Type" />
+	<xsd:element name="FATCASeqNum" type="FATCASeqNum_Type" />
+	<xsd:element name="FATCAFormId" type="FATCAFormId_Type" />
+	<xsd:element name="TotalItems" type="ifx:Long_Type" />
+	<xsd:element name="FATCAFlag" type="FATCAFlag_Type" />
+	<xsd:element name="FATCADate" type="ifx:Date_Type" />
+	<xsd:element name="UpdateFlag" type="YNFlag_Type" />
+	<xsd:complexType name="FATCAAnswers_Type">
+		<xsd:sequence>
+			<xsd:element name="Answer" type="YNFlag_Type" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="FATCAFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FATCASeqNum_Type">
+		<xsd:restriction base="fnis:SeqNum_Type">
+			<xsd:maxLength value="3" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FATCAFormId_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="4" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="YNFlag_Type">
+		<xsd:restriction base="ifx:ClosedEnum_Type">
+			<xsd:enumeration value="Y" />
+			<xsd:enumeration value="N" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Segment_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SubSegment_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ServiceModel_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="40"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- SMARTTrnfer -->
+	<xsd:element name="SMARTFee" type="ifx:CurAmt_Type"/>
+	<!-- PinVerify -->
+	<xsd:simpleType name="ServiceCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- MIBXP-929: SFCustomer -->	
+	<xsd:element name="NameSearchCriteria" type="NameSearchCriteria_Type"/>
+	<xsd:simpleType name="NameSearchCriteria_Type">
+		<xsd:restriction base="ifx:ClosedEnum_Type">
+			<xsd:enumeration value="FULL"/>
+			<xsd:enumeration value="PARTIAL"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- StmtPrintingSumm -->
+	<xsd:element name="LinePage" type="ifx:Long_Type"/>
+	<xsd:element name="TotTran" type="ifx:Long_Type"/>
+	<xsd:element name="TotPage" type="ifx:Long_Type"/>
+	<xsd:element name="SumDrCnt" type="ifx:Long_Type"/>
+	<xsd:element name="SumDrAmt" type="ifx:CurAmt_Type"/>
+	<xsd:element name="SumCrCnt" type="ifx:Long_Type"/>
+	<xsd:element name="SumCrAmt" type="ifx:CurAmt_Type"/>
+	<xsd:element name="FeeAmt" type="ifx:CurAmt_Type"/>
+	<xsd:element name="BfBal" type="ifx:BalAmt_Type"/>
+	<xsd:element name="PrintFlag" type="YNFlag_Type"/>
+	<!-- PartyUBO -->
+	<xsd:element name="UboPartyKeys" type="fnis:PartyKeys_Type"/>
+	<xsd:element name="ApplId" type="ApplId_Type"/>
+	<xsd:element name="UboType" type="UboType_Type"/>
+	<xsd:element name="UboActFlg" type="UboActFlg_Type"/>
+	<xsd:simpleType name="ApplId_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UboType_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UboActFlg_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OccCd_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Sic_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LstMaintTrmId_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EmpCtl_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="IsoCtryCd2" type="ifx:CountryCode_Type"/>
+	<xsd:element name="IsoTxCtryCd" type="ifx:CountryCode_Type"/>
+	<xsd:element name="IrsTxCtryCd" type="ifx:CountryCode_Type"/>
+	<xsd:element name="IncCtry" type="ifx:CountryCode_Type"/>
+	<xsd:element name="Sic1" type="Sic_Type"/>
+	<xsd:element name="Sic2" type="Sic_Type"/>
+	<xsd:element name="OccCd" type="OccCd_Type"/>
+	<xsd:element name="LstMaintDt" type="ifx:Date_Type"/>
+	<xsd:element name="LstMaintTime" type="ifx:OpenEnum_Type"/>
+	<xsd:element name="LstMaintEmpCtl1" type="EmpCtl_Type"/>
+	<xsd:element name="LstMaintEmpCtl2" type="EmpCtl_Type"/>
+	<xsd:element name="LstMaintEmpId" type="EmpId_Type"/>
+	<xsd:element name="LstMaintTrmId" type="LstMaintTrmId_Type"/>	
+	<!-- SoGood Credit Card -->
+	<xsd:element name="CardHolderNo" type="ifx:CardRef_Type"/>
+	<xsd:element name="PermCrLimit" type="ifx:CurAmt_Type"/>
+	<xsd:element name="TempCrLimit" type="ifx:CurAmt_Type"/>
+	<xsd:element name="EPTBInstalmentAvai" type="ifx:CurAmt_Type"/>
+	<xsd:element name="EPAIInstalmentAvai" type="ifx:CurAmt_Type"/>
+	<xsd:element name="BillingCycle" type="BillingCycle_Type"/>
+	<xsd:simpleType name="BillingCycle_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- SoGood Credit Card Redemption -->
+	<xsd:element name="RedempUnit" type="ifx:Long_Type"/>
+	<xsd:element name="CrToCardNo" type="ifx:CardRef_Type"/>
+	<xsd:element name="CrToAcctNo" type="ifx:AcctRef_Type"/>
+	<xsd:element name="MemberCode" type="MemberCode_Type"/>
+	<xsd:element name="MemberSurName" type="MemberSurName_Type"/>
+	<xsd:element name="RemainingCardPoint" type="ifx:Decimal_Type"/>
+	<xsd:simpleType name="MemberCode_Type">
+		<xsd:annotation>
+			<xsd:documentation>ROP or BIG member code</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MemberSurName_Type">
+		<xsd:annotation>
+			<xsd:documentation>Last 5 characters of Surname</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- SoGood Credit Card Estmt -->
+	<xsd:element name="CustomerNameTHInd" type="ONOFFFlag_Type"/>
+	<xsd:element name="CustomerNameENInd" type="ONOFFFlag_Type"/>
+	<xsd:element name="CustomerNameEN" type="CustomerName_Type"/>
+	<xsd:element name="CardAddressInd" type="ONOFFFlag_Type"/>
+	<xsd:element name="CardAddr" type="PostAddr_Type"/>
+	<xsd:element name="StmtAddressInd" type="ONOFFFlag_Type"/>
+	<xsd:element name="StmtAddr" type="PostAddr_Type"/>
+	<xsd:element name="EstmtInd" type="ONOFFFlag_Type"/>
+	<xsd:element name="EstmtFlag" type="YNFlag_Type"/>
+	<xsd:element name="Email1Ind" type="ONOFFFlag_Type"/>
+	<xsd:element name="Email2Ind" type="ONOFFFlag_Type"/>
+	<xsd:element name="EmailAddress1" type="ifx:EmailAddr_Type"/>
+	<xsd:element name="EmailAddress2" type="ifx:EmailAddr_Type"/>
+	<!-- SoGood Credit Card Instalment -->
+	<xsd:element name="Apply" type="INQADDFlag_Type"/>
+	<xsd:element name="InstalPlan" type="ifx:OpenEnum_Type"/>
+	<xsd:element name="PmtTerm" type="ifx:Decimal_Type"/>
+	<xsd:element name="MerchantNo" type="ifx:OpenEnum_Type"/>
+	<xsd:element name="RequestedDate" type="ifx:Date_Type"/>
+	<xsd:element name="RequestedTime" type="ifx:DateTime_Type"/>
+	<xsd:element name="SRCFlag" type="SRCFlag_Type"/>
+	<xsd:element name="KeyFile" type="ifx:OpenEnum_Type"/>
+	<xsd:element name="RefNumber" type="ifx:Long_Type"/>
+	<xsd:element name="TotalInstlAmt" type="ifx:CurAmt_Type"/>
+	<xsd:element name="MonthlyInstlAmt" type="ifx:CurAmt_Type"/>
+	<xsd:element name="TotalIntAmt" type="ifx:CurAmt_Type"/>
+	<xsd:element name="MonthlyIntAmt" type="ifx:CurAmt_Type"/>
+	<!-- CCXP-23: Type of SRCFlag and Apply -->
+	<xsd:simpleType name="SRCFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="INQADDFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- CCXP-23: End. -->	
+	<xsd:simpleType name="ONOFFFlag_Type">
+		<xsd:restriction base="ifx:ClosedEnum_Type">
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CCTrnSeqNum_Type">
+		<xsd:restriction base="fnis:SeqNum_Type">
+			<xsd:maxLength value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- SoGood Credit Card Statement-->
+	<xsd:element name="CCTrnSeqNum" type="CCTrnSeqNum_Type"/>
+	<xsd:element name="SoGoodFlag" type="YNFlag_Type"/>	
+	<!-- E-Statement Maintenance -->
+	<xsd:element name="EStmtMaintAnswers" type="FATCAAnswers_Type"/>
+	
+	<!-- LBAccount -->
+	<xsd:element name="LBAccountId" type="ifx:Identifier_Type"/>
+	<xsd:element name="NamePrefixEng" type="NamePrefixEng_Type"/>
+	<xsd:element name="AOPort" type="AOPort_Type"/>
+	<xsd:element name="CustType" type="CustType_Type"/>
+	<xsd:element name="ClosedDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="LastTrnDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="TempExpireDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="HoldDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="ContractedDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="AccountRate" type="AccountRate_Type"/>
+	<xsd:element name="NoOverdueItems" type="ifx:Long_Type"/>
+	<xsd:element name="NoClaimedItems" type="ifx:Long_Type"/>
+	<xsd:element name="TurnOverDrItems" type="ifx:Long_Type"/>
+	<xsd:element name="TurnOverCrItems" type="ifx:Long_Type"/>
+	<xsd:element name="AcctStatus1" type="AcctStatusFlag_Type"/>
+	<xsd:element name="AcctStatus2" type="AcctStatusFlag_Type"/>
+	<xsd:element name="AcctStatus3" type="AcctStatusFlag_Type"/>
+	<xsd:element name="AcctStatus4" type="AcctStatusFlag_Type"/>
+	<xsd:element name="ChangeRateDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="RpdItems" type="ifx:Long_Type"/>
+	<xsd:element name="DivisionCd" type="ifx:Long_Type"/>
+	<xsd:element name="RpnType" type="ifx:Long_Type"/>
+	<xsd:element name="Miscel1code" type="Miscelcode_Type"/>
+	<xsd:element name="Miscel2code" type="Miscelcode_Type"/>
+	<xsd:element name="Miscel3code" type="Miscelcode_Type"/>
+	<xsd:element name="Miscel4code" type="Miscelcode_Type"/>
+	<xsd:element name="Miscel91Flag" type="Flag_Type"/>
+	<xsd:element name="FlagType" type="Flag_Type"/>
+	<xsd:element name="RMCode1" type="RMCode_Type"/>
+	<xsd:element name="RMCode2" type="RMCode_Type"/>
+	<xsd:element name="RMCode3" type="RMCode_Type"/>
+	<xsd:element name="RMCode4" type="RMCode_Type"/>
+	<xsd:element name="LBAcctListId" type="ifx:Identifier_Type"/>	
+	<xsd:element name="OutstandingItems" type="ifx:Long_Type"/>
+	<xsd:element name="AcctStatus5" type="AcctStatusFlag_Type"/>
+	<xsd:element name="AcctStatus6" type="AcctStatusFlag_Type"/>
+	<xsd:element name="PrivateFlag" type="PrivateFlag_Type"/>
+	<xsd:element name="PersonInfo" type="PersonInfo_Type" />
+	
+	<xsd:complexType name="PersonInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="FullName" minOccurs="0"/>
+			<xsd:element ref="fnis:NamePrefix" minOccurs="0"/>
+			<xsd:element ref="fnis:CustFullNameEng" minOccurs="0"/>
+			<xsd:element ref="NamePrefixEng" minOccurs="0"/>
+			<xsd:element ref="IDNumber" minOccurs="0"/>
+			<xsd:element ref="PhoneNum" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:PostAddr" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="NamePrefixEng_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+	<xsd:simpleType name="AOPort_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustType_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AccountRate_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AcctStatusFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Miscelcode_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="24"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RMCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="14"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PrivateFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- LBReference -->
+	<xsd:element name="LBReferenceId" type="ifx:Identifier_Type"/>
+	<xsd:element name="LastCalDt" type="ifx:DateTime_Type"/>
+	<xsd:element name="OutstandingStatus" type="OutstandingStatus_Type"/>
+	<xsd:element name="BeneficiaryName" type="BeneficiaryName_Type"/>
+	<xsd:element name="IssuerMemo" type="ifx:Memo_Type"/>
+	<xsd:element name="AdjustRate" type="fnis:Rate_Type"/>
+	<xsd:element name="EffectiveRate" type="fnis:Rate_Type"/>
+	<xsd:element name="IssueType" type="IssueType_Type"/>
+	<xsd:element name="NoOfMonths" type="ifx:Long_Type"/>
+	<xsd:element name="NoOfDays" type="ifx:Long_Type"/>
+	<xsd:element name="NextPmtDt" type="ifx:DateTime_Type"/>
+	
+	<xsd:simpleType name="OutstandingStatus_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BeneficiaryName_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IssueType_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="LBSuffixId" type="ifx:Identifier_Type"/>	
+	
+	<!-- LBCommPmt -->
+	<xsd:element name="LBCommPmtId" type="ifx:Identifier_Type"/>
+	<xsd:element name="CommissionStatus" type="CommissionStatus_Type"/>
+	
+	<xsd:simpleType name="CommissionStatus_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- LBPrintcipal -->
+	<xsd:element name="LBPrincipalPmtID" type="ifx:Identifier_Type"/>
+	<xsd:element name="ReturnPayBy" type="ReturnPayBy_Type"/>
+	<xsd:element name="BankBranchCode" type="BankBranchCode_Type"/>
+	<xsd:element name="PayBy" type="PayBy_Type"/>
+	<xsd:element name="Payment" type="Payment_Type"/>
+
+	<xsd:complexType name="Payment_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:TranAmt"/>
+			<xsd:element ref="PayBy"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ReturnPayBy_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BankBranchCode_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="22"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="BillPayBy" type="BillPayBy_Type"/>	
+	<xsd:simpleType name="BillPayBy_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="40"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="CVV_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- XNG-213: BillPmt via ATM -->
+	<xsd:simpleType name="BalanceFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- XNG-222: Enhance for SFProspect -->
+		<xsd:simpleType name="DisqualifiedFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+	<!-- XNG-273: CardOper -->
+	<xsd:simpleType name="BloodGroup_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		<xsd:simpleType name="Faculty_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="30"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CardOperStat_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="80"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IncorrectPinTry_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		<xsd:simpleType name="ReissuedFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		<xsd:simpleType name="ReturnFee_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		<xsd:simpleType name="NumOfContact_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		<xsd:simpleType name="UserLimitChange_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="8"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		<xsd:simpleType name="Filler_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="14"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- XNG-273: CardOper End.-->
+	
+	<xsd:complexType name="AnyIDRegisterAuth_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:BaseAuth_Type">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:simpleType name="AnyIDValue_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="AcctUpdFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="OnUsUpdFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="OnUsFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ITMXUpdFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ITMXFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="RegIdUpdFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<!-- XNG-293 : ChequeIssue service -->
+	<xsd:simpleType name="AutoOrder_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="UnitStatus_Type">
+		<xsd:restriction base="ifx:Long_Type">
+		</xsd:restriction>
+	</xsd:simpleType>
+		
+	<xsd:simpleType name="ReorderAT_Type">
+		<xsd:restriction base="ifx:Long_Type">
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="PurgeDay_Type">
+		<xsd:restriction base="ifx:Long_Type">
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="LegalVehcl_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+		
+	<xsd:complexType name="PersonalNameLine_Type">
+		<xsd:sequence>
+			<xsd:element ref="Name" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- XNG-307 : AcctDetail service -->
+	<xsd:simpleType name="CashChillFlag_Type" >
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CashChillStatus_Type" >
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+	
+	<xsd:element name="SenderName1" type="SenderName1_Type"/>
+	<xsd:simpleType name="SenderName1_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="65"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="Beneficiary1" type="Beneficiary1_Type"/>
+	<xsd:simpleType name="Beneficiary1_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="65"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="PayBy1" type="PayBy1_Type"/>
+	<xsd:simpleType name="PayBy1_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="PayBy2" type="PayBy2_Type"/>
+	<xsd:simpleType name="PayBy2_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="Commission1" type="ifx:Decimal_Type"/>
+	<xsd:element name="Commission2" type="ifx:Decimal_Type"/>
+	
+	<xsd:element name="ChqExpressFlag" type="ChqExpressFlag_Type"/>
+	<xsd:simpleType name="ChqExpressFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="ReprintFlag" type="ReprintFlag_Type"/>
+	<xsd:simpleType name="ReprintFlag_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="PayFromDepAcct1" type="PayFromDepAcct1_Type"/>
+	<xsd:simpleType name="PayFromDepAcct1_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="14"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="PayFromDepAcct2" type="PayFromDepAcct2_Type"/>
+	<xsd:simpleType name="PayFromDepAcct2_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="14"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="BahtnetAcctLen" type="BahtnetAcctLen_Type"/>
+	<xsd:simpleType name="BahtnetAcctLen_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="SenderTel" type="SenderTel_Type"/>
+	<xsd:simpleType name="SenderTel_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="ReceiverTel" type="ReceiverTel_Type"/>
+	<xsd:simpleType name="ReceiverTel_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="DocNo" type="DocNo_Type"/>
+	<xsd:simpleType name="DocNo_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="7"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="ProcessBranch" type="ProcessBranch_Type"/>
+	<xsd:simpleType name="ProcessBranch_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="4"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="CalcPnlty_Type">
+		<xsd:restriction base="ifx:Decimal_Type">
+		</xsd:restriction>
+	</xsd:simpleType>
+		
+	<xsd:simpleType name="DailyIntAmt_Type">
+		<xsd:restriction base="ifx:Decimal_Type">
+		</xsd:restriction>
+	</xsd:simpleType>
+		
+	<xsd:simpleType name="PayoffAmt_Type">
+		<xsd:restriction base="ifx:Decimal_Type">
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="PayoffChngDt_Type">
+		<xsd:restriction base="ifx:DateTime_Type">
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="AdjAmt_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CurrencyAmount_Type">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="Rebate_Type">
+		<xsd:restriction base="ifx:Decimal_Type">
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="RptGrp_Type">
+		<xsd:restriction base="ifx:C">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="PayoffDetail_Type">
+		<xsd:sequence>
+			<xsd:element ref="AdjAmt" minOccurs="0"/>
+			<xsd:element ref="Rebate" minOccurs="0"/>
+			<xsd:element ref="RptGrp" minOccurs="0"/>
+			<xsd:element ref="AmtType" minOccurs="0"/>
+			<xsd:element ref="PayAmtDue" minOccurs="0"/>
+			<xsd:element ref="LoanBalAmt" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="BranchIdent2" type="BranchIdent2_Type"/>
+	<xsd:simpleType name="BranchIdent2_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="22"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- XNG-383 : PromptPay service -->
+	<xsd:simpleType name="ProxyType_Type" >
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ProxyValue_Type" >
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="25"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- XNG-434 : Create new MegaTran service -->
+	<xsd:complexType name="DebitItems_Type">
+		<xsd:sequence>
+			<xsd:element ref="FromAcctRef" />
+			<xsd:element ref="CurAmt" />
+			<xsd:element ref="FeeAmt" minOccurs="0"/>
+			<xsd:element ref="ifx:PostedDt" minOccurs="0"/>
+			<xsd:element ref="ifx:EffDt" />
+			<xsd:element ref="TranCode" />
+			<xsd:element ref="ifx:ChkNum" minOccurs="0"/>
+			<xsd:element ref="AvailBal" minOccurs="0"/>
+			<xsd:element ref="ifx:Desc" minOccurs="0"/>
+			<xsd:element ref="TrnSeqNum" minOccurs="0"/>
+			<xsd:element ref="ifx:WaiveFeeInd" minOccurs="0"/>
+			<xsd:element ref="ifx:OpenDt" minOccurs="0"/>
+			<xsd:element ref="FromAcctName" minOccurs="0"/>
+			<xsd:element ref="TrnMiscData" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="CreditItems_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:ToAcctRef" />
+			<xsd:element ref="CurAmt" />
+			<xsd:element ref="FeeAmt" minOccurs="0"/>
+			<xsd:element ref="ifx:PostedDt" minOccurs="0"/>
+			<xsd:element ref="ifx:EffDt" />
+			<xsd:element ref="TranCode" />
+			<xsd:element ref="AvailBal" minOccurs="0"/>
+			<xsd:element ref="ifx:Desc" minOccurs="0"/>
+			<xsd:element ref="TrnSeqNum" minOccurs="0"/>
+			<xsd:element ref="ifx:WaiveFeeInd" minOccurs="0"/>
+			<xsd:element ref="ifx:OpenDt" minOccurs="0"/>
+			<xsd:element ref="ToAcctName" minOccurs="0"/>
+			<xsd:element ref="TrnMiscData" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<!-- XNG:525 PartyUBC service -->
+	<xsd:simpleType name="SACRelation_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- END OF DEFINE TYPE -->
+	
+	
+	<xsd:simpleType name="CardRegisterDt_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

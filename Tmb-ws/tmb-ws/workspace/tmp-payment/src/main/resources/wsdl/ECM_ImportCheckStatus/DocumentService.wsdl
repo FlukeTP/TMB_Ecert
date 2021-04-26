@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://wsimpl.ds.ecm.clevel.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://wsapi.svc.ecm.clevel.com/" name="DocumentServiceService" targetNamespace="http://wsimpl.ds.ecm.clevel.com/">
+  <wsdl:import location="http://10.200.125.170:8081/ecmdsent/DocumentService?wsdl=IDocumentService.wsdl" namespace="http://wsapi.svc.ecm.clevel.com/">
+    </wsdl:import>
+  <wsdl:binding name="DocumentServiceServiceSoapBinding" type="ns1:IDocumentService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="importDocuments">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="importDocuments">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="importDocumentsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocuments">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="deleteDocuments">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="deleteDocumentsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkStatus">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="checkStatus">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="checkStatusResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resubmitDocuments">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="resubmitDocuments">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="resubmitDocumentsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bulkUploadDocument">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="bulkUploadDocument">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="bulkUploadDocumentResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewDocument">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="viewDocument">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="viewDocumentResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchDocuments">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="searchDocuments">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="searchDocumentsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDocumentIndexes">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="updateDocumentIndexes">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="updateDocumentIndexesResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="exportDocuments">
+      <soap:operation soapAction="" style="document"></soap:operation>
+      <wsdl:input name="exportDocuments">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="exportDocumentsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DocumentServiceService">
+    <wsdl:port binding="tns:DocumentServiceServiceSoapBinding" name="DocumentServicePort">
+      <soap:address location="http://10.200.125.170:8081/ecmdsent/DocumentService"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

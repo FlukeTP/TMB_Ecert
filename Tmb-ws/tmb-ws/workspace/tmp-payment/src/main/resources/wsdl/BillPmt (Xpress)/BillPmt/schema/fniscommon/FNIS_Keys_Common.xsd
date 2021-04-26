@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		edited with XMLSpy v2011 rel. 2 sp1 (http://www.altova.com) by
+		Ugadurga Prasad (FIS)
+	-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ifx="urn:ifxforum-org:XSD:1" xmlns:fnis="http://www.fnf.com/xes"
+	targetNamespace="http://www.fnf.com/xes" elementFormDefault="qualified">
+	<xsd:import namespace="urn:ifxforum-org:XSD:1"
+		schemaLocation="IFX_Common.xsd" />
+	<xsd:include schemaLocation="FNIS_Common.xsd" />
+	<!-- Start of Calendar Item Service Keys -->
+	<xsd:complexType name="CalendarItemKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:CalendarItemId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:CalendarItemIdent" />
+					<xsd:element ref="ifx:NotAvailInd" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="CalendarItemKeys" type="fnis:CalendarItemKeys_Type" />
+	<!-- End of Calendar Item Service Keys -->
+	<!-- Start Of Note Service Keys-->
+	<xsd:complexType name="NoteKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:NoteId" minOccurs="0" />
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="ifx:PartyKeys" minOccurs="0" />
+				<xsd:element ref="ifx:AcctKeys" minOccurs="0" />
+				<xsd:element ref="fnis:BusinessCaseKeys" minOccurs="0" />
+				<xsd:element ref="fnis:ReferralIdent" minOccurs="0" />
+				<xsd:element ref="fnis:CalendarItemKeys" minOccurs="0" />
+			</xsd:choice>
+			<xsd:element ref="fnis:NoteType" minOccurs="0" />
+			<xsd:element ref="fnis:NoteIdent" minOccurs="0" />
+			<xsd:element ref="fnis:ApplicationKeys" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessCaseKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:BusinessCaseId" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- End Of Note Service Keys-->
+	<!-- Start Of Out of Wallet Keys-->
+	<xsd:complexType name="OutOfWalletKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:OutOfWalletId" minOccurs="0" />
+				<xsd:element ref="fnis:OutOfWalletIdent" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xsd:choice>
+			<xsd:element ref="ifx:NotAvailInd" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- End Of Out of Wallet Keys-->
+	<!-- Start of Notification and NotificationQue Service Keys-->
+	<xsd:complexType name="NotificationKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:NotificationId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:NotificationIdent" minOccurs="0" />
+					<xsd:element ref="ifx:PartyKeys" minOccurs="0" />
+					<xsd:element ref="fnis:ApplicationKeys" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NotificationQueKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:NotificationQueId" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- End of Notification and NotificationQue Service Keys-->
+	<!-- Start Of HelloWorld Service Keys -->
+	<xsd:complexType name="HelloWorldKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:HelloWorldId" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="HelloWorld_02Keys">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:HelloWorldId" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Start Of HelloWorld Service Keys -->
+	<xsd:complexType name="CollateralKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:CollateralId" />
+			<xsd:element ref="ifx:PartyKeys" minOccurs="0" />
+			<xsd:element ref="ifx:AcctKeys" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DevFraudChkKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:DevFraudChkId" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AuthentKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:AuthentId" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="YodleeAcctKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:YodleeAcctId" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ClickChargeKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:ChannelName" minOccurs="0" />
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:sequence>
+					<xsd:element ref="ifx:StartDt" minOccurs="0" />
+					<xsd:element ref="ifx:EndDt" minOccurs="0" />
+				</xsd:sequence>
+				<xsd:element ref="fnis:NumDays" minOccurs="0" />
+				<xsd:element ref="fnis:DtRangeType" minOccurs="0" />
+			</xsd:choice>
+			<!--xsd:element ref="ifx:DtRange" minOccurs="0"/-->
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AuditHistKeys_Type">
+		<xsd:choice>
+			<xsd:element ref="fnis:AuditHistId" />
+			<xsd:sequence>
+				<xsd:element ref="fnis:ObjectIdent" />
+				<xsd:element ref="fnis:SeqNum" minOccurs="0" />
+			</xsd:sequence>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="AddressKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:AddressId" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CommonDataKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:CommonDataId" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CommonData_02Keys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:CommonData_02Id" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProdKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:ProdId" />
+			</xsd:choice>
+			<xsd:element ref="fnis:ProdClass" minOccurs="0" />
+			<xsd:element ref="fnis:PkgInd" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CorrespdnceKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:CorrespdnceId" />
+				<xsd:sequence>
+					<xsd:element ref="ifx:Version" minOccurs="0" />
+					<xsd:element ref="fnis:CorrespdnceIdent" maxOccurs="unbounded" />
+					<xsd:element ref="ifx:Name" minOccurs="0" />
+					<xsd:element ref="fnis:CorrespdnceType" minOccurs="0" />
+					<xsd:element ref="fnis:ApplicationKeys" minOccurs="0" />
+					<xsd:element ref="ifx:AcctKeys" minOccurs="0" />
+					<xsd:element ref="ifx:PartyKeys" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PermissionKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:PermissionId" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RestrictKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:AcctKeys" />
+			<xsd:element ref="fnis:RestrictCode" />
+			<xsd:element ref="ifx:SeqNum" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContactHistoryKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:ContactHistoryId" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ServiceKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:ServiceId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:ServiceIdent" maxOccurs="unbounded" />
+					<xsd:element ref="fnis:ServiceType" minOccurs="0" />
+					<xsd:element ref="ifx:AcctKeys" minOccurs="0" />
+					<xsd:element ref="ifx:PartyKeys" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TellerTrnKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:TellerTrnId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:TrnKeyType" />
+					<xsd:choice>
+						<xsd:element ref="ifx:BranchIdent" />
+						<xsd:element ref="fnis:DrawerData" />
+					</xsd:choice>
+				</xsd:sequence>
+				<xsd:sequence>
+					<xsd:element ref="ifx:NotAvailInd" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ContactHistoryKeys" type="fnis:ContactHistoryKeys_Type" />
+	<xsd:element name="FromAcctKeys" type="ifx:AcctKeys_Type" />
+	<!--
+		<xsd:element name="ToAcctKeys" type="ifx:AcctKeys_Type"/>Commented for
+		PaymentAdd as this element is added to FNIS_Common.xsd
+	-->
+	<xsd:element name="RestrictKeys" type="fnis:RestrictKeys_Type" />
+	<xsd:element name="AddressKeys" type="fnis:AddressKeys_Type" />
+	<xsd:element name="AuditHistKeys" type="fnis:AuditHistKeys_Type" />
+	<xsd:element name="AuthentKeys" type="fnis:AuthentKeys_Type" />
+	<xsd:element name="BusinessCaseKeys" type="fnis:BusinessCaseKeys_Type" />
+	<xsd:element name="CollateralKeys" type="fnis:CollateralKeys_Type" />
+	<xsd:element name="CommonDataKeys" type="fnis:CommonDataKeys_Type" />
+	<xsd:element name="CommonData_02Keys" type="fnis:CommonData_02Keys_Type" />
+	<xsd:element name="CorrespdnceKeys" type="fnis:CorrespdnceKeys_Type" />
+	<xsd:element name="DevFraudChkKeys" type="fnis:DevFraudChkKeys_Type" />
+	<xsd:element name="HelloWorldKeys" type="fnis:HelloWorldKeys_Type" />
+	<xsd:element name="HelloWorld_02Keys" type="fnis:HelloWorld_02Keys" />
+	<xsd:element name="NoteKeys" type="fnis:NoteKeys_Type" />
+	<!-- out of Wallet starts -->
+	<xsd:element name="OutOfWalletKeys" type="fnis:OutOfWalletKeys_Type" />
+	<!-- out of Wallet ends -->
+	<xsd:element name="NotificationKeys" type="fnis:NotificationKeys_Type" />
+	<xsd:element name="NotificationQueKeys" type="fnis:NotificationQueKeys_Type" />
+	<xsd:element name="PermissionKeys" type="fnis:PermissionKeys_Type" />
+	<xsd:element name="ProdKeys" type="fnis:ProdKeys_Type" />
+	<xsd:element name="YodleeAcctKeys" type="fnis:YodleeAcctKeys_Type" />
+	<xsd:element name="ServiceKeys" type="fnis:ServiceKeys_Type" />
+	<xsd:element name="TellerTrnKeys" type="fnis:TellerTrnKeys_Type" />
+	<xsd:element name="ApplBookKeys" type="fnis:ApplBookKeys_Type" />
+	<xsd:element name="ReportKeys" type="fnis:ReportKeys_Type" />
+	<xsd:element name="ClickChargeKeys" type="fnis:ClickChargeKeys_Type" />
+	<xsd:complexType name="ApplBookKeys_Type">
+		<xsd:sequence>
+			<xsd:element name="ApplBookId" type="ifx:Identifier_Type" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ApplicationKeys" type="fnis:ApplicationKeys_Type" />
+	<xsd:complexType name="ApplicationKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:ApplicationId" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="UserKeys" type="fnis:UserKeys_Type" />
+	<xsd:complexType name="UserKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:UserId" />
+				<xsd:element ref="ifx:LoginAuthority" />
+				<xsd:element ref="ifx:PartyKeys" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AcctHoldKeys" type="fnis:AcctHoldKeys_Type" />
+	<xsd:complexType name="AcctHoldKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:AcctHoldId" />
+				<xsd:sequence>
+					<xsd:element ref="ifx:AcctKeys" minOccurs="0" />
+					<xsd:element ref="fnis:HoldType" minOccurs="0" />
+					<xsd:element ref="ifx:CurAmt" minOccurs="0" />
+					<xsd:element ref="ifx:ExpDt" minOccurs="0" />
+					<xsd:element ref="ifx:SeqNum" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ProdIntRateKeys" type="fnis:ProdIntRateKeys_Type" />
+	<xsd:complexType name="ProdIntRateKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:ProdIntRateId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:ProdIntRateIdent" />
+					<xsd:element ref="ifx:FIIdent" minOccurs="0" />
+					<xsd:element ref="ifx:AcctType" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element ref="fnis:NotAvailInd" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="ProdIntRateEnvr" type="fnis:ProdIntRateEnvr_Type" />
+	<xsd:complexType name="ProdIntRateEnvr_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:CreatedDt" />
+			<xsd:element ref="ifx:CreateRefIdent" minOccurs="0" />
+			<xsd:element ref="ifx:LastUpdateDt" minOccurs="0" />
+			<xsd:element ref="ifx:LoginName" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ProdIntRateStatus" type="fnis:ProdIntRateStatus_Type" />
+	<xsd:complexType name="ProdIntRateStatus_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:ProdIntRateStatusCode" />
+			<xsd:element ref="ifx:StatusDesc" minOccurs="0" />
+			<xsd:element ref="ifx:EffDt" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="PartySafeBoxRelKeys" type="fnis:PartySafeBoxRelKeys_Type" />
+	<xsd:complexType name="PartySafeBoxRelKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SvcIdent" minOccurs="0" />
+			<xsd:element ref="fnis:SafeBoxKeys" />
+			<xsd:element ref="ifx:PartyKeys" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="SafeBoxKeys" type="fnis:SafeBoxKeys_Type" />
+	<xsd:complexType name="SafeBoxKeys_Type">
+		<xsd:sequence>
+			<xsd:element name="SafeBoxId" type="ifx:Identifier_Type" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="TaxDeferredPlanBenRelKeys" type="fnis:TaxDeferredPlanBenRelKeys_Type" />
+	<xsd:complexType name="TaxDeferredPlanBenRelKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:TaxDeferredPlanBenRelId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:BeneficiaryIdent" minOccurs="0" />
+					<xsd:element ref="fnis:TaxDeferredPlanId" minOccurs="0" />
+					<xsd:element ref="ifx:PartyRef" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="TaxDeferredPlanKeys" type="fnis:TaxDeferredPlanKeys_Type" />
+	<xsd:complexType name="TaxDeferredPlanKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:TaxDeferredPlanId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:TDPlanIdent" />
+					<xsd:sequence minOccurs="1">
+						<xsd:element ref="ifx:PartyRef" minOccurs="0" />
+						<xsd:element ref="fnis:TaxDeferredPlanSeq" minOccurs="0" />
+					</xsd:sequence>
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element ref="ifx:FIIdent" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="UserRoleKeys" type="fnis:UserRoleKeys_Type" />
+	<xsd:complexType name="UserRoleKeys_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0" />
+			<xsd:choice>
+				<xsd:element ref="fnis:UserRoleId" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ReportKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:ReportId" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="OfferKeys" type="fnis:OfferKeys_Type" />
+	<xsd:complexType name="OfferKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:OfferId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:OfferIdent" />
+					<xsd:element ref="fnis:SalesIdent" minOccurs="0" />
+					<xsd:element ref="ifx:PartyKeys" minOccurs="0" />
+					<xsd:element ref="ifx:AcctKeys" minOccurs="0" />
+					<xsd:element ref="fnis:PricingPlanIdent" minOccurs="0" />
+					<xsd:element ref="ifx:ProductIdent" minOccurs="0" />
+					<xsd:element ref="ifx:EffDt" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Added for ChkPrint Object START -->
+	<xsd:element name="ChkPrintKeys" type="fnis:ChkPrintKeys_Type" />
+	<xsd:complexType name="ChkPrintKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:ChkPrintId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:ChkPrintIdent" />
+					<xsd:element ref="fnis:MediaItemType" minOccurs="0" />
+					<xsd:element ref="fnis:MediaItemDesc" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element ref="fnis:NotAvailInd" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- ChkPrint ENDS -->
+	<!-- Added for XpressSysKeys Object START -->
+	<xsd:element name="XpressSysKeys" type="fnis:XpressSysKeys_Type" />
+	<xsd:complexType name="XpressSysKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:XpressSysId" />
+				<xsd:sequence>
+					<xsd:element ref="fnis:XpressSysIdent" />
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element ref="fnis:NotAvailInd" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- XpressSys ENDS -->
+	<!-- Begin: Migrate XES 4.0 TMB -->
+	<!-- GNA starts -->
+	<xsd:element name="GNAKeys" type="fnis:GNAKeys_Type" />
+	<xsd:complexType name="GNAKeys_Type">
+		<xsd:sequence>
+			<xsd:element name="GNAId" type="ifx:Identifier_Type" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- GNA ends -->
+	<!-- End: Migrate XES 4.0 TMB -->
+	<!-- Payment Add service - XES-13255 start -->
+	<xsd:element name="PmtIdent" type="fnis:PmtIdent_Type" />
+	<xsd:simpleType name="PmtIdent_Type">
+		<xsd:restriction base="ifx:NC">
+			<xsd:maxLength value="36" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="PmtKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PmtKeys_Type">
+				<xsd:sequence>
+					<xsd:choice>
+						<!-- 	<xsd:element ref="ifx:PmtId" /> -->
+						<xsd:element ref="fnis:PmtIdent" />
+					</xsd:choice>
+					<xsd:element ref="fnis:NotAvailInd" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- Payment Add service - end -->
+	<!-- PartyAppPref Start -->
+	<xsd:element name="PartyAppPrefKeys" type="fnis:PartyAppPrefKeys_Type" />
+	<xsd:complexType name="PartyAppPrefKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:PartyAppPrefId" />
+				<xsd:element ref="fnis:PartyAppPrefIdent" />
+			</xsd:choice>
+			<xsd:element ref="ifx:PartyKeys" minOccurs="0" />
+			<xsd:element ref="fnis:WidgetIdent" />
+			<xsd:element ref="fnis:NotAvailInd" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- PartyAppPref End -->
+	<!-- XNGSVCS-235 -->
+	<xsd:element name="RelAcctKeys" type="fnis:RelAcctKeys_Type" />
+	<xsd:complexType name="RelAcctKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="ifx:AcctId" />
+				<xsd:sequence>
+					<xsd:element ref="ifx:AcctIdent" />
+					<xsd:element ref="ifx:AcctType" />
+					<xsd:element ref="fnis:CurCode" />
+					<xsd:element ref="ifx:FIIdent" minOccurs="0" />
+					<xsd:element ref="ifx:BranchIdent" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AcctRelType" type="ifx:OpenEnum_Type" />
+	<xsd:element name="AcctAcctRelKeys" type="fnis:AcctAcctRelKeys_Type" />
+	<xsd:element name="AcctRelName" type="ifx:Desc_Type" />
+	<xsd:element name="AcctAcctRelId" type="ifx:Identifier_Type" />
+	<xsd:complexType name="AcctAcctRelKeys_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:AcctAcctRelId" />
+				<xsd:element ref="ifx:AcctKeys" />
+				<xsd:element ref="fnis:RelAcctKeys" />
+				<xsd:element ref="fnis:NotAvailInd" />
+			</xsd:choice>
+			<xsd:element ref="fnis:AcctRelType" />			
+			<xsd:element ref="fnis:AcctRelName" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+</xsd:schema>

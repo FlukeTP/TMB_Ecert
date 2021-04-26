@@ -1,0 +1,190 @@
+<div class="ui grid">
+    <div class="sixteen wide column">
+        <h2 class="ui header">รายงาน Output VAT
+        </h2>
+
+        <div class="ui top attached header segment">
+            <span>ระบุเงื่อนไขในการค้นหา </span>
+        </div>
+
+
+        <div class="ui attached segment">
+            <div class="ui centered grid">
+                <div class="fourteen wide column">
+                    <form class="ui form" #ngForm="ngForm" [formGroup]="form" (submit)="searchData()">
+                        <div class="inline fields">
+                            <div class="three wide field required">
+                                <label class="full-width text-right">เดือนปีภาษี</label>
+                            </div>
+                            <div class="five wide field" [ngClass]="validate('dateVat', ngForm.submitted) ? '' : 'error'">
+                                <!-- <ui-calendar [calendar]="calendar1" (calendarValue)="calendarValue('dateVat',$event)"
+                                    style="width:100%"></ui-calendar> -->
+
+                                <ng-calendar [config]="calendarConig" #calendar="ng-calendar"  style="width:100%"></ng-calendar>
+                            </div>
+                            <div class="three wide field">
+                                <label class="full-width text-right">เลขประจำตัวผู้เสียภาษีอากร</label>
+                            </div>
+                            <div class="five wide field " >
+                                <input type="text" (keypress)="onlyNumber($event)" formControlName="organizeId"
+                                    placeholder="เลขประจำตัวผู้เสียภาษีอากร">
+                            </div>
+                        </div>
+
+                        <div class="inline fields">
+                            <div class="three wide field ">
+                                <label class="full-width text-right">ชื่อผู้ประกอบการ </label>
+                            </div>
+                            <div class="five wide field ">
+                                <input type="text" formControlName="customerName" (keypress)="noPipe($event)" placeholder="ชื่อผู้ประกอบการ">
+                            </div>
+                        </div>
+
+                        <div class="inline field">
+                            <div class="ui grid">
+                                <div class="sixteen center aligned btn-group wide column">
+                                    <button class="ui blue basic button" type="submit">
+                                        <i class="search icon"></i>
+                                        ค้นหา
+                                    </button>
+                                    <button class="ui grey  basic button" type="button" (click)="clearData()">
+                                        <i class="trash alternate outline icon"></i>
+                                        ล้างข้อมูล
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="sixteen wide column" [hidden]="!repDT.isSearch">
+    <div class="ui top attached header segment">
+        <span>ผลการค้นหา </span>
+    </div>
+    <div class="ui attached segment {{ loading? 'loading' : '' }}">
+        <!-- <div class="ui form">
+            <div class="inline fields">
+                <div class="one wide field "></div>
+
+                <div class="two wide field ">
+                    <h5>ชื่อผู้ประกอบการ
+                    </h5>
+
+                </div>
+                <div class="five wide field ">
+                    <span>{{customerNameHead | emptyString }}</span>
+                </div>
+                <div class="two wide field ">
+                    <h5>เลขประจำตัวผู้เสียภาษีอากร
+                    </h5>
+                </div>
+                <div class="three wide field ">
+                    <span>{{organizeIdHead | emptyString }}</span>
+                </div>
+            </div>
+
+             <div class="inline fields">
+                <div class="one wide field "></div>
+
+                <div class="two wide field ">
+                    <h5>ชื่อสถานประกอบการ</h5>
+
+                </div>
+                <div class="five wide field ">
+                    <span>{{companyNameHead | emptyString }}</span>
+                </div>
+                <div class="two wide field ">
+                    <h5>สำนักงานใหญ่/สาขา
+                    </h5>
+                </div>
+                <div class="three wide field ">
+                    <span>{{branchHead | emptyString }}</span>
+                </div>
+            </div> 
+            <div class="inline fields">
+                <div class="one wide field "></div>
+
+                <div class="two wide field ">
+                    <h5>ที่อยู่สถานประกอบการ</h5>
+
+                </div>
+                <div class="seven wide field ">
+                    <span>{{addressHead | emptyString }}</span>
+                </div>
+            </div>
+        </div> -->
+
+        <br>
+        <br>
+        <div style="overflow-x: auto;white-space: nowrap;">
+            <ng-datatable-search [ng-datatable]="repDT"></ng-datatable-search>
+            <table e [ngDatatable]="repDTConfig" #repDT="ngDatatable"   class="ui small celled table nowrap" style="table-layout: fixed;" id="table">
+                <thead>
+                    <!-- <colgroup>
+                        <col style="width: 30px;"/>
+                        <col style="width: 80px;"/>
+                        <col style="width: 80px;"/>
+                        <col style="width: 120px;"/>
+                        <col style="width: 120px;"/>
+                        <col style="width: 100px;"/>
+                        <col style="width: 100px;"/>
+                        <col style="width: 100px;"/>
+                        <col style="width: 100px;"/>
+                        <col style="width: 100px;"/>
+                    
+                    </colgroup> -->
+                    <tr style="text-align: center;">
+                        <th rowspan="2" width="60px">ลำดับ</th>
+                        <th colspan="2" width="200px">ใบกำกับภาษี</th>
+                        <th rowspan="2" width="300px">ชื่อผู้ซื้อสินค้า/ผู้รับบริการ</th>
+                        <th rowspan="2" width="200px">เลขประจำตัวผู้เสียภาษีอากรของ <br> ผู้ซื้อสินค้า/ผู้รับบริการ</th>
+                        <th rowspan="2" width="400px">สถานประกอบการ</th>
+                        <!-- <th rowspan="2">สำนักงานใหญ่/สาขา</th> -->
+                        <th rowspan="2" width="120px">มูลค่าสินค้า/บริการ</th>
+                        <th rowspan="2"  width="120px">จำนวนเงิน <br>ภาษีมูลค่าเพิ่ม</th>
+                        <th rowspan="2"  width="120px">จำนวนเงินรวม</th>
+                        <th rowspan="2"  width="400px">หมายเหตุ</th>
+                    </tr>
+                    <tr style="text-align: center;">
+                        <th>เลขที่</th>
+                        <th>วันที่</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" *ngIf="repDT.isEmpty">
+                        <td colspan="10" style="text-align: center !important;">ไม่มีข้อมูล</td>
+                    </tr>
+                    <tr class="text-center" *ngFor="let data of repDT.datas; let i=index">
+                        <td style="text-align: center !important;">{{i+1}}</td>
+                        <td style="text-align: center !important;">{{data.receiptNo}}</td>
+                        <td style="text-align: center !important;">{{data.paymentDate | dateFromString}}</td>
+                        <td style="text-align: left   !important; white-space: pre-wrap">{{data.companyName}}</td>
+                        <td style="text-align: center !important;">{{data.organizeId}}</td>
+                        <td style="text-align: left   !important;  white-space: pre-wrap">{{data.address}}</td>
+                        <!-- <td style="text-align: left   !important;">{{data.branch}}</td> -->
+                        <td style="text-align: right  !important;">{{data.amountTmbVat | decimalFormat :"###,###.00"}}</td>
+                        <td style="text-align: right  !important;">{{data.amountVat | decimalFormat :"###,###.00"}}</td>
+                        <td style="text-align: right  !important;">{{data.amountTmb | decimalFormat :"###,###.00"}}</td>
+                        <td style="text-align: left  !important; white-space: pre-wrap">{{data.remark}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <ng-datatable-footer [ng-datatable]="repDT"></ng-datatable-footer>
+        <br>
+        <br>
+        <br>
+        <div class="ui center aligned grid">
+            <div class="sixteen wide column">
+                <button class="ui blue basic button" (click)="exportFile()">
+                    <i class="file excel outline icon"></i>Export to Excel</button>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

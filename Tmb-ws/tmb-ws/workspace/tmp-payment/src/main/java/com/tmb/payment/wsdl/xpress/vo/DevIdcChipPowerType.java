@@ -1,0 +1,69 @@
+
+package com.tmb.payment.wsdl.xpress.vo;
+
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlType;
+
+
+/**
+ * <p>Java class for DevIdcChipPower_Type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * <pre>
+ * &lt;simpleType name="DevIdcChipPower_Type"&gt;
+ *   &lt;restriction base="{urn:ifxforum-org:XSD:1}ClosedEnum_Type"&gt;
+ *     &lt;enumeration value="Online"/&gt;
+ *     &lt;enumeration value="PoweredOff"/&gt;
+ *     &lt;enumeration value="Busy"/&gt;
+ *     &lt;enumeration value="NoDevice"/&gt;
+ *     &lt;enumeration value="HwError"/&gt;
+ *     &lt;enumeration value="NoCard"/&gt;
+ *     &lt;enumeration value="NotSupported"/&gt;
+ *     &lt;enumeration value="Unknown"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
+ * </pre>
+ * 
+ */
+@XmlType(name = "DevIdcChipPower_Type")
+@XmlEnum
+public enum DevIdcChipPowerType {
+
+    @XmlEnumValue("Online")
+    ONLINE("Online"),
+    @XmlEnumValue("PoweredOff")
+    POWERED_OFF("PoweredOff"),
+    @XmlEnumValue("Busy")
+    BUSY("Busy"),
+    @XmlEnumValue("NoDevice")
+    NO_DEVICE("NoDevice"),
+    @XmlEnumValue("HwError")
+    HW_ERROR("HwError"),
+    @XmlEnumValue("NoCard")
+    NO_CARD("NoCard"),
+    @XmlEnumValue("NotSupported")
+    NOT_SUPPORTED("NotSupported"),
+    @XmlEnumValue("Unknown")
+    UNKNOWN("Unknown");
+    private final String value;
+
+    DevIdcChipPowerType(String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    public static DevIdcChipPowerType fromValue(String v) {
+        for (DevIdcChipPowerType c: DevIdcChipPowerType.values()) {
+            if (c.value.equals(v)) {
+                return c;
+            }
+        }
+        throw new IllegalArgumentException(v);
+    }
+
+}

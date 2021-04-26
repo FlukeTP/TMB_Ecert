@@ -1,0 +1,205 @@
+<div class="ui grid">
+    <div class="sixteen wide column">
+
+        <h2 class="ui header">รายงานสรุปการให้บริการ ( e-Certificate ) : End day</h2>
+
+        <div class="ui top attached header segment">
+            <span>ระบุเงื่อนไขในการค้นหา </span>
+        </div>
+
+        <div class="ui attached segment">
+            <form class="ui form" #ngForm="ngForm" [formGroup]="form" >
+                <div class="inline fields">
+                    <div class="one wide field"></div>
+                    <div class="two wide field">
+                        <label class="custom-label-w-25">วันที่ขอ</label>
+                    </div>
+                    <div class="five wide field" >
+                        <!-- <ui-calendar [calendar]="calendar1" (calendarValue)="calendarValue('dateForm',$event)" style="width:100%"></ui-calendar> -->
+                        <ng-calendar [config]="calendarFromConig" #calendarFrom="ng-calendar"  style="width:100%"></ng-calendar>
+                    </div>
+                    <div class="two wide field ">
+                        <label>ถึงวันที่</label>
+                    </div>
+                    <div class="five wide field" >
+                        <!-- <ui-calendar [calendar]="calendar2" (calendarValue)="calendarValue('dateTo',$event)" style="width:100%"></ui-calendar> -->
+                        <ng-calendar [config]="calendarToConig" #calendarTo="ng-calendar"  style="width:100%"></ng-calendar>
+                    </div>
+                </div>
+
+                <div class="inline fields">
+                    <div class="one wide field"></div>
+                    <div class="two wide field">
+                        <label class="custom-label-w-25">วันที่ชำระเงิน</label>
+                    </div>
+                    <div class="five wide field" >
+                        <!-- <ui-calendar [calendar]="calendar1" (calendarValue)="calendarValue('dateForm',$event)" style="width:100%"></ui-calendar> -->
+                        <ng-calendar [config]="calendarPaymentFromConig" #calendarPaymentFrom="ng-calendar"  style="width:100%"></ng-calendar>
+                    </div>
+                    <div class="two wide field ">
+                        <label>ถึงวันที่</label>
+                    </div>
+                    <div class="five wide field" >
+                        <!-- <ui-calendar [calendar]="calendar2" (calendarValue)="calendarValue('dateTo',$event)" style="width:100%"></ui-calendar> -->
+                        <ng-calendar [config]="calendarPaymentToConig" #calendarPaymentTo="ng-calendar"  style="width:100%"></ng-calendar>
+                    </div>
+                </div>
+
+                <div class="inline fields">
+                    <div class="one wide field"></div>
+                    <div class="two wide field ">
+                        <label>เลขที่นิติบุคคล </label>
+                    </div>
+                    <div class="five wide field">
+                        <input type="text" (keypress)="onlyNumber($event)" formControlName="organizeId" placeholder="เลขที่นิติบุคคล">
+                    </div>
+                    <div class="two wide field ">
+                        <label>ชื่อนิติบุคคล</label>
+                    </div>
+                    <div class="five wide field ">
+                        <input type="text" formControlName="companyName" placeholder="ชื่อนิติบุคคล">
+                    </div>
+                </div>
+
+                <div class="inline fields">
+                    <div class="one wide field"></div>
+                    <div class="two wide field ">
+                        <label>ประเภทคำขอ</label>
+                    </div>
+                    <div class="five wide field">
+                        <ui-dropdown [dropdown]="dropdownObj.reqType" (valueChange)="reqTypeChange($event)"></ui-dropdown>
+                    </div>
+                    <div class="two wide field ">
+                        <label>ประเภทการชำระเงิน</label>
+                    </div>
+                    <div class="five wide field ">
+                        <ui-dropdown [dropdown]="dropdownObj.paidType" (valueChange)="paidTypeChange($event)"></ui-dropdown>
+                    </div>
+                </div>
+                <div class="inline field">
+                    <div class="ui grid">
+                        <div class="column center aligned btn-group">
+                            <button class="ui blue basic button" type="button" (click)="searchData()">
+                                <i class="search icon"></i>
+                                ค้นหา
+                            </button>
+                            <button class="ui grey  basic button" type="button" (click)="clearData()">
+                                <i class="trash alternate outline icon"></i>
+                                ล้างข้อมูล
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<br>
+<div class="sixteen wide column"  [hidden]="!repDT.isSearch">
+    <div class="ui top attached header segment">
+        <span>ผลการค้นหา </span>
+    </div>
+    <div class="ui attached segment {{ loading? 'loading' : '' }}">
+        <div class="ui grid">
+            <div class="sixteen wide column">
+                <div style="overflow-x: auto;white-space: nowrap;">
+                    <ng-datatable-search [ng-datatable]="repDT"></ng-datatable-search>
+                    <table [ngDatatable]="repDTConfig" #repDT="ngDatatable"  class="ui small celled table" style="width: 100%" id="table">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">ลำดับ</th>
+                                <th rowspan="2">วันที่</th>
+                                <th rowspan="2">เลขที่อ้างอิง (TMB Req No.)</th>
+                                <th rowspan="2">เลขที่นิติบุคคล</th>
+                                <th rowspan="2">ชื่อ</th>
+                                <th rowspan="2">Segment</th>
+                                <th rowspan="2">ประเภทคำขอ</th>
+                                <th rowspan="2">รายละเอียดคำขอ</th>
+                                <th rowspan="2">เลขที่บัญชี</th>
+                                <!-- <th colspan="3">จำนวนเงิน : บาท</th> -->
+                                <th colspan="3">หักบัญชีลูกค้า</th>
+                                <th colspan="3">Fee income/expense - TMB</th>
+                                <!-- <th rowspan="2">รวม</th> -->
+                                <th rowspan="2">ประเภทการชำระเงิน</th>
+                                <th rowspan="2">Maker ID</th>
+                                <th rowspan="2">Maker Name</th>
+                                <th rowspan="2">Checker ID</th>
+                                <th rowspan="2">Checker Name</th>
+                                <th colspan="2">สถานะ</th>
+                                <th rowspan="2">หมายเหตุ</th>
+                            </tr>
+                            <tr>
+                                <th>DBD - หัก<br>บัญชีลูกค้า</th>
+                                <th>TMB Fee <br>(Include VAT)</th>
+                                <th>รวม</th>
+                                <th>Fee expense</th>
+                                <th>Fee income</th>
+                                <th>VAT</th>
+                                <th><label class="status">Success</label></th>
+                                <th><label class="status">Fail</label></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" *ngIf="repDT.isEmpty">
+                                <td colspan="21" style="text-align: center !important;">ไม่พบรายการ</td>
+                            </tr>
+                            <tr class="text-center" *ngFor="let data of repDT.datas; let i=index">
+                                <td style="text-align: center !important;">{{i+1}}</td>
+                                <td style="text-align: center !important;">{{data.requestDate | dateFromString}}</td>
+                                <td style="text-align: center !important;">{{data.tmbRequestno}}</td>
+                                <td style="text-align: center !important;">{{data.organizeId}}</td>
+                                <td style="text-align: left   !important;">{{data.companyName}}</td>
+                                <td style="text-align: left   !important;">{{data.custsegmentDesc}}</td>
+                                <td style="text-align: left   !important;">{{data.certypeDesc}}</td>
+                                <td style="text-align: left   !important;"><span *ngFor="let requestTypeDesc of data.requestTypeDesc | commaStringBr ">{{requestTypeDesc}}<br></span></td>
+                                <td style="text-align: center !important;">{{data.accountNo | accountNo}}</td>
+                                
+                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30001||data.paidtypeCode==30002 ||data.paidtypeCode==30004">{{data.amountDbd | decimalFormat :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode==30003">0.00</span></td>
+                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30001">{{data.amountTmb+data.totalAmountVat | decimalFormat :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span></td>
+                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode!=30003">{{data.amountDbd+data.amountTmb+data.totalAmountVat | decimalFormat:"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode==30003">0.00</span></td>
+
+                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30003">{{data.amountDbd | decimalFormat :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode!=30003">0.00</span></td>
+                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30001">{{data.amountTmb | decimalFormat  :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span></td>
+                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30001">{{data.totalAmountVat | decimalFormat :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span></td>
+
+                                <!-- <td style="text-align: right  !important;">{{data.amount | decimalFormat
+                                    :"###,###.00"}}</td> -->
+                                <td style="text-align: left   !important;">{{data.paidtypeDesc}}</td>
+                                <td style="text-align: center !important;">{{data.makerById}}</td>
+                                <td style="text-align: left   !important;">{{data.makerByName}}</td>
+                                <td style="text-align: center !important;">{{data.checkerById}}</td>
+                                <td style="text-align: left   !important;">{{data.checkerByName}}</td>
+                                <td style="text-align: center !important;">
+                                    <span *ngIf="data.status=='10010' || data.status=='10009'">
+                                        <i class="check icon"></i>
+                                    </span>
+                                </td>
+                                <td style="text-align: center !important;">
+                                    <span *ngIf="data.status=='10003' || data.status=='10004' || data.status=='10007' || data.status=='10008' ">
+                                        <i class="check icon"></i>
+                                    </span>
+                                </td>
+                                <td style="text-align: center !important;">{{data.remark}}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <ng-datatable-footer [ng-datatable]="repDT"></ng-datatable-footer>
+                <br>
+            </div>
+            <div class="sixteen wide center aligned column">
+                <button class="ui blue basic button" (click)="exportFile()">
+                    <i class="file excel outline icon"></i>Export to Excel</button>
+            </div>
+        </div>
+    </div>
+</div>

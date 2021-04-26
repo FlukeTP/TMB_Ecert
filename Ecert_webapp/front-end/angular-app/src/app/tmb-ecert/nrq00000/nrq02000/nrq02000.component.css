@@ -1,0 +1,100 @@
+.ui-table {
+    margin: 2em 0 !important;
+    overflow: unset;
+}
+
+.custom-rt {
+    width: 100%;
+    text-align: right;
+}
+
+.right.floated {
+    float: right;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h3.header {
+    margin: 0
+}
+
+h3.header.space {
+    margin: 0 !important;
+    margin-top: -1em !important;
+}
+
+.download-link {
+    color: #000;
+    cursor: pointer;
+}
+
+.download-link:hover {
+    color: rgb(88, 88, 88);
+}
+
+.header-title {
+    /* width: 62.5%; */
+    cursor: pointer;
+}
+
+.barcode.icon {
+    margin: 0 0.25em 0 0 !important;
+    padding-top: 7px !important;
+    font-size: 33px !important;
+    transition: transform .2s !important;
+    cursor: pointer !important;
+}
+
+.barcode.icon:hover {
+    transform: scale(1.5);
+}
+
+.barcode {
+    cursor: pointer !important;
+}
+
+[class*="bg"] {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px grey, 0 0 5px darkgrey;
+}
+
+.bg-yellow {
+    background: yellow;
+}
+
+.bg-red {
+    background: #f53d3d;
+}
+
+.bg-pink {
+    background: #ff66a3;
+}
+
+.txt-red {
+    color: red !important;
+}
+
+td > label {
+    font-size: 1.1em !important;
+}
+
+.ui.checkbox > label {
+    font-size: .85em !important;
+}
+
+@media only screen and (max-width: 1251px) {
+    .ui-table {
+        margin: 2em 0 !important;
+        overflow: auto;
+    }
+}
+
+.disabled {
+    pointer-events: none !important;
+}
+
+.tableLoader {
+    height: 200px;
+}

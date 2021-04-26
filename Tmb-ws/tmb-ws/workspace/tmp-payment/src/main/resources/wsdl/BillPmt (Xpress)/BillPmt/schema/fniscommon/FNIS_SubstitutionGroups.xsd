@@ -1,0 +1,2137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ifx="urn:ifxforum-org:XSD:1" xmlns:fnis="http://www.fnf.com/xes" targetNamespace="http://www.fnf.com/xes" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="urn:ifxforum-org:XSD:1" schemaLocation="IFX_Common.xsd"/>
+	<xsd:include schemaLocation="FNIS_Keys_Common.xsd"/>
+	<!-- Begin: Migrate XES 4.0 TMB -->
+	<xsd:include schemaLocation="../tmb/TMB_Common.xsd"/>
+	<!-- End: Migrate XES 4.0 TMB -->
+	<xsd:complexType name="StopChkInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:StopChkInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:StopPayCode" minOccurs="0"/>
+					<xsd:choice>
+						<xsd:element ref="ifx:Term" minOccurs="0"/>
+						<xsd:element ref="fnis:ExpireDt" minOccurs="0"/>
+					</xsd:choice>
+					<xsd:element ref="fnis:InitiatingParty" minOccurs="0"/>
+					<xsd:element ref="fnis:ToleranceAmt" minOccurs="0"/>
+					<xsd:element ref="fnis:StopPayAction" minOccurs="0"/>
+					<xsd:element ref="ifx:Memo" minOccurs="0"/>
+					<xsd:element ref="fnis:AuthReceivedCode" minOccurs="0"/>
+					<xsd:element ref="fnis:ACH" minOccurs="0"/>
+					<xsd:element ref="fnis:FeeAcctRef" minOccurs="0"/>
+					<xsd:element ref="fnis:ChkIssuedInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="StopChkStatus_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:StopChkStatus_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:OnlineDelInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="StopChkSel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:StopChkSel_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:ACH" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="StopChkKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:StopChkKeys_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:ACH" minOccurs="0"/>
+					<xsd:element ref="fnis:StopChkIdent" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyCardRelSel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyCardRelSel_Type">
+				<xsd:sequence minOccurs="0">
+					<xsd:choice maxOccurs="unbounded">
+						<xsd:element ref="fnis:PartyIdent" minOccurs="0"/>
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctStatusRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctStatusRec_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:AcctKeys"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctTrnInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctTrnInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:RetireAcctTrnData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ifx:IntRateData" minOccurs="0"/>
+					<xsd:element ref="fnis:AcctTrnMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:TrnSeqNum" minOccurs="0"/>
+					<!-- Begin: Migrate XES 4.0 TMB -->
+					<!-- Begin: TMB Specific -->
+					<xsd:element ref="fnis:StmtSymbol" minOccurs="0"/>
+					<xsd:element ref="fnis:TrnDesc1" minOccurs="0" />
+					<xsd:element ref="fnis:TrnDesc2" minOccurs="0" />
+					<xsd:element ref="fnis:TrnChannel" minOccurs="0" />
+					<xsd:element ref="fnis:TellerId" minOccurs="0" />
+					<xsd:element ref="fnis:OriginationDt" minOccurs="0" />
+					<!-- End: TMB Specific -->
+					<!-- End: Migrate XES 4.0 TMB -->
+					<xsd:element ref ="fnis:PendingInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ExchangeRate_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ExchangeRate_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:ConvOper" minOccurs="0"/>
+					<xsd:element ref="ifx:BuySellIndicator"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ChkIssueInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ChkIssueInfo_Type">
+				<xsd:sequence minOccurs="0">
+					<xsd:element ref="ifx:DeliveryInstruction" minOccurs="0"/>
+					<xsd:element ref="ifx:Count" minOccurs="0"/>
+					<xsd:element ref="fnis:PackType" minOccurs="0"/>
+					<xsd:element ref="ifx:SerialNumStart" minOccurs="0"/>
+					<xsd:element ref="ifx:SerialNumEnd" minOccurs="0"/>
+					<xsd:element ref="fnis:Payee" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:ChkImgData" minOccurs="0"/>
+					<!-- Begin: Migrate XES 4.0 TMB -->
+					<xsd:element ref="ifx:AcctKeys" minOccurs="0"/>
+					<!-- End: Migrate XES 4.0 TMB -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ChkImgData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ChkImgData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:ImgId" minOccurs="0"/>
+					<xsd:element ref="fnis:ImgData" minOccurs="0"/>
+					<xsd:element ref="fnis:ImgDesc" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctTrnEnvr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctTrnEnvr_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:OperTrnIdent" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="MediaCashData" type="fnis:MediaCashData_Type" substitutionGroup="ifx:MediaCashData"/>
+	<xsd:complexType name="MediaCashData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MediaCashData_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:MediaBal" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:TrnImgData" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CreditInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CreditInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:ProductCode" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PersonData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PersonId" minOccurs="0"/>
+					<xsd:element ref="fnis:MaidenName" minOccurs="0"/>
+					<xsd:element ref="fnis:BirthPlace" minOccurs="0"/>
+					<xsd:element ref="fnis:AgeRange" minOccurs="0"/>
+					<xsd:element ref="fnis:DeceasedDt" minOccurs="0"/>
+					<xsd:element ref="fnis:DisabilityDt" minOccurs="0"/>
+					<xsd:element ref="fnis:Race" minOccurs="0"/>
+					<xsd:element ref="fnis:VIPType" minOccurs="0"/>
+					<xsd:element ref="fnis:SmokerInd" minOccurs="0"/>
+					<xsd:element ref="fnis:ResidenceInfo" minOccurs="0"/>
+					<xsd:element ref="fnis:FamilyInfo" minOccurs="0"/>
+					<xsd:element ref="fnis:DependentsInfo" minOccurs="0"/>
+					<xsd:element ref="fnis:EducationInfo" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MediaBal_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MediaBal_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:DenominationType" minOccurs="0"/>
+					<xsd:element ref="fnis:DenomSubType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SecTokenLogin_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:SecTokenLogin_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:OldSubjectPswd" minOccurs="0"/>
+					<xsd:element ref="fnis:PswdHint" minOccurs="0"/>
+					<xsd:element ref="fnis:PswdResetValue" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="AcctTrnInfo" type="fnis:AcctTrnInfo_Type" substitutionGroup="ifx:AcctTrnInfo"/>
+	<xsd:element name="AcctStatusRec" type="fnis:AcctStatusRec_Type" substitutionGroup="ifx:AcctStatusRec"/>
+	<xsd:element name="PartyCardRelSel" type="fnis:PartyCardRelSel_Type" substitutionGroup="ifx:PartyCardRelSel"/>
+	<xsd:element name="StopChkInfo" type="fnis:StopChkInfo_Type" substitutionGroup="ifx:StopChkInfo"/>
+	<xsd:element name="StopChkSel" type="fnis:StopChkSel_Type" substitutionGroup="ifx:StopChkSel"/>
+	<xsd:element name="StopChkKeys" type="fnis:StopChkKeys_Type" substitutionGroup="ifx:StopChkKeys"/>
+	<xsd:element name="StopChkStatus" type="fnis:StopChkStatus_Type" substitutionGroup="ifx:StopChkStatus"/>
+	<xsd:element name="ExchangeRate" type="fnis:ExchangeRate_Type" substitutionGroup="ifx:ExchangeRate"/>
+	<xsd:element name="ChkIssueInfo" type="fnis:ChkIssueInfo_Type" substitutionGroup="ifx:ChkIssueInfo"/>
+	<xsd:element name="ChkImgData" type="fnis:ChkImgData_Type" substitutionGroup="ifx:ChkImgData"/>
+	<xsd:element name="AcctTrnEnvr" type="fnis:AcctTrnEnvr_Type" substitutionGroup="ifx:AcctTrnEnvr"/>
+	<xsd:element name="CreditInfo" type="fnis:CreditInfo_Type" substitutionGroup="ifx:CreditInfo"/>
+	<xsd:element name="PersonData" type="fnis:PersonData_Type" substitutionGroup="ifx:PersonData"/>
+	<xsd:element name="MediaBal" type="fnis:MediaBal_Type" substitutionGroup="ifx:MediaBal"/>
+	<xsd:element name="SecTokenLogin" type="fnis:SecTokenLogin_Type" substitutionGroup="ifx:SecTokenLogin"/>
+	<xsd:complexType name="FinancialData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:FinancialData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:StmtIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:StmtDesc" minOccurs="0"/>
+					<xsd:element ref="fnis:FinancialDataIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:StmtType" minOccurs="0"/>
+					<xsd:element ref="ifx:StmtDt" minOccurs="0"/>
+					<xsd:element ref="ifx:CurAmtRange" minOccurs="0"/>
+					<xsd:element ref="fnis:AmtRangeCd" minOccurs="0"/>
+					<xsd:element ref="fnis:FinancialSrc" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Contact_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:Contact_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:ContactIdent" minOccurs="0"/>
+					<xsd:element ref="ifx:FIIdent" minOccurs="0"/>
+					<xsd:element ref="ifx:JobTitle" minOccurs="0"/>
+					<xsd:element ref="fnis:DoNotSolicit" minOccurs="0"/>
+					<xsd:element ref="fnis:PreferredTime" minOccurs="0"/>
+					<xsd:element ref="fnis:ContactMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:Correspondence" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- <xsd:element ref="fnis:TimeFrame" minOccurs="0" maxOccurs="unbounded"/> --><!-- XES-14851 -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SecTokenSecretAnswer_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:SecTokenSecretAnswer_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SecretQuestion" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OrgPartyInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:OrgPartyInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PartyIdent" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PartyRel" minOccurs="0"/>
+					<xsd:element ref="fnis:BankRegion" minOccurs="0"/>
+					<xsd:element ref="fnis:CostCenter" minOccurs="0"/>
+					<xsd:element ref="fnis:Statement" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PartyMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PartyVerifyCode" minOccurs="0"/>
+					<xsd:element ref="fnis:PartyVerifyDt" minOccurs="0"/>
+					<xsd:element ref="fnis:PartyQualificationData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:RelationshipMgr" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PartyType" minOccurs="0"/>
+					<xsd:element ref="fnis:PartySubType" minOccurs="0"/>
+					<xsd:element ref="ifx:ClosedDt" minOccurs="0"/>
+					<xsd:element ref="fnis:ClosedReason" minOccurs="0"/>
+					<xsd:element ref="fnis:PartySORData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ifx:FIData" minOccurs="0"/>
+					<xsd:element ref="fnis:PrivacyOptCode" minOccurs="0"/>
+					<xsd:element ref="fnis:SolicitOptCode" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OrgCategoryCode_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:OrgCategoryCode_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SICPercent" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IntRateData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:IntRateData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:RecurrenceRule" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IntDistAcctRef_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:IntDistAcctRef_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:AcctKeys" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ChkDetail_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ChkDetail_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SecondaryName" minOccurs="0"/>
+					<xsd:element ref="ifx:AcctType" minOccurs="0"/>
+					<xsd:element ref="fnis:RiskScore" minOccurs="0"/>
+					<xsd:element ref="fnis:IsLocal" minOccurs="0"/>
+					<xsd:element ref="ifx:AcctUse" minOccurs="0"/>
+					<xsd:element ref="fnis:DocumentVerifyType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CreditAcctData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CreditAcctData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:RecoveryAmt" minOccurs="0"/>
+					<xsd:element ref="fnis:RecoverySrc" minOccurs="0"/>
+					<xsd:element ref="fnis:ChargeOffReason" minOccurs="0"/>
+					<xsd:element ref="fnis:ApprovalDt" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="FromAcctRef_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:FromAcctRef_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:AcctKeys" minOccurs="0"/>
+					<xsd:element ref="ifx:AcctRec" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPref_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyPref_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:CurCode" minOccurs="0"/>
+					<xsd:element ref="fnis:DoNotSolicit" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonName_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PersonName_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:JobTitle" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Employment_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:Employment_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:EmploymentIdent" minOccurs="0"/>
+					<xsd:element ref="ifx:CurAmtRange" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:SalaryRangeCd" minOccurs="0"/>
+					<xsd:element ref="fnis:Dept" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyKeys_Type">
+				<xsd:sequence>
+					<!--XES-11889
+					<xsd:element ref="fnis:PartyIdent" minOccurs="0"/>-->
+					<xsd:element ref="fnis:PartyType" minOccurs="0"/>
+					<xsd:element ref="fnis:PartySubType" minOccurs="0"/>
+					<xsd:element ref="ifx:FIIdent" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyPartyRelKeys_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:PartyRole" minOccurs="0"/>
+					<xsd:element ref="ifx:RelPartyRole" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CardKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CardKeys_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:CardType"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAcctRelKeys_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:PartyKeys" minOccurs="0"/>
+					<xsd:element ref="ifx:AcctKeys" minOccurs="0"/>
+					<xsd:element ref="fnis:ExternalInd" minOccurs="0"/>
+					<xsd:element ref="fnis:RegistMethod" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctKeys_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SvcIdent" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctTrnSel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctTrnSel_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:ChkNumRange" minOccurs="0"/>
+					<xsd:element ref="fnis:TrnSeqNum" minOccurs="0"/>
+					<xsd:element ref="fnis:RefIdentRange" minOccurs="0"/>
+					<xsd:element ref="fnis:AcctTrnMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- Begin: Migrate XES 4.0 TMB -->
+					<xsd:element ref="fnis:SortCriteria" minOccurs="0"/>
+					<!-- End: Migrate XES 4.0 TMB -->
+					<xsd:element ref ="fnis:PendingInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RelPartyRef_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RelPartyRef_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:RelationshipIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:HeadofHouseHoldInd" minOccurs="0"/>
+					<xsd:element ref="fnis:Comments" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CardAcctRelRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CardAcctRelRec_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:CardAcctRelKeys"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CardAuth_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CardAuth_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:PINBlock"/>
+					<xsd:element ref="ifx:CryptType"/>
+					<xsd:element ref="ifx:FIIdent" minOccurs="0"/>
+					<xsd:element ref="ifx:Phone" minOccurs="0"/>
+					<xsd:element ref="fnis:ApplIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:PINAction" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+  <xsd:complexType name="CardStatus_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CardStatus_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:OverdrawInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CardInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CardInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:BinICA" minOccurs="0"/>
+					<xsd:element ref="fnis:CardValidation" minOccurs="0"/>
+					<xsd:element ref="fnis:AnniversaryDt" minOccurs="0"/>
+					<xsd:element ref="ifx:Term" minOccurs="0"/>
+					<xsd:element ref="fnis:FeeOvrdRsn" minOccurs="0"/>
+					<xsd:element ref="fnis:CardSysIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:LostStolenIncident" minOccurs="0"/>
+					<xsd:element ref="fnis:CardOrderRef" minOccurs="0"/>
+					<xsd:element ref="fnis:CardPeriodData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:CardMiscData" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyPartyRelInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PartyTier" minOccurs="0"/>
+					<xsd:element ref="fnis:OwnerPercent" minOccurs="0"/>
+					<xsd:element ref="fnis:ContactInd" minOccurs="0"/>
+					<xsd:element ref="fnis:PartyPartyRelMiscData" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctTaxData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctTaxData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:WithholdingCalcMethod" minOccurs="0"/>
+					<xsd:element ref="fnis:WithholdingSchedule" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- Changes done for XES-11341 
+	<xsd:complexType name="ForExRateSheetSel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ForExRateSheetSel_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:FIIdent"/>
+					<xsd:element ref="ifx:BaseCurCode" minOccurs="0"/>
+					<xsd:element ref="ifx:Count" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	-->
+	<xsd:complexType name="ForExRateSheetInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ForExRateSheetInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:FIIdent" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="XferInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:XferInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:XferMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ifx:TrnSubType" minOccurs="0"/>
+					<xsd:element ref="fnis:RetireAcctTrnData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:XferCurAmt" minOccurs="0"/>
+					<!-- Begin: Migrate XES 4.0 TMB -->
+					<!-- Begin: TMB specific -->
+					<xsd:element ref="fnis:TranCode" minOccurs="0" />
+					<xsd:element ref="ifx:PostedDt" minOccurs="0" />
+					<xsd:element ref="fnis:WaiverCode" minOccurs="0" />					
+					<xsd:element ref="fnis:RBANo" minOccurs="0" />
+					<xsd:element ref="fnis:ApplIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:XferFee" minOccurs="0" />
+					<xsd:element ref="fnis:FeeType" minOccurs="0" />
+					<xsd:element ref="fnis:CICSTranCode" minOccurs="0" />
+					<xsd:element ref="fnis:MsgType" minOccurs="0" />
+					<xsd:element ref="fnis:FromAcctName" minOccurs="0" />
+					<xsd:element ref="fnis:ToAcctName" minOccurs="0" />
+					<xsd:element ref="fnis:LedgerBal" minOccurs="0" />
+					<xsd:element ref="fnis:AvailBal" minOccurs="0" />
+					<xsd:element ref="ifx:AcctStatusCode" minOccurs="0" />
+					<xsd:element ref="fnis:FeeAmntResult" minOccurs="0" />
+					<xsd:element ref="ifx:MaturityDt" minOccurs="0" />
+					<xsd:element ref="fnis:HoldCode" minOccurs="0" />
+					<xsd:element ref="fnis:RespCode" minOccurs="0" />
+					<xsd:element ref="fnis:PostedTime" minOccurs="0"/>
+					<xsd:element ref="fnis:FlagFeeReg" minOccurs="0" />
+					<xsd:element ref="fnis:WaiveProductCode" minOccurs="0"/>
+					<xsd:element ref="fnis:AmountWaived" minOccurs="0"/>
+					<xsd:element ref="fnis:WaiveRemaining" minOccurs="0"/>
+					<xsd:element ref="fnis:WaiveUsed" minOccurs="0"/>
+					<xsd:element ref="fnis:WaiveFlag" minOccurs="0"/>
+					<xsd:element ref="fnis:TellerId" minOccurs="0"/>
+					<xsd:element ref="fnis:EPAYCode" minOccurs="0"/>
+					<xsd:element ref="fnis:MerchantNo" minOccurs="0"/>
+					<xsd:element ref="fnis:ExpiredDt" minOccurs="0"/>
+					<xsd:element ref="fnis:AuthentId" minOccurs="0"/>
+					<!-- End: TMB specific -->
+					<!-- End: Migrate XES 4.0 TMB -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- Begin: Migrate XES 4.0 TMB -->
+	<xsd:complexType name="XferKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:XferKeys_Type">
+				<xsd:sequence>
+					<!-- Begin:TMB specific -->
+					<xsd:element ref="fnis:TranCode" minOccurs="0" />
+					<xsd:element ref="fnis:FromAcctRef"/>
+					<xsd:element ref="ifx:ToAcctRef" minOccurs="0"/>
+					<xsd:element ref="ifx:CurAmt"/>					
+					<xsd:element ref="fnis:WaiverCode"/>
+					<xsd:element ref="fnis:ApplIdent" minOccurs="0"/>		
+					<xsd:element ref="fnis:RBANo" minOccurs="0" />			
+					<xsd:element ref="fnis:XferFee" minOccurs="0" />
+					<xsd:element ref="ifx:PostedDt" minOccurs="0" />
+					<xsd:element ref="fnis:FeeType" minOccurs="0" />			
+					<xsd:element ref="fnis:PostedTime" minOccurs="0"/>	
+					<xsd:element ref="fnis:EPAYCode" minOccurs="0"/>													
+					<!-- End:TMB specific -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>		
+	</xsd:complexType>
+	<!-- End: Migrate XES 4.0 TMB -->
+	<xsd:complexType name="ForExRateSheetCurRate_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ForExRateSheetCurRate_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PercentVariance" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CredentialsRqHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CredentialsRqHdr_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SubjectStatus" minOccurs="0"/>
+					<xsd:element ref="fnis:SecTokenPswd" minOccurs="0"/>
+					<xsd:element ref="fnis:ExceptionCode" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:QuizResponse" minOccurs="0" maxOccurs="unbounded" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MsgRqHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MsgRqHdr_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:DvcRqHdr" minOccurs="0"/>
+					<xsd:element ref="fnis:RuleData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:SvcIdent" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MsgRsHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MsgRsHdr_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:DvcRsHdr" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CredentialsRsHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CredentialsRsHdr_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SubjectStatus" minOccurs="0"/>
+					<xsd:element ref="fnis:CredentialsStatCode" minOccurs="0"/>
+					<xsd:element ref="fnis:CredentialsStatDesc" minOccurs="0"/>
+					<xsd:element ref="fnis:RiskScore" minOccurs="0"/>
+					<xsd:element ref="fnis:FailCount" minOccurs="0"/>
+					<xsd:element ref="fnis:MatchCount" minOccurs="0"/>
+					<xsd:element ref="fnis:AdditionalStatCode" minOccurs="0"/>
+					<xsd:element ref="fnis:OOBAuthStatCode" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SecTokenCard_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:SecTokenCard_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:PINBlock" minOccurs="0"/>
+					<xsd:element ref="fnis:CVV2Ind" minOccurs="0"/>
+					<xsd:element ref="ifx:BirthDt" minOccurs="0"/>
+					<xsd:element ref="ifx:IssuedIdent" minOccurs="0"/>
+					<!-- Added PINOffset XES-10866 -->
+					<xsd:element ref="fnis:PINOffset" minOccurs="0"/>
+					<xsd:element ref="ifx:CryptType" minOccurs="0"/>
+					<xsd:element ref="fnis:CardVrfyDataBlock" minOccurs="0"/>
+					<xsd:element ref="fnis:NewPIN" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyPartyRelSel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyPartyRelSel_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:InclPastRelInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CurAmtRange_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CurAmtRange_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:CurAmtRangeType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DtRange_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:DtRange_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:DtRangeType" minOccurs="0"/>
+					<xsd:element ref="fnis:NumDays" minOccurs="0"/>
+					<xsd:element ref="fnis:InclPastRelInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAuth_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAuth_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SecTokenImage" minOccurs="0"/>
+					<xsd:element ref="fnis:Phrase" minOccurs="0"/>
+					<xsd:element ref="fnis:AuthType" minOccurs="0"/>
+					<xsd:element ref="fnis:SecretWrd" minOccurs="0"/>
+					<xsd:element ref="fnis:SecTokenPswd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ContextRqHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ContextRqHdr_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:TrnRefIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:SecondSessKey" minOccurs="0"/>
+					<xsd:element ref="ifx:SecTokenLogin" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ContextRsHdr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ContextRsHdr_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SecondSessKey" minOccurs="0"/>
+					<xsd:element ref="fnis:SubjectStatus" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Interface_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:Interface_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:SvcVersion" minOccurs="0"/>
+					<xsd:element ref="fnis:SvcAdapterVersion" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="NetworkTrnData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:NetworkTrnData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:OriginatorIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:OriginationDt" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AnnualIncome_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AnnualIncome_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:Freq" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AdditionalStatus_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AdditionalStatus_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:OvrrideExceptn" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+    <xsd:element name="FinancialData" type="fnis:FinancialData_Type" substitutionGroup="ifx:FinancialData"/>
+	<xsd:element name="Contact" type="fnis:Contact_Type" substitutionGroup="ifx:Contact"/>
+	<xsd:element name="SecTokenSecretAnswer" type="fnis:SecTokenSecretAnswer_Type" substitutionGroup="ifx:SecTokenSecretAnswer"/>
+	<xsd:element name="OrgPartyInfo" type="fnis:OrgPartyInfo_Type" substitutionGroup="ifx:OrgPartyInfo"/>
+	<xsd:element name="OrgCategoryCode" type="fnis:OrgCategoryCode_Type" substitutionGroup="ifx:OrgCategoryCode"/>
+	<xsd:element name="IntRateData" type="fnis:IntRateData_Type" substitutionGroup="ifx:IntRateData"/>
+	<xsd:element name="IntDistAcctRef" type="fnis:IntDistAcctRef_Type" substitutionGroup="ifx:IntDistAcctRef"/>
+	<xsd:element name="ChkDetail" type="fnis:ChkDetail_Type" substitutionGroup="ifx:ChkDetail"/>
+	<xsd:element name="CreditAcctData" type="fnis:CreditAcctData_Type" substitutionGroup="ifx:CreditAcctData"/>
+	<xsd:element name="FromAcctRef" type="fnis:FromAcctRef_Type" substitutionGroup="ifx:FromAcctRef"/>
+	<xsd:element name="PartyPref" type="fnis:PartyPref_Type" substitutionGroup="ifx:PartyPref"/>
+	<xsd:element name="PersonName" type="fnis:PersonName_Type" substitutionGroup="ifx:PersonName"/>
+	<xsd:element name="Employment" type="fnis:Employment_Type" substitutionGroup="ifx:Employment"/>
+	<xsd:element name="PartyKeys" type="fnis:PartyKeys_Type" substitutionGroup="ifx:PartyKeys"/>
+	<xsd:element name="PartyPartyRelKeys" type="fnis:PartyPartyRelKeys_Type" substitutionGroup="ifx:PartyPartyRelKeys"/>
+	<xsd:element name="CardKeys" type="fnis:CardKeys_Type" substitutionGroup="ifx:CardKeys"/>
+	<xsd:element name="PartyAcctRelKeys" type="fnis:PartyAcctRelKeys_Type" substitutionGroup="ifx:PartyAcctRelKeys"/>
+	<xsd:element name="AcctKeys" type="fnis:AcctKeys_Type" substitutionGroup="ifx:AcctKeys"/>
+	<xsd:element name="AcctTrnSel" type="fnis:AcctTrnSel_Type" substitutionGroup="ifx:AcctTrnSel"/>
+	<xsd:element name="RelPartyRef" type="fnis:RelPartyRef_Type" substitutionGroup="ifx:RelPartyRef"/>
+	<xsd:element name="CardAcctRelRec" type="fnis:CardAcctRelRec_Type" substitutionGroup="ifx:CardAcctRelRec"/>
+	<xsd:element name="CardAuth" type="fnis:CardAuth_Type" substitutionGroup="ifx:CardAuth"/>
+	<xsd:element name="CardStatus" type="fnis:CardStatus_Type" substitutionGroup="ifx:CardStatus"/>
+	<xsd:element name="CardInfo" type="fnis:CardInfo_Type" substitutionGroup="ifx:CardInfo"/>
+	<xsd:element name="PartyPartyRelInfo" type="fnis:PartyPartyRelInfo_Type" substitutionGroup="ifx:PartyPartyRelInfo"/>
+	<xsd:element name="AcctTaxData" type="fnis:AcctTaxData_Type" substitutionGroup="ifx:AcctTaxData"/>
+	<!-- Changes done for XES-11341 
+	<xsd:element name="ForExRateSheetSel" type="fnis:ForExRateSheetSel_Type" substitutionGroup="ifx:ForExRateSheetSel"/>
+	-->
+	<xsd:element name="ForExRateSheetInfo" type="fnis:ForExRateSheetInfo_Type" substitutionGroup="ifx:ForExRateSheetInfo"/>
+	<xsd:element name="XferInfo" type="fnis:XferInfo_Type" substitutionGroup="ifx:XferInfo"/>
+	<!-- Begin: Migrate XES 4.0 TMB -->
+	<xsd:element name="XferKeys" type="fnis:XferKeys_Type" substitutionGroup="ifx:XferKeys"/>
+	<!-- End: Migrate XES 4.0 TMB -->
+	<xsd:element name="ForExRateSheetCurRate" type="fnis:ForExRateSheetCurRate_Type" substitutionGroup="ifx:ForExRateSheetCurRate"/>
+	<xsd:element name="CredentialsRqHdr" type="fnis:CredentialsRqHdr_Type" substitutionGroup="ifx:CredentialsRqHdr"/>
+	<xsd:element name="MsgRqHdr" type="fnis:MsgRqHdr_Type" substitutionGroup="ifx:MsgRqHdr"/>
+	<xsd:element name="MsgRsHdr" type="fnis:MsgRsHdr_Type" substitutionGroup="ifx:MsgRsHdr"/>
+	<xsd:element name="CredentialsRsHdr" type="fnis:CredentialsRsHdr_Type" substitutionGroup="ifx:CredentialsRsHdr"/>
+	<xsd:element name="SecTokenCard" type="fnis:SecTokenCard_Type" substitutionGroup="ifx:SecTokenCard"/>
+	<xsd:element name="PartyPartyRelSel" type="fnis:PartyPartyRelSel_Type" substitutionGroup="ifx:PartyPartyRelSel"/>
+	<xsd:element name="CurAmtRange" type="fnis:CurAmtRange_Type" substitutionGroup="ifx:CurAmtRange"/>
+	<xsd:element name="DtRange" type="fnis:DtRange_Type" substitutionGroup="ifx:DtRange"/>
+	<xsd:element name="PartyAuth" type="fnis:PartyAuth_Type" substitutionGroup="ifx:PartyAuth"/>
+	<xsd:element name="ContextRqHdr" type="fnis:ContextRqHdr_Type" substitutionGroup="ifx:ContextRqHdr"/>
+	<xsd:element name="ContextRsHdr" type="fnis:ContextRsHdr_Type" substitutionGroup="ifx:ContextRsHdr"/>
+	<xsd:element name="Interface" type="fnis:Interface_Type" substitutionGroup="ifx:Interface"/>
+	<xsd:element name="NetworkTrnData" type="fnis:NetworkTrnData_Type" substitutionGroup="ifx:NetworkTrnData"/>
+	<xsd:element name="AnnualIncome" type="fnis:AnnualIncome_Type" substitutionGroup="ifx:AnnualIncome"/>
+	<xsd:element name="AdditionalStatus" type="fnis:AdditionalStatus_Type" substitutionGroup="ifx:AdditionalStatus"/>
+	<xsd:element name="RqUID" type="ifx:UUID_Type" substitutionGroup="ifx:RqUID"/>
+	<xsd:element name="PostAddr" type="fnis:PostAddr_Type" substitutionGroup="ifx:PostAddr"/>
+	<xsd:complexType name="PostAddr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PostAddr_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PostAddrIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:AddrMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:AddrStatus" minOccurs="0"/>
+					<xsd:element ref="ifx:UpDt" minOccurs="0"/>
+					<xsd:element ref="fnis:LegalInd" minOccurs="0"/>
+					<xsd:element ref="fnis:PrevInd" minOccurs="0"/>
+					<xsd:element ref="ifx:Duration" minOccurs="0"/>
+					<xsd:element ref="fnis:AddrSubtype" minOccurs="0"/>
+					<xsd:element ref="fnis:YearsAtAddr" minOccurs="0"/>
+					<xsd:element ref="fnis:MonthsAtAddr" minOccurs="0"/>
+					<xsd:element ref="fnis:CensusTract" minOccurs="0"/>
+					<xsd:element ref="fnis:CensusBlock" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="IssuedIdent" type="fnis:IssuedIdent_Type" substitutionGroup="ifx:IssuedIdent"/>
+	<xsd:complexType name="IssuedIdent_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:IssuedIdent_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:IssuedIdentIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:IdentVerifyDt" minOccurs="0"/>
+					<xsd:element ref="fnis:IdentName" minOccurs="0"/>
+					<xsd:element ref="fnis:Discrepancy" minOccurs="0"/>
+					<xsd:element ref="fnis:Resolution" minOccurs="0"/>
+					<xsd:element ref="fnis:TaxIDInd" minOccurs="0"/>
+					<xsd:element ref="fnis:PrimaryInd" minOccurs="0"/>
+					<xsd:element ref="fnis:IssuedIdentSubType" minOccurs="0"/>
+					<xsd:element ref="ifx:UpDt" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="IntDispData" type="fnis:IntDispData_Type" substitutionGroup="ifx:IntDispData"/>
+	<xsd:complexType name="IntDispData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:IntDispData_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:PartyRef" minOccurs="0"/>
+					<xsd:element ref="fnis:RecurrenceRule" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartyAcctRelData" type="fnis:PartyAcctRelData_Type" substitutionGroup="ifx:PartyAcctRelData"/>
+	<xsd:complexType name="PartyAcctRelData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAcctRelData_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:PartyId" minOccurs="0"/>
+					<xsd:element ref="fnis:Role" minOccurs="0"/>
+					<xsd:element ref="fnis:CardOrderInd" minOccurs="0"/>
+					<xsd:element ref="fnis:OwnerPercent" minOccurs="0"/>
+					<xsd:element ref="fnis:ECOACd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="USA.TaxIdCert" type="fnis:USA.TaxIdCert_Type" substitutionGroup="ifx:USA.TaxIdCert"/>
+	<xsd:complexType name="USA.TaxIdCert_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:USA.TaxIdCert_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:ElectronicInd" minOccurs="0"/>
+					<xsd:element ref="fnis:TaxClassCode" minOccurs="0"/>
+					<xsd:element ref="ifx:Memo" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PersonPartyInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PersonPartyInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PartyIdent" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PartyRel" minOccurs="0"/>
+					<xsd:element ref="fnis:BankRegion" minOccurs="0"/>
+					<xsd:element ref="fnis:CostCenter" minOccurs="0"/>
+					<xsd:element ref="fnis:Statement" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PartyMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PartyVerifyCode" minOccurs="0"/>
+					<xsd:element ref="fnis:PartyVerifyDt" minOccurs="0"/>
+					<xsd:element ref="fnis:PartyQualificationData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:RelationshipMgr" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PartyType" minOccurs="0"/>
+					<xsd:element ref="fnis:PartySubType" minOccurs="0"/>
+					<xsd:element ref="ifx:Memo" minOccurs="0"/>
+					<xsd:element ref="ifx:ClosedDt" minOccurs="0"/>
+					<xsd:element ref="fnis:ClosedReason" minOccurs="0"/>
+					<xsd:element ref="fnis:PartySORData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:InsiderOEDInstitution" minOccurs="0"/>
+					<xsd:element ref="ifx:FIData" minOccurs="0"/>
+					<xsd:element ref="fnis:PrivacyOptCode" minOccurs="0"/>
+					<xsd:element ref="fnis:SolicitOptCode" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartySel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartySel_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PartyType" minOccurs="0"/>
+					<xsd:element ref="fnis:PartySubType" minOccurs="0"/>
+					<xsd:element ref="fnis:PartyIdent" minOccurs="0"/>
+					<xsd:element ref="ifx:FamilyName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ifx:GivenName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ifx:MiddleName" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="ifx:Addr2" minOccurs="0"/>
+					<xsd:element ref="ifx:Addr3" minOccurs="0"/>
+					<xsd:element ref="ifx:Addr4" minOccurs="0"/>
+					<xsd:element ref="ifx:City" minOccurs="0"/>
+					<xsd:element ref="ifx:StateProv" minOccurs="0"/>
+					<xsd:element ref="ifx:CountryCode" minOccurs="0"/>
+					<xsd:element ref="ifx:OriginatingBranch" minOccurs="0"/>
+					<xsd:element ref="ifx:OriginatingBank" minOccurs="0"/>
+					<xsd:element ref="ifx:PreferredBranch" minOccurs="0"/>
+					<xsd:element ref="ifx:PreferredBank" minOccurs="0"/>
+					<xsd:element ref="ifx:ResponsibleBranch" minOccurs="0"/>
+					<xsd:element ref="ifx:ResponsibleBank" minOccurs="0"/>
+					<xsd:element ref="fnis:BankRegion" minOccurs="0"/>
+					<xsd:element ref="fnis:ActiveOnlyInd" minOccurs="0"/>
+					<xsd:element ref="ifx:SpouseName" minOccurs="0"/>
+					<xsd:element ref="ifx:FIData" minOccurs="0"/>
+					<xsd:element ref="fnis:ChallengeInd" minOccurs="0"/>
+					<xsd:element ref="fnis:QuestionCount" minOccurs="0"/>
+					<xsd:element ref="fnis:OOBAuthData" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartySel" type="fnis:PartySel_Type" substitutionGroup="ifx:PartySel"/>
+	<xsd:element name="PersonPartyInfo" type="fnis:PersonPartyInfo_Type" substitutionGroup="ifx:PersonPartyInfo"/>
+	<xsd:complexType name="PartyInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:W8Certification" minOccurs="0"/>
+					<xsd:element ref="fnis:W9UserCert" minOccurs="0"/>
+					<!-- Begin: Migrate XES 4.0 TMB -->
+					<xsd:element ref="fnis:PartyAdditionalInfo" minOccurs="0"/>
+					<!-- End: Migrate XES 4.0 TMB -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartyInfo" type="fnis:PartyInfo_Type" substitutionGroup="ifx:PartyInfo"/>
+	<xsd:complexType name="AcctInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:AcctOwnership" minOccurs="0"/>
+					<xsd:element ref="fnis:CostCenter" minOccurs="0"/>
+					<xsd:element ref="ifx:ServiceLevel" minOccurs="0"/>
+					<xsd:element ref="fnis:CompanyCd" minOccurs="0"/>
+					<xsd:element ref="fnis:Region" minOccurs="0"/>
+					<xsd:element ref="fnis:CloseReason" minOccurs="0"/>
+					<xsd:element ref="fnis:GraceDays" minOccurs="0"/>
+					<xsd:element ref="fnis:ExternalInd" minOccurs="0"/>
+					<xsd:element ref="fnis:FeeData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:Statement" minOccurs="0"/>
+					<xsd:element ref="fnis:SolicitationFreq" minOccurs="0"/>
+					<xsd:element ref="fnis:AcctMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:Contact" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:PassbookData" minOccurs="0"/>
+					<xsd:element ref="fnis:AcctSubType" minOccurs="0"/>
+					<xsd:element ref="fnis:ApplicationKeys" minOccurs="0"/>
+					<xsd:element ref="fnis:ApplIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:RegMethCode" minOccurs="0"/>
+					<xsd:element ref="fnis:RelationshipMgr" minOccurs="0"/>
+					<xsd:element ref="fnis:SvcProvider" minOccurs="0"/>
+					<xsd:element ref="fnis:OnlineBankingInd" minOccurs="0"/>
+					<xsd:element ref="fnis:ActionType" minOccurs="0"/>
+					<xsd:element ref="fnis:AcctTitleDesc" minOccurs="0"/>
+					<xsd:element ref="fnis:InGraceInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctStatus_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctStatus_Type">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="AcctInfo" type="fnis:AcctInfo_Type" substitutionGroup="ifx:AcctInfo"/>
+	<xsd:element name="AcctStatus" type="fnis:AcctStatus_Type" substitutionGroup="ifx:AcctStatus"/>
+	<xsd:complexType name="PartyAcctRelInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAcctRelInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:LegalRespCode" minOccurs="0"/>
+					<xsd:element ref="fnis:PartyOwnerCode" minOccurs="0"/>
+					<xsd:element ref="fnis:BillPayInd" minOccurs="0"/>
+					<xsd:element ref="fnis:OnlineBankingInd" minOccurs="0"/>
+					<xsd:element ref="fnis:ECOACd" minOccurs="0"/>
+					<xsd:element ref="fnis:AcctOwnerType" minOccurs="0"/>
+					<xsd:element ref="fnis:BeneficiaryType" minOccurs="0"/>
+					<xsd:element ref="fnis:RelationshipType" minOccurs="0"/>
+					<xsd:element ref="fnis:Percent" minOccurs="0"/>
+					<!-- Begin: Migrate XES 4.0 TMB -->
+					<xsd:element ref="fnis:RemainingNoFeeCounter" minOccurs="0"/>
+					<xsd:element ref="fnis:MaxFeeCounter" minOccurs="0"/>
+					<xsd:element ref="fnis:UsedFeeCounter" minOccurs="0"/>
+					<xsd:element ref="fnis:CreditCardOrg" minOccurs="0"/>
+					<xsd:element ref="fnis:CreditCardType" minOccurs="0"/>
+					<xsd:element ref="fnis:OpeningMethod" minOccurs="0"/>
+					<!-- End: Migrate XES 4.0 TMB -->
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAcctRelRec_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:SvcIdent" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PartyAcctRelSel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAcctRelSel_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:ExternalInd" minOccurs="0"/>
+					<xsd:element ref="fnis:IssuedIdent" minOccurs="0"/>
+					<xsd:element ref="fnis:AcctMiscData" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="fnis:LegalRespCode" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartyAcctRelInfo" type="fnis:PartyAcctRelInfo_Type" substitutionGroup="ifx:PartyAcctRelInfo"/>
+	<xsd:element name="PartyAcctRelRec" type="fnis:PartyAcctRelRec_Type" substitutionGroup="ifx:PartyAcctRelRec"/>
+	<xsd:element name="PartyAcctRelSel" type="fnis:PartyAcctRelSel_Type" substitutionGroup="ifx:PartyAcctRelSel"/>
+	<xsd:complexType name="RecXferInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RecXferInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:SeqNum" minOccurs="0"/>
+					<xsd:element ref="ifx:XferInfo" minOccurs="0"/>
+					<xsd:element ref="fnis:RecurModel" minOccurs="0"/>
+					<xsd:element ref="ifx:PartyKeys" minOccurs="0"/>
+					<xsd:element ref="fnis:EndXferCurAmt" minOccurs="0"/>
+					<!-- Begin: Migrate XES 4.0 TMB -->
+					<xsd:element ref="fnis:PmtMethod" minOccurs="0"/>
+					<xsd:element ref="fnis:FromAcctProdId" minOccurs="0"/>
+					<xsd:element ref="fnis:ToAcctProdId" minOccurs="0"/>
+					<!-- End: Migrate XES 4.0 TMB -->
+					<xsd:element ref="fnis:RemainingXferCount" minOccurs="0"/>
+					<xsd:element ref="fnis:NextXferDt" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--XES-11360
+	<xsd:complexType name="RecXferSel_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RecXferSel_Type">
+				<xsd:choice>
+					<xsd:sequence>
+						<xsd:element ref="ifx:AcctKeys" minOccurs="0"/>
+						<xsd:element ref="ifx:FIIdent" minOccurs="0"/>
+						<xsd:element ref="ifx:BranchIdent" minOccurs="0"/>
+						<xsd:element ref="ifx:CurAmtRange" minOccurs="0"/>
+						<xsd:element ref="ifx:PartyKeys" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+-->
+	<xsd:element name="RecXferInfo" type="fnis:RecXferInfo_Type" substitutionGroup="ifx:RecXferInfo"/>
+	<!--XES-11360
+<xsd:element name="RecXferSel" type="fnis:RecXferSel_Type" substitutionGroup="ifx:RecXferSel"/>-->
+	<xsd:complexType name="RecXferKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RecXferKeys_Type">
+				<xsd:choice>
+					<xsd:sequence>
+						<xsd:element ref="fnis:FromAcctKeys" minOccurs="0"/>
+						<xsd:element ref="fnis:ToAcctKeys" minOccurs="0"/>
+						<xsd:element ref="fnis:SeqNum" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="RecXferKeys" type="fnis:RecXferKeys_Type" substitutionGroup="ifx:RecXferKeys"/>
+	<xsd:complexType name="PhoneNum_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PhoneNum_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:CountryCodeValue" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PhoneNum" type="fnis:PhoneNum_Type" substitutionGroup="ifx:PhoneNum"/>
+	<xsd:element name="CreditMediaChkData" type="fnis:CreditMediaChkData_Type" substitutionGroup="ifx:CreditMediaChkData"/>
+	<xsd:complexType name="CreditMediaChkData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CreditMediaChkData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PrintOption" minOccurs="0"/>
+					<xsd:element ref="fnis:AcctHoldRef" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="DepAcctData" type="fnis:DepAcctData_Type" substitutionGroup="ifx:DepAcctData"/>
+	<xsd:complexType name="DepAcctData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:DepAcctData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:AcctHashValue" minOccurs="0"/>
+					<xsd:element ref="fnis:TaxDeferredPlanRef" minOccurs="0"/>
+					<xsd:element ref="fnis:MatDispData" minOccurs="0"/>
+					<xsd:element ref="fnis:FormImgLoc" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- Since non visibilty of some of the complexTypes from substitution group to FNIS_Common moved below aggregates here-->
+	<xsd:element name="TrnImgData" type="fnis:ChkImgData_Type"/>
+	<xsd:element name="Statement" type="fnis:Statement_Type"/>
+	<xsd:complexType name="Statement_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:StmtGroup" minOccurs="0"/>
+			<xsd:element ref="fnis:PostAddr" minOccurs="0"/>
+			<xsd:element ref="fnis:StmtNxtDt" minOccurs="0"/>
+			<xsd:element ref="fnis:TruncationCd" minOccurs="0"/>
+			<xsd:element ref="fnis:StmtInd" minOccurs="0"/>
+			<xsd:element ref="fnis:ElectronicStmtInd" minOccurs="0"/>
+			<xsd:element ref="fnis:Cycle" minOccurs="0"/>
+			<xsd:element ref="ifx:RecurrenceRule" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="TaxDeferredPlanRef" type="fnis:TaxDeferredPlanRef_Type"/>
+	<xsd:complexType name="TaxDeferredPlanRef_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:TaxDeferredPlanKeys" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanRec" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanInfo" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="TaxDeferredPlanInfo" type="fnis:TaxDeferredPlanInfo_Type"/>
+	<xsd:complexType name="TaxDeferredPlanInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:PartyId" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanId" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanType" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanEndDt" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanSeq" minOccurs="0"/>
+			<xsd:element ref="fnis:DefaultBen" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanDesc" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanCurrencyCode" minOccurs="0"/>
+			<xsd:element ref="fnis:PersonPartyData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:MailCode" minOccurs="0"/>
+			<xsd:element ref="fnis:TDPlanIdent" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:FIIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:PlanTitle" minOccurs="0"/>
+			<xsd:element ref="fnis:PlanDt" minOccurs="0"/>
+			<xsd:element ref="fnis:MADCd" minOccurs="0"/>
+			<xsd:element ref="fnis:MADCalcPctCd" minOccurs="0"/>
+			<xsd:element ref="fnis:MADCalcDOB" minOccurs="0"/>
+			<xsd:element ref="fnis:MADCalcAgeBaseCde" minOccurs="0"/>
+			<xsd:element ref="fnis:MADAmt" minOccurs="0"/>
+			<xsd:element ref="fnis:OptDistInitiationDt" minOccurs="0"/>
+			<xsd:element ref="fnis:ManDistAmt" minOccurs="0"/>
+			<xsd:element ref="fnis:ManDistInitiationDt" minOccurs="0"/>
+			<xsd:element ref="fnis:MADCalcAge" minOccurs="0"/>
+			<xsd:element ref="fnis:ManDistInitiationYear" minOccurs="0"/>
+			<xsd:element ref="fnis:LifeExpectancyFactor" minOccurs="0"/>
+			<xsd:element ref="ifx:TaxWithholding" minOccurs="0"/>
+			<xsd:element ref="ifx:StateProv" minOccurs="0"/>
+			<xsd:element ref="ifx:TaxWithheldData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:AutoDistData" minOccurs="0"/>
+			<xsd:element ref="fnis:DecedentPlan" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:TDPlanPeriodData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:TDPlanTrnLimit" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:TDPlanMiscData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:TDPlanBal" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:AcctRef" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TaxDeferredPlanRec_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:TaxDeferredPlanId"/>
+				<xsd:element ref="fnis:TaxDeferredPlanKeys"/>
+			</xsd:choice>
+			<xsd:element ref="fnis:TaxDeferredPlanInfo"/>
+			<xsd:element ref="fnis:TaxDeferredPlanEnvr" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanAuth" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanStatus" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TaxDeferredPlanStatus_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:TaxDeferredPlanStatusCode"/>
+			<xsd:element ref="ifx:EffDt" minOccurs="0"/>
+			<xsd:element ref="ifx:StatusModBy" minOccurs="0"/>
+			<xsd:element ref="ifx:Status" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TaxDeferredPlanStatusRec_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:TaxDeferredPlanKeys" minOccurs="0"/>
+			<xsd:element ref="fnis:TaxDeferredPlanStatus" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TaxDeferredPlanSel_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:TaxDeferredPlanKeys"/>
+				<xsd:sequence>
+					<xsd:element ref="fnis:TDPlanIdent" minOccurs="0"/>
+					<xsd:element ref="ifx:PartyRef" minOccurs="0"/>
+					<xsd:element ref="fnis:TaxDeferredPlanType" minOccurs="0"/>
+					<xsd:element ref="ifx:TaxYear" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TaxDeferredPlanAuth_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:BaseAuth_Type">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TaxDeferredPlanEnvr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:BaseEnvr_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="TaxDeferredPlanEnvr" type="fnis:TaxDeferredPlanEnvr_Type"/>
+	<xsd:element name="TaxDeferredPlanAuth" type="fnis:TaxDeferredPlanAuth_Type"/>
+	<xsd:element name="TaxDeferredPlanStatus" type="fnis:TaxDeferredPlanStatus_Type"/>
+	<xsd:element name="TaxDeferredPlanRec" type="fnis:TaxDeferredPlanRec_Type"/>
+	<xsd:element name="TaxDeferredPlanStatusRec" type="fnis:TaxDeferredPlanStatusRec_Type"/>
+	<xsd:element name="TaxDeferredPlanSel" type="fnis:TaxDeferredPlanSel_Type"/>
+	<xsd:element name="AcctHoldSel" type="fnis:AcctHoldSel_Type"/>
+	<xsd:complexType name="AcctHoldSel_Type">
+		<xsd:sequence>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="fnis:AcctHoldKeys"/>
+				<xsd:element ref="ifx:AcctKeys"/>
+			</xsd:choice>
+			<xsd:element ref="fnis:HoldType" minOccurs="0"/>
+			<xsd:element ref="ifx:SeqNum" minOccurs="0"/>
+			<xsd:element ref="ifx:DtRange" minOccurs="0"/>
+			<xsd:element ref="ifx:CurAmtRange" minOccurs="0"/>
+			<xsd:element ref="ifx:ChkNumRange" minOccurs="0"/>
+			<xsd:element ref="fnis:InclExpInd" minOccurs="0"/>
+			<xsd:element ref="fnis:InitiatingParty" minOccurs="0"/>
+			<xsd:element ref="fnis:Desc" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ProdIntRateRec" type="fnis:ProdIntRateRec_Type"/>
+	<xsd:element name="ProdIntRateAuth" type="ifx:BaseAuth_Type" />
+	<xsd:complexType name="ProdIntRateRec_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:ProdIntRateId"/>
+				<xsd:element ref="fnis:ProdIntRateKeys"/>
+			</xsd:choice>
+			<xsd:element ref="fnis:ProdIntRateInfo"/>
+			<xsd:element ref="fnis:ProdIntRateAuth" minOccurs="0"/>
+			<xsd:element ref="fnis:ProdIntRateEnvr" minOccurs="0"/>
+			<xsd:element ref="fnis:ProdIntRateStatus"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ProdIntRateSel" type="fnis:ProdIntRateSel_Type"/>
+	<xsd:complexType name="ProdIntRateSel_Type">
+		<xsd:sequence>
+		<xsd:choice>
+			<xsd:element ref="fnis:ProdIntRateKeys"/>
+			<xsd:sequence>
+			<xsd:element ref="fnis:Region" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctType" minOccurs="0"/>
+			<xsd:element ref="fnis:ProdIntRateIdent"/>
+			<xsd:element ref="ifx:FIIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:DtRange" minOccurs="0"/>
+			<xsd:element ref="fnis:RateChange" minOccurs="0"/>
+			</xsd:sequence>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ProdIntRateRef" type="fnis:ProdIntRateRef_Type"/>
+	<xsd:complexType name="ProdIntRateRef_Type">
+		<xsd:choice>
+			<xsd:element ref="fnis:ProdIntRateKeys"/>
+			<xsd:element ref="fnis:ProdIntRateRec" />
+			<xsd:element ref="fnis:ProdIntRateInfo"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:element name="AcctHoldRec" type="fnis:AcctHoldRec_Type"/>
+	<xsd:element name="AcctHoldInfo" type="fnis:AcctHoldInfo_Type"/>
+	<xsd:element name="AcctHoldEnvr" type="fnis:AcctHoldEnvr_Type"/>
+	<xsd:element name="AcctHoldAuth" type="fnis:AcctHoldAuth_Type"/>
+	<xsd:element name="AcctHoldStatus" type="fnis:AcctHoldStatus_Type"/>
+	<xsd:element name="AcctHoldStatusRec" type="fnis:AcctHoldStatusRec_Type"/>
+	<xsd:element name="AcctHoldRef" type="fnis:AcctHoldRef_Type"/>
+	<xsd:complexType name="AcctHoldRec_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:AcctHoldId"/>
+				<xsd:element ref="fnis:AcctHoldKeys"/>
+			</xsd:choice>
+			<xsd:element ref="fnis:AcctHoldInfo"/>
+			<xsd:element ref="fnis:AcctHoldEnvr" minOccurs="0"/>
+			<xsd:element ref="fnis:AcctHoldAuth" minOccurs="0"/>
+			<xsd:element ref="fnis:AcctHoldStatus" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AcctHoldEnvr_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:CreatedDt" minOccurs="0"/>
+			<xsd:element ref="ifx:CreateRefIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:ClientCreateDt" minOccurs="0"/>
+			<xsd:element ref="ifx:ClientBusinessDt" minOccurs="0"/>
+			<xsd:element ref="ifx:LastUpdateDt" minOccurs="0"/>
+			<xsd:element ref="ifx:LastUpdateRqUID" minOccurs="0"/>
+			<xsd:element ref="ifx:LoginName" minOccurs="0"/>
+			<xsd:element ref="ifx:PartyKeys" minOccurs="0"/>
+			<xsd:element ref="ifx:CardKeys" minOccurs="0"/>
+			<xsd:element ref="ifx:PassbkKeys" minOccurs="0"/>
+			<xsd:element ref="ifx:NetworkTrnData" minOccurs="0"/>
+			<xsd:element ref="ifx:ServerTerminalSeqNum" minOccurs="0"/>
+			<xsd:element ref="ifx:PointOfServiceData" minOccurs="0"/>
+			<xsd:element ref="ifx:ClientTerminalSeqNum" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AcctHoldAuth_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:BaseAuth_Type">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AcctHoldRef_Type">
+		<xsd:choice>
+			<xsd:element ref="fnis:AcctHoldKeys"/>
+			<xsd:element ref="fnis:AcctHoldRec"/>
+			<xsd:element ref="fnis:AcctHoldInfo"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="AcctHoldStatus_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:AcctHoldStatusCode"/>
+			<xsd:element ref="ifx:StatusDesc" minOccurs="0"/>
+			<xsd:element ref="ifx:EffDt" minOccurs="0"/>
+			<xsd:element ref="ifx:ApprovalIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:StatusModBy" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AcctHoldStatusRec_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:AcctHoldKeys"/>
+			<xsd:element ref="fnis:AcctHoldStatus"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AcctHoldInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:AcctRef" minOccurs="0"/>
+			<xsd:element ref="fnis:SecuringAcctId" minOccurs="0"/>
+			<xsd:element ref="fnis:HoldType" minOccurs="0"/>
+			<xsd:element ref="ifx:Desc" minOccurs="0"/>
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="ifx:CurAmt"/>
+				<xsd:sequence>
+					<xsd:element ref="fnis:HoldPercent"/>
+					<xsd:element ref="fnis:PercentBalType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element ref="fnis:InitiatingParty" minOccurs="0"/>
+			<xsd:element ref="ifx:StartDt" minOccurs="0"/>
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="ifx:Term" minOccurs="0"/>
+				<xsd:element ref="ifx:ExpDt" minOccurs="0"/>
+			</xsd:choice>
+			<xsd:element ref="ifx:ChkNum" minOccurs="0"/>
+			<xsd:element ref="ifx:WaiveFeeInd" minOccurs="0"/>
+			<xsd:element ref="ifx:EffDt" minOccurs="0"/>
+			<xsd:element ref="fnis:CorrespondenceCode" minOccurs="0"/>
+			<xsd:element ref="fnis:TranCode" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ApplicantAth" type="fnis:ApplicantAth_Type"/>
+	<xsd:complexType name="ApplicantAth_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:SecTokenLogin" minOccurs="0"/>
+			<xsd:element ref="fnis:SubjectPassCode" minOccurs="0"/>
+			<xsd:element ref="fnis:SecTokenSecretAnswer" minOccurs="0"/>
+			<xsd:element ref="fnis:SecretWrd" minOccurs="0"/>
+			<xsd:element ref="fnis:EnrollStatCd" minOccurs="0"/>
+			<xsd:element ref="fnis:Phrase" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Applicant" type="fnis:Applicant_Type"/>
+	<xsd:complexType name="Applicant_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:PrimaryApplicantInd" minOccurs="0"/>
+			<xsd:element ref="fnis:TempPartyIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:PartyId" minOccurs="0"/>
+			<xsd:element ref="fnis:NewPartyIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:ThirdPartyRqMsg" minOccurs="0"/>
+			<xsd:element ref="fnis:ThirdPartyRsMsg" minOccurs="0"/>
+			<xsd:element ref="fnis:PartyRel" minOccurs="0"/>
+			<xsd:element ref="ifx:IdentVerifyResults" minOccurs="0"/>
+			<xsd:element ref="fnis:VerifyErrMsg" minOccurs="0"/>
+			<xsd:element ref="fnis:PartyType" minOccurs="0"/>
+			<xsd:element ref="fnis:PartySubType" minOccurs="0"/>
+			<xsd:element ref="ifx:Memo" minOccurs="0"/>
+			<xsd:element ref="ifx:SPName" minOccurs="0"/>
+			<xsd:element ref="fnis:ApplicantMiscData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:Verification" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:FinancialData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:Contact" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:IssuedIdent" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:ResidenceCountry" minOccurs="0"/>
+			<xsd:element ref="ifx:TaxResidenceCountry" minOccurs="0"/>
+			<xsd:element ref="fnis:ResponsibleBranch" minOccurs="0"/>
+			<xsd:element ref="ifx:ServiceLevel" minOccurs="0"/>
+			<xsd:element ref="fnis:EstablishedDt" minOccurs="0"/>
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="fnis:PersonApplicant"/>
+				<xsd:element ref="fnis:OrgApplicant"/>
+			</xsd:choice>
+			<xsd:element ref="fnis:W8Certification" minOccurs="0"/>
+			<xsd:element ref="fnis:W9UserCert" minOccurs="0"/>
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="fnis:CreditBureauSummary" minOccurs="0"/>
+				<xsd:element ref="fnis:CreditBureauSummary2" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:choice>
+			<xsd:element ref="fnis:ApplicantAth" minOccurs="0"/>
+			<xsd:element ref="fnis:ApplicantSvc" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:ProcessStat" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:CreationStat" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:PartyRef" minOccurs="0"/>
+			<xsd:element ref="fnis:ExistPartyInd" minOccurs="0"/>
+			<xsd:element ref="ifx:FIData" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AppAcct" type="fnis:AppAcct_Type"/>
+	<xsd:complexType name="AppAcct_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:AcctIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctId" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctType" minOccurs="0"/>
+			<xsd:element ref="ifx:ProductIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:FIData" minOccurs="0"/>
+			<xsd:element ref="fnis:AcctOwnership" minOccurs="0"/>
+			<xsd:element ref="ifx:InitialAmount" minOccurs="0"/>
+			<xsd:element ref="fnis:OpenDt" minOccurs="0"/>
+			<xsd:element ref="ifx:SPName" minOccurs="0"/>
+			<xsd:element ref="fnis:AcctDft" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:Offer" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:AppPartyAcctData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:DepAppAcct" minOccurs="0"/>
+			<xsd:element ref="fnis:PartyAcctRelData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:DisclosureStatData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:AcctMiscData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:FundingData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:AcctSvc" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:ProcessStat" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:AcctMemo" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:CreationStat" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:PackageIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:CostCenter" minOccurs="0"/>
+			<xsd:element ref="ifx:ServiceLevel" minOccurs="0"/>
+			<xsd:element ref="fnis:CompanyCd" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctTitle" minOccurs="0"/>
+			<xsd:element ref="fnis:AcctTitleDesc" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="FundingData" type="fnis:FundingData_Type"/>
+	<xsd:complexType name="FundingData_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName" minOccurs="0"/>
+			<xsd:element ref="fnis:FundingIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:FundingMethod" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctType" minOccurs="0"/>
+			<xsd:element ref="ifx:FIData" minOccurs="0"/>
+			<xsd:element ref="fnis:OwnerName" minOccurs="0"/>
+			<xsd:element ref="fnis:RegMethCode" minOccurs="0"/>
+			<xsd:element ref="fnis:RegDt" minOccurs="0"/>
+			<xsd:element ref="ifx:ExpDt" minOccurs="0"/>
+			<xsd:element ref="fnis:RegStatCode" minOccurs="0"/>
+			<xsd:element ref="ifx:CurAmt" minOccurs="0"/>
+			<xsd:element ref="fnis:Verification" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:TempPartyIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:AltAcctIdentValue" minOccurs="0"/>
+			<xsd:element ref="fnis:CardData" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctUse" minOccurs="0"/>
+			<xsd:element ref="ifx:CardNum" minOccurs="0"/>
+			<xsd:element ref="ifx:EffDt" minOccurs="0"/>
+			<xsd:element ref="fnis:TranIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:OrderIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:ReconIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:ApprovalIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:AuthRsCode" minOccurs="0"/>
+			<xsd:element ref="fnis:MicroDepEntryClass" minOccurs="0"/>
+			<xsd:element ref="fnis:EntryClass" minOccurs="0"/>
+			<xsd:element ref="ifx:Brand" minOccurs="0"/>
+			<xsd:element ref="fnis:SettleDt" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="CardData" type="fnis:CardData_Type"/>
+	<xsd:complexType name="CardData_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:CardEmbossNum"/>
+			<xsd:element ref="ifx:Brand" minOccurs="0"/>
+			<xsd:element ref="ifx:ExpDt"/>
+			<xsd:element ref="ifx:CardVrfyData" minOccurs="0"/>
+			<xsd:element ref="ifx:Name" minOccurs="0"/>
+			<xsd:element ref="fnis:PostAddr" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="DepAppAcct" type="fnis:DepAppAcct_Type"/>
+	<xsd:complexType name="DepAppAcct_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:IntDispData" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AcctDft" type="fnis:AcctDft_Type"/>
+	<xsd:complexType name="AcctDft_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:AcctDataType" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctType" minOccurs="0"/>
+			<xsd:element ref="ifx:ProductIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:FIData" minOccurs="0"/>
+			<xsd:element ref="ifx:InitialAmount" minOccurs="0"/>
+			<xsd:element ref="fnis:Rate" minOccurs="0"/>
+			<xsd:element ref="fnis:Name" minOccurs="0"/>
+			<xsd:element ref="ifx:Term" minOccurs="0"/>
+			<xsd:element ref="ifx:CurCode" minOccurs="0"/>
+			<xsd:element ref="ifx:LOCLimit" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctBal" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:DepAppAcct" minOccurs="0"/>
+			<xsd:element ref="fnis:ProdDfltMisc" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AppPartyAcctData" type="fnis:AppPartyAcctData_Type"/>
+	<xsd:complexType name="AppPartyAcctData_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:PartyAcctRelData" minOccurs="0"/>
+			<xsd:element ref="fnis:OwnerPercent" minOccurs="0"/>
+			<xsd:element ref="fnis:ECOACd" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="TrnItem" type="fnis:TranItem_Type"/>
+	<xsd:complexType name="TranItem_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:MediaItemIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:MediaItemType"/>
+			<xsd:element ref="ifx:MediaItemSubType"/>
+			<xsd:element ref="ifx:AcctId" minOccurs="0"/>
+			<xsd:element ref="ifx:CurAmt" minOccurs="0"/>
+			<xsd:element ref="fnis:DrawerData" minOccurs="0"/>
+			<xsd:element ref="fnis:CalculatorData" minOccurs="0"/>
+			<xsd:element ref="ifx:ExchangeRate" minOccurs="0"/>
+			<xsd:element ref="fnis:TrnMiscData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:choice>
+				<xsd:element ref="ifx:MediaCashData"/>
+				<xsd:element ref="fnis:CreditMediaChkData"/>
+				<xsd:element ref="ifx:ChkIssueRef"/>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="UserRef" type="fnis:UserRef_Type"/>
+	<xsd:complexType name="UserRef_Type">
+		<xsd:choice>
+			<xsd:element ref="fnis:UserRec"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:element name="UserData" type="fnis:UserData_Type"/>
+	<xsd:complexType name="UserData_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:UserActionType" minOccurs="0"/>
+			<xsd:element ref="fnis:ActionDt" minOccurs="0"/>
+			<xsd:element ref="fnis:UserIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:UserRef" minOccurs="0"/>
+			<xsd:element ref="fnis:UserType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ActivityData" type="fnis:ActivityData_Type"/>
+	<xsd:complexType name="ActivityData_Type">
+		<xsd:annotation>
+			<xsd:documentation>When no active tasks are returnd then the case is now closed.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="fnis:ActivityType" minOccurs="0"/>
+			<xsd:element ref="fnis:ActivityName" minOccurs="0"/>
+			<xsd:element ref="ifx:Desc" minOccurs="0"/>
+			<xsd:element ref="fnis:Priority" minOccurs="0"/>
+			<xsd:element ref="fnis:ActivityAction" minOccurs="0"/>
+			<xsd:element ref="fnis:ActivityStatCode" minOccurs="0"/>
+			<xsd:element ref="fnis:ExtActivityIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:EscalationData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:StartDt" minOccurs="0"/>
+			<xsd:element ref="ifx:ClosedDt" minOccurs="0"/>
+			<xsd:element ref="fnis:UserData" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:CaseData" minOccurs="0"/>
+			<xsd:element ref="fnis:CaseDataExecutionInfo" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:Outcome" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:Disclosure" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:LoginIdent"/>
+			<xsd:element ref="ifx:PartyKeys" minOccurs="0"/>
+			<xsd:element ref="fnis:Role" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:PersonName" minOccurs="0"/>
+			<xsd:element ref="fnis:LoginNameQualityCode" minOccurs="0"/>
+			<xsd:element ref="fnis:TimeoutPeriod" minOccurs="0"/>
+			<xsd:element ref="ifx:Contact" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserRec_Type">
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element ref="fnis:UserId"/>
+				<xsd:element ref="fnis:UserKeys"/>
+			</xsd:choice>
+			<xsd:element ref="fnis:UserInfo"/>
+			<xsd:element ref="fnis:UserEnvr" minOccurs="0"/>
+			<xsd:element ref="fnis:UserAuth" minOccurs="0"/>
+			<xsd:element ref="fnis:UserStatus"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserEnvr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:BaseEnvr_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UserStatus_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:UserStatusCode"/>
+			<xsd:element ref="ifx:StatusDesc" minOccurs="0"/>
+			<xsd:element ref="ifx:EffDt" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserAuth_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SecTokenSecretAnswer" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="ifx:SecTokenLogin" minOccurs="0"/>
+			<xsd:element ref="fnis:PswdQualityCode" minOccurs="0"/>
+			<xsd:element ref="fnis:PswdChangeRqdInd" minOccurs="0"/>
+			<xsd:element ref="fnis:UserAcctLockedInd" minOccurs="0"/>
+			<xsd:element ref="fnis:TimeFrame" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="UserEnvr" type="fnis:UserEnvr_Type"/>
+	<xsd:element name="UserInfo" type="fnis:UserInfo_Type"/>
+	<xsd:element name="UserStatus" type="fnis:UserStatus_Type"/>
+	<xsd:element name="UserAuth" type="fnis:UserAuth_Type"/>
+	<xsd:element name="UserRec" type="fnis:UserRec_Type"/>
+	<xsd:element name="RecurrenceRule" type="fnis:RecurrenceRule_Type" substitutionGroup="ifx:RecurrenceRule"/>
+	<xsd:complexType name="RecurrenceRule_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RecurrenceRule_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:BusDayOption" minOccurs="0"/>
+					<xsd:element ref="fnis:IncrementDays" minOccurs="0"/>
+					<xsd:element ref="fnis:DecrementDays" minOccurs="0"/>
+					<xsd:element ref="fnis:RecurDesc" minOccurs="0"/>
+					<xsd:element ref="ifx:ExpDt" minOccurs="0"/>
+					<xsd:element ref="ifx:Occurrences" minOccurs="0"/>
+					<xsd:element ref="ifx:RecurStartDate" minOccurs="0"/>
+					<xsd:element ref="ifx:RecurEndDate" minOccurs="0"/>
+					<xsd:element ref="ifx:Month" minOccurs="0"/>
+					<xsd:element ref="fnis:EndOfMonthInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="RecurRule" type="fnis:RecurRule_Type" substitutionGroup="ifx:RecurRule"/>
+	<xsd:complexType name="RecurRule_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RecurRule_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:BusinesDayOption" minOccurs="0"/>
+					<xsd:element ref="fnis:EndOfMonthInd" minOccurs="0"/>
+					<xsd:element ref="fnis:RecurDesc" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="SolicitationFreq" type="fnis:SolicitationFreq_Type"/>
+	<xsd:complexType name="SolicitationFreq_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:RecurrenceRule" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="FeeData" type="fnis:FeeData_Type"/>
+	<xsd:complexType name="FeeData_Type">
+		<xsd:sequence>
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="fnis:FeePlan"/>
+				<xsd:element ref="fnis:FeeType"/>
+			</xsd:choice>
+			<xsd:choice minOccurs="0">
+				<xsd:element ref="ifx:CurAmt"/>
+				<xsd:element ref="ifx:Rate"/>
+			</xsd:choice>
+			<xsd:element ref="ifx:MinCurAmt" minOccurs="0"/>
+			<xsd:element ref="ifx:MaxCurAmt" minOccurs="0"/>
+			<xsd:element ref="fnis:WaiverCode" minOccurs="0"/>
+			<xsd:element ref="fnis:WaiverExpDt" minOccurs="0"/>
+			<xsd:element ref="fnis:RecurrenceRule" minOccurs="0"/>
+			<xsd:element ref="fnis:FeeAcctIdent" minOccurs="0"/>
+			<xsd:element ref ="ifx:WaiveFeeInd" minOccurs="0" />	
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="RecurModel" type="fnis:RecurModel_Type"/>
+	<xsd:complexType name="RecurModel_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:RecurrenceRule" minOccurs="0" maxOccurs="2"/>
+			<xsd:element ref="fnis:RecurException" minOccurs="0"/>
+			<xsd:element ref="ifx:Nickname" minOccurs="0"/>
+			<xsd:element ref="fnis:DupXferOverride" minOccurs="0"/>
+			<xsd:element ref="fnis:SeqNum" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ACH" type="fnis:ACH_Type"/>
+	<xsd:complexType name="ACH_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:LegalName" minOccurs="0"/>
+			<xsd:element ref="fnis:RecurrenceRule" minOccurs="0"/>
+			<xsd:element ref="ifx:DueDt" minOccurs="0"/>
+			<xsd:element ref="fnis:DrCrInd" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AcctSvc" type="fnis:AcctSvc_Type"/>
+	<xsd:complexType name="AcctSvc_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:AcctSvcIdent"/>
+			<xsd:element ref="fnis:CompleteInd" minOccurs="0"/>
+			<xsd:element ref="fnis:SrvBookInd" minOccurs="0"/>
+			<xsd:element ref="fnis:SvcRemoveInd" minOccurs="0"/>
+			<xsd:element ref="ifx:StmtGroup" minOccurs="0"/>
+			<xsd:element ref="fnis:TempPartyIdent" minOccurs="0"/>
+			<xsd:element ref="fnis:RecurrenceRule" minOccurs="0"/>
+			<xsd:element ref="fnis:ProcessStat" minOccurs="0"/>
+			<xsd:element ref="fnis:SvcAvailCd" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ReviewFreq" type="fnis:ReviewFreq_Type"/>
+	<xsd:complexType name="ReviewFreq_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:RecurrenceRule"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ValuationFreq" type="fnis:ValuationFreq_Type"/>
+	<xsd:complexType name="ValuationFreq_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:RecurrenceRule"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ChkData" type="fnis:ChkData_Type" substitutionGroup="ifx:ChkData"/>
+	<xsd:complexType name="ChkData_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ChkData_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:MediaItemType" minOccurs="0"/>
+					<xsd:element ref="fnis:MediaItemDesc" minOccurs="0"/>
+					<xsd:element ref="fnis:CreditorData" minOccurs="0"/>
+					<xsd:element ref="fnis:DebtorData" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="MediaAcctSummary" type="fnis:MediaAcctSummary_Type" substitutionGroup="ifx:MediaAcctSummary"/>
+	<xsd:complexType name="MediaAcctSummary_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MediaAcctSummary_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:AttributeType" minOccurs="0"/>
+					<xsd:element ref="fnis:StatisticInd" minOccurs="0"/>
+					<xsd:element ref="fnis:DrwDisabledInd" minOccurs="0"/>
+					<xsd:element ref="fnis:SettleInd" minOccurs="0"/>
+					<xsd:element ref="fnis:SysDefInd" minOccurs="0"/>
+					<xsd:element ref="fnis:DrawerData" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- Schema Rec substitution validation starts here -->
+	<xsd:element name="AcctRec" type="fnis:AcctRec_Type" substitutionGroup="ifx:AcctRec"/>
+	<xsd:complexType name="AcctRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="AcctTrnRec" type="fnis:AcctTrnRec_Type" substitutionGroup="ifx:AcctTrnRec"/>
+	<xsd:complexType name="AcctTrnRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctTrnRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartyRec" type="fnis:PartyRec_Type" substitutionGroup="ifx:PartyRec"/>
+	<xsd:complexType name="PartyRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartyIdent" type="fnis:PartyIdent_Type" substitutionGroup="ifx:PartyIdent"/>
+	<xsd:complexType name="PartyIdent_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyIdent_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartyPartyRelRec" type="fnis:PartyPartyRelRec_Type" substitutionGroup="ifx:PartyPartyRelRec"/>
+	<xsd:complexType name="PartyPartyRelRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyPartyRelRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="RecXferRec" type="fnis:RecXferRec_Type" substitutionGroup="ifx:RecXferRec"/>
+	<xsd:complexType name="RecXferRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:RecXferRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="StopChkRec" type="fnis:StopChkRec_Type" substitutionGroup="ifx:StopChkRec"/>
+	<xsd:complexType name="StopChkRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:StopChkRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="CardRec" type="fnis:CardRec_Type" substitutionGroup="ifx:CardRec"/>
+	<xsd:complexType name="CardRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:CardRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="XferRec" type="fnis:XferRec_Type" substitutionGroup="ifx:XferRec"/>
+	<xsd:complexType name="XferRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:XferRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="MediaAcctStatusRec" type="fnis:MediaAcctStatusRec_Type" substitutionGroup="ifx:MediaAcctStatusRec"/>
+	<xsd:complexType name="MediaAcctStatusRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MediaAcctStatusRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="MediaAcctRec" type="fnis:MediaAcctRec_Type" substitutionGroup="ifx:MediaAcctRec"/>
+	<xsd:complexType name="MediaAcctRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:MediaAcctRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartyCardRelRec" type="fnis:PartyCardRelRec_Type" substitutionGroup="ifx:PartyCardRelRec"/>
+	<xsd:complexType name="PartyCardRelRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyCardRelRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="PartyAuthRec" type="fnis:PartyAuthRec_Type" substitutionGroup="ifx:PartyAuthRec"/>
+	<xsd:complexType name="PartyAuthRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PartyAuthRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ForExRateSheetRec" type="fnis:ForExRateSheetRec_Type" substitutionGroup="ifx:ForExRateSheetRec"/>
+	<xsd:complexType name="ForExRateSheetRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ForExRateSheetRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>	
+	<!-- XES-11146 Recourse Account Starts -->
+	<xsd:element name="RecourseAcctRef" type="fnis:RecourseAcctRef_Type"/>
+	<xsd:complexType name="RecourseAcctRef_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AcctRef_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>	
+	<!-- XES-11146 Recourse Account Ends -->
+	<!-- Schema Rec substitution validation ends here -->
+	<!-- SOAE Phase-II Enhancement for Alert Service XES-12360 by LC14336 Begin -->
+	<xsd:element name="AlertInfo" type="fnis:AlertInfo_Type" substitutionGroup="ifx:AlertInfo"/>
+	<xsd:complexType name="AlertInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AlertInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:DeliveryInstruction" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element minOccurs="0" ref="fnis:AlertAmt"/>
+					<xsd:element minOccurs="0" ref="ifx:ChkNum"/>
+					<xsd:element minOccurs="0" ref="ifx:ChkNumRange"/>
+					<xsd:element minOccurs="0" ref="fnis:ThresholdOperation"/>
+					<xsd:element minOccurs="0" ref="ifx:Count"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="AlertKeys" type="fnis:AlertKeys_Type" substitutionGroup="ifx:AlertKeys"/>
+	<xsd:complexType name="AlertKeys_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AlertKeys_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:NotAvailInd" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ProdIntRateTerm_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:Term_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:Type" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>	
+	<xsd:element name="AlertRec" type="fnis:AlertRec_Type" substitutionGroup="ifx:AlertRec"/>
+	<xsd:complexType name="AlertRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AlertRec_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:AlertAuth" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="AlertAmt" type="fnis:AlertAmt_Type" substitutionGroup="ifx:AlertAmt"/>
+	<xsd:complexType name="AlertAmt_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:AlertAmt_Type">
+				<xsd:sequence>
+					<xsd:element ref="ifx:MaxCurAmt" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- SOAE Phase-II Enhancement for Alert Service XES-12360 by LC14336 End -->
+	<!-- XES-13255 - pmt add service end -->
+		<xsd:complexType name="PmtRec_Type">
+
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PmtRec_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PmtKeys" />
+					<xsd:element ref="fnis:PmtAuth" minOccurs="0" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+<xsd:element name="ProdIntRateInfo" type="fnis:ProdIntRateInfo_Type" />
+	<xsd:complexType name="ProdIntRateInfo_Type">
+		<xsd:sequence>
+			<xsd:choice>
+			<xsd:element ref="ifx:ProductIdent" />
+			<xsd:element ref="fnis:ProdIntRateKeys" />
+			</xsd:choice>
+			<xsd:element ref="fnis:Region" minOccurs="0" />
+			<xsd:element name="Term"  type="fnis:ProdIntRateTerm_Type" minOccurs="0"/>
+			<xsd:element name="IntRateData"  type="fnis:ProdIntRateData_Type" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element ref="fnis:RateChange" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ProdIntRateData_Type">
+		<xsd:sequence>
+			<xsd:element ref="fnis:RateMatrixTier" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="fnis:IntRateCategory"  minOccurs="0"/>
+			<xsd:element ref="ifx:Desc" minOccurs="0" />
+			<xsd:element ref="fnis:BasedOnCode" minOccurs="0" />
+			<xsd:element ref="fnis:BasedOnValue" minOccurs="0" />
+			<xsd:element ref="fnis:AccrualFrequency" minOccurs="0" />
+			<xsd:element ref="fnis:AccrualMethod" minOccurs="0" />
+			<xsd:element ref="fnis:DailyAccrual" minOccurs="0" />
+			<xsd:element ref="fnis:CapFrequency" minOccurs="0" />
+			<xsd:element ref="fnis:IntRateType" minOccurs="0" />
+			<xsd:element ref="ifx:EffDt" minOccurs="0" />
+			<xsd:element ref="ifx:ExpDt" minOccurs="0" />
+			<xsd:element ref="fnis:TierAmtType" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="RateChange" type="fnis:RateChange_Type"/>
+	<xsd:complexType name="RateChange_Type">
+	<xsd:sequence>
+		<xsd:element ref="fnis:RateChangeFreq"  minOccurs="0"/>
+		<xsd:element ref="fnis:RateChangeLimit"  minOccurs="0"/>
+		<xsd:element ref="fnis:RateChangeVar" minOccurs="0"/>
+		<xsd:element ref="fnis:BackDateAllowInd" minOccurs="0"/>
+	</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="PmtInfo_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PmtInfo_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:CPPData" minOccurs="0" />
+					<xsd:element ref="fnis:DebtorData" />
+					<xsd:element ref="fnis:ExpediteInd" minOccurs="0" />
+					<xsd:element ref="fnis:PmtCreditDetail" 
+						maxOccurs="unbounded" />
+					<xsd:element ref="fnis:PmtMiscData" minOccurs="0"
+						maxOccurs="unbounded" />
+					<xsd:element ref="fnis:PmtInstruction" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="PmtInstruction_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:PmtInstruction_Type">
+				<xsd:sequence>
+					<xsd:element ref="fnis:PmtMethod" minOccurs="0" />
+					<xsd:element ref="ifx:FromAcctRef" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PmtAuth_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:BaseAuth_Type">
+				<xsd:sequence />
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="PmtInstruction" type="fnis:PmtInstruction_Type"
+		substitutionGroup="ifx:PmtInstruction" />
+	<!-- Begin: Migrate XES 4.0 TMB -->
+	<!-- <xsd:element name="PmtMethod" type="ifx:OpenEnum_Type" />  -->
+	<!-- End: Migrate XES 4.0 TMB -->
+	<xsd:element name="PmtRec" type="fnis:PmtRec_Type"
+		substitutionGroup="ifx:PmtRec" />
+	<xsd:element name="PmtInfo" type="fnis:PmtInfo_Type"
+		substitutionGroup="ifx:PmtInfo" />
+	<xsd:element name="PmtAuth" type="fnis:PmtAuth_Type" />
+	<xsd:element name="PmtKeys" type="fnis:PmtKeys_Type" substitutionGroup="ifx:PmtKeys" />
+	<!-- XES-13255 end -->
+	<!-- SOAE Phase-II Enhancement for ForExQuote Service XES-13301 by LC14336 Begin -->
+	<xsd:element name="ForExQuoteRec" type="fnis:ForExQuoteRec_Type" substitutionGroup="ifx:ForExQuoteRec"/>
+	<xsd:complexType name="ForExQuoteRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ForExQuoteRec_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- SOAE Phase-II Enhancement for ForExQuote Service XES-13301 by LC14336 End -->
+	<!-- XES-14786 -->
+    <xsd:element name="ChkIssueRec" type="fnis:ChkIssueRec_Type" substitutionGroup="ifx:ChkIssueRec"/>
+	<xsd:complexType name="ChkIssueRec_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:ChkIssueRec_Type">
+			<xsd:sequence>
+			</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<!-- Begin: Migrate XES 4.0 TMB -->
+	<!-- Schema Rec substitution validation ends here -->
+	<xsd:element name="XferRef" type="fnis:XferRef_Type"/>
+	<xsd:complexType name="XferRef_Type">
+		<xsd:choice>
+			<xsd:element ref="ifx:XferKeys"/>
+			<xsd:element ref="ifx:XferRec"/>
+			<xsd:element ref="ifx:XferInfo"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<!-- End: Migrate XES 4.0 TMB -->
+</xsd:schema>

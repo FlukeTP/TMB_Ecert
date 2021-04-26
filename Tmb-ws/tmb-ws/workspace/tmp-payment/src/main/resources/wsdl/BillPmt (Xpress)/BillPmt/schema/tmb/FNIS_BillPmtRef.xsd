@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ifx="urn:ifxforum-org:XSD:1" xmlns:fnis="http://www.fnf.com/xes" xmlns="http://www.fnf.com/xes" targetNamespace="http://www.fnf.com/xes" elementFormDefault="qualified">
+	<xsd:import namespace="urn:ifxforum-org:XSD:1" schemaLocation="../fniscommon/IFX_Common.xsd"/>
+	<xsd:include schemaLocation="../fniscommon/FNIS_SubstitutionGroups.xsd"/>
+	<xsd:include schemaLocation="TMB_Common.xsd"/>
+	<xsd:complexType name="BillPmtRec_Type">
+		<xsd:sequence>
+			<xsd:element ref="BillPmtKeys"/>
+			<xsd:element ref="BillPmtInfo"/>
+			<xsd:element ref="BillPmtEnvr" minOccurs="0"/>
+			<xsd:element ref="BillPmtAuth" minOccurs="0"/>
+			<xsd:element ref="BillPmtStatus"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtEnvr_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:BaseEnvr_Type"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtRef_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:SPName"/>
+			<xsd:choice>
+				<xsd:element ref="BillPmtKeys"/>
+				<xsd:element ref="BillPmtRec"/>
+				<xsd:element ref="BillPmtInfo"/>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="BillPmtKeys" type="BillPmtKeys_Type"/>
+	<xsd:complexType name="BillPmtKeys_Type">
+		<xsd:sequence>
+			<xsd:element name="BillPmtId" type="ifx:Identifier_Type" minOccurs="0"/>
+			<xsd:element ref="TranCode"/>
+			<xsd:element ref="ifx:FromAcctRef"/>
+			<xsd:element ref="ifx:ToAcctRef" minOccurs="0"/>
+			<xsd:element ref="ifx:CurAmt"/>
+			<xsd:element ref="BillPmtFee"/>
+			<xsd:element ref="ifx:PmtRefIdent"/>
+			<xsd:element ref="ifx:InvoiceNum"/>
+			<xsd:element ref="ifx:PostedDt"/>
+			<!-- MIBXP-462 Start-[BillPmtInq and BillPmtAdd service] 
+				Remove the validation value for field EPAYcode for Bill Payment transaction (tran code = 8810 and 8820) -->
+			<xsd:element ref="EPAYCode" minOccurs="0"/>
+			<!-- MIBXP-462 End-[BillPmtInq and BillPmtAdd service] 
+				Remove the validation value for field EPAYcode for Bill Payment transaction (tran code = 8810 and 8820) -->
+			<xsd:element ref="RBANo" minOccurs="0"/>
+			<xsd:element ref="InterRegionFee" minOccurs="0"/>
+			<xsd:element ref="CICSTranCode" minOccurs="0"/>
+			<xsd:element ref="MsgType" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctTitle" minOccurs="0"/>
+			<xsd:element ref="LedgerBal" minOccurs="0"/>
+			<xsd:element ref="AvailBal" minOccurs="0"/>
+			<xsd:element ref="FeeAmntResult" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctStatusCode" minOccurs="0"/>
+			<xsd:element ref="CompCode" minOccurs="0"/>
+			<xsd:element ref="PostedTime" minOccurs="0"/>
+			<xsd:element ref="WaiveCode" minOccurs="0"/>
+			<!-- XNG-213: BillPmt via ATM -->
+			<xsd:element ref="SvcCompCode" minOccurs="0"/>
+			<!-- XNG-634: BranchIdent : BillPmt via ATM  -->
+			<xsd:element ref="ifx:BranchIdent" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtInfo_Type">
+		<xsd:sequence>
+			<xsd:element ref="TranCode"/>
+			<xsd:element ref="ifx:FromAcctRef"/>
+			<xsd:element ref="ifx:ToAcctRef"/>
+			<xsd:element ref="ifx:CurAmt"/>
+			<xsd:element ref="BillPmtFee"/>
+			<xsd:element ref="ifx:PmtRefIdent"/>
+			<xsd:element ref="ifx:InvoiceNum"/>
+			<xsd:element ref="ifx:PostedDt"/>
+			<!-- MIBXP-462 Start-[BillPmtInq and BillPmtAdd service] 
+				Remove the validation value for field EPAYcode for Bill Payment transaction (tran code = 8810 and 8820) -->
+			<xsd:element ref="EPAYCode" minOccurs="0"/>
+			<!-- MIBXP-462 End-[BillPmtInq and BillPmtAdd service] 
+				Remove the validation value for field EPAYcode for Bill Payment transaction (tran code = 8810 and 8820) -->
+			<xsd:element ref="RBANo" minOccurs="0"/>
+			<xsd:element ref="InterRegionFee" minOccurs="0"/>
+			<xsd:element ref="CICSTranCode" minOccurs="0"/>
+			<xsd:element ref="MsgType" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctTitle" minOccurs="0"/>
+			<xsd:element ref="LedgerBal" minOccurs="0"/>
+			<xsd:element ref="AvailBal" minOccurs="0"/>
+			<xsd:element ref="FeeAmntResult" minOccurs="0"/>
+			<xsd:element ref="ifx:AcctStatusCode" minOccurs="0"/>
+			<xsd:element ref="RespCode" minOccurs="0"/>
+			<xsd:element ref="HoldCode" minOccurs="0"/>
+			<xsd:element ref="FlagFeeReg" minOccurs="0"/>
+			<xsd:element ref="CompCode" minOccurs="0"/>
+			<xsd:element ref="PostedTime" minOccurs="0"/>
+			<xsd:element ref="WaiveProductCode" minOccurs="0"/>
+			<xsd:element ref="AmountWaived" minOccurs="0"/>
+			<xsd:element ref="WaiveRemaining" minOccurs="0"/>
+			<xsd:element ref="WaiveUsed" minOccurs="0"/>
+			<xsd:element ref="WaiveFlag" minOccurs="0"/>
+			<!-- XNG-213: BillPmt via ATM -->
+			<xsd:element ref="ATMMsgType" minOccurs="0"/>
+			<xsd:element ref="ifx:CardNum" minOccurs="0"/>
+			<xsd:element ref="ifx:BranchIdent" minOccurs="0"/>
+			<xsd:element ref="TermOwner" minOccurs="0"/>
+			<xsd:element ref="ifx:TrnTypeValue" minOccurs="0"/>
+			<xsd:element ref="TermId" minOccurs="0"/>
+			<xsd:element ref="TermRecNum" minOccurs="0"/>
+			<xsd:element ref="BalanceFlag" minOccurs="0"/>
+			<xsd:element ref="SvcCompCode" minOccurs="0"/>			
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtStatus_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:StatusCode"/>
+			<xsd:element ref="ifx:StatusDesc" minOccurs="0"/>
+			<xsd:element ref="ifx:EffDt" minOccurs="0"/>
+			<xsd:element ref="ifx:ApprovalIdent" minOccurs="0"/>
+			<xsd:element ref="ifx:StatusModBy" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtStatusRec_Type">
+		<xsd:sequence>
+			<xsd:element ref="BillPmtKeys" minOccurs="0"/>
+			<xsd:element ref="BillPmtStatus" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtSel_Type">
+		<xsd:sequence>
+			<xsd:element ref="BillPmtKeys" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtAuth_Type">
+		<xsd:complexContent>
+			<xsd:extension base="ifx:BaseAuth_Type">
+				<xsd:sequence/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="BillPmtRec" type="BillPmtRec_Type"/>
+	<xsd:element name="BillPmtInfo" type="BillPmtInfo_Type"/>
+	<xsd:element name="BillPmtEnvr" type="BillPmtEnvr_Type"/>
+	<xsd:element name="BillPmtRef" type="BillPmtRef_Type"/>
+	<xsd:element name="BillPmtStatus" type="BillPmtStatus_Type"/>
+	<xsd:element name="BillPmtStatusRec" type="BillPmtStatusRec_Type"/>
+	<xsd:element name="BillPmtSel" type="BillPmtSel_Type"/>
+	<xsd:element name="BillPmtAuth" type="BillPmtAuth_Type"/>
+</xsd:schema>

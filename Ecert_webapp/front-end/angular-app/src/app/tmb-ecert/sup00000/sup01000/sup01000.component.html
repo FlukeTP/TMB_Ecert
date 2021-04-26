@@ -1,0 +1,167 @@
+<ui-modal [modal]="uploadModal" #modalUpload="ui-modal">
+   <ng-template>
+      <i class="close icon"></i>
+      <div class="header" style="background: #1678C2">
+         <div style="color: white">Import Role </div>
+      </div>
+      <form class="ui form segment"  [ngClass]="loadingUpload ? 'loading' : ''" [formGroup]="uploadForm">
+         <div class="content">
+            <div class="ui form">
+               <div class="inline fields">
+                  <div class="two wide field">
+                     <label>เลือกไฟล์</label>
+                  </div>
+                  <div class="nine wide field" [ngClass]="{'error':(fileUpload.invalid && (fileUpload.dirty || fileUpload.touched))  || (fileUpload.invalid && onSubmitUpload)} ">
+                     <!-- <input type="file" (change)="changeUpload($event)"> -->
+                     <input type="file" (change)="changeUpload($event)" formControlName="fileUpload" required>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="actions">
+            <div class="ui center aligned grid">
+               <div class="seven wide column">
+                  <button class="ui blue  basic button" (click)="uploadRole()">
+                     <i class=" upload icon"></i>
+                     Upload
+                  </button>&nbsp;&nbsp;&nbsp;
+                  <button class="ui grey  basic button" (click)="closeModal()">
+                     <i class="times circle outline icon"></i>
+                     Cancel
+                  </button>
+               </div>
+            </div>
+         </div>
+
+      </form>
+
+   </ng-template>
+</ui-modal>
+
+
+<div class="ui grid">
+   <div class="sixteen wide column">
+      <h2 class="ui header">Role Management
+      </h2>
+
+      <form class="ui form segment" [formGroup]="userRoleForm">
+
+         <div class="inline fields">
+            <div class="four wide field">
+            </div>
+            <div class="two wide field">
+               <label>Role Name
+               </label>
+            </div>
+            <div class="five wide field ">
+               <div class="ui input">
+                  <input type="text" formControlName="roleName">
+               </div>
+            </div>
+         </div>
+
+         <div class="inline fields">
+            <div class="four wide field">
+            </div>
+            <div class="two wide field">
+               <label>Status</label>
+            </div>
+            <div class="five wide field ">
+               <ui-dropdown [dropdown]="dropDownStatus" #statusDropDown="ui-dropdown" ></ui-dropdown>
+            </div>
+         </div>
+         <br>
+
+         <div class="ui center aligned grid">
+            <button class="ui blue basic button" type="button" (click)="clickSerch()">
+               <i class="search icon"></i>
+               ค้นหา
+            </button>
+            <button class="ui grey  basic button" type="button" (click)="clickClear()">
+               <i class="trash alternate outline icon"></i>
+               ล้างข้อมูล
+            </button>
+            <button class="ui green  basic button" type="button" (click)="showModalUpload()" *ngIf="isCanImport">
+               <i class="download icon"></i>
+               Import Role
+            </button>
+            <button class="ui green  basic button" type="button" (click)="clickAddRole()" *ngIf="isCanAdd">
+               <i class="plus icon"></i>
+               เพิ่ม Role
+            </button>
+            <button class="ui green  basic button" type="button" (click)="clickExportTemplate()"  >
+               <i class="file excel outline icon"></i>
+               Download Template
+            </button>
+            <br>
+         </div>
+         <br>
+      </form>
+
+      <div class="ui segment" [hidden]="!roleDT.isSearch">
+         <div class="two wide field " style="margin-bottom: 20px">
+            <b>ผลการค้นหา</b>
+         </div>
+         <div>
+            <ng-datatable-search [ng-datatable]="roleDT"></ng-datatable-search>
+            <table [ngDatatable]="roleDTConfig" #roleDT="ngDatatable" class="ui small celled table nowrap sortable" style="width: 100%"
+               id="table">
+               <thead>
+                  <tr>
+                     <th>No.</th>
+                     <th [ngSort]="roleDT" columnName="ROLE_NAME">Role Name</th>
+                     <th [ngSort]="roleDT" columnName="STATUS" >Status</th>
+                     <th >Action</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="text-center" *ngIf="roleDT.isEmpty">
+                     <td colspan="4" style="text-align: center !important;">ไม่พบรายการ</td>
+                  </tr>
+
+                  <tr *ngFor="let item of roleDT.datas; let i = index">
+                     <td style="text-align: center">{{i+1}}</td>
+                     <td>{{item.roleName}}</td>
+                     <td style="text-align: center">
+                        <Span *ngIf="item.status == 1 ">Inactive</Span>
+                        <Span *ngIf="item.status == 0 ">Active</Span>
+                     </td>
+                     <td style="text-align: center" [ngSwitch]="isCanEdit">
+                        <div  *ngSwitchCase="true">
+                              <button class="ui blue basic button" (click)="clickEditRole(item)">แก้ไข
+                              </button>
+                        </div>
+                        <div  *ngSwitchCase="false">
+                              -
+                        </div>
+                        
+                     </td>
+                  </tr>
+
+
+               </tbody>
+            </table>
+
+         </div>
+         <br>
+         <ng-datatable-footer [ng-datatable]="roleDT"></ng-datatable-footer>
+         <br>
+
+         <div class="ui center aligned grid">
+            <div class="sixteen wide column">
+               <!-- <button class="ui blue basic button" (click)="clickExportRole()"> -->
+               <button class="ui blue basic button" (click)="clickExportRole()" *ngIf="isCanExport"> 
+                  <i class="file excel outline icon"></i>Export to Excel</button>
+            </div>
+         </div>
+         <br>
+      </div>
+
+
+   </div>
+
+
+
+
+</div>
+<br>

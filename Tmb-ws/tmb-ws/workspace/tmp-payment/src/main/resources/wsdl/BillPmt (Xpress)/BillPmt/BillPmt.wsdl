@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is a generated WSDL. Any modifications will be lost. Generated on Thu Feb 16 14:09:54 ICT 2017 from schema schema/tmb/FNIS_BillPmt.xsd -->
+<wsdl:definitions name="BillPmt"
+	targetNamespace="http://www.fnf.com/xes/BillPmtPort/" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:fnis="http://www.fnf.com/xes"
+	xmlns:tns="http://www.fnf.com/xes/BillPmtPort/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.fnf.com/xes/BillPmtPort/"
+			xmlns:fnis="http://www.fnf.com/xes"
+			xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://www.fnf.com/xes" schemaLocation="schema/tmb/FNIS_BillPmt.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+		<wsdl:message name="AddRq">
+			<wsdl:part name="Rq" element="fnis:BillPmtAddRq" />
+		</wsdl:message>
+		<wsdl:message name="AddRs">
+			<wsdl:part name="Rs" element="fnis:BillPmtAddRs" />
+		</wsdl:message>
+		<wsdl:message name="InqRq">
+			<wsdl:part name="Rq" element="fnis:BillPmtInqRq" />
+		</wsdl:message>
+		<wsdl:message name="InqRs">
+			<wsdl:part name="Rs" element="fnis:BillPmtInqRs" />
+		</wsdl:message>
+
+
+	<wsdl:portType name="BillPmtPortType">
+				<wsdl:operation name="add">
+					<wsdl:input message="tns:AddRq"  name="AddRq"/>
+					<wsdl:output message="tns:AddRs" name="AddRs"/>
+				</wsdl:operation>
+				<wsdl:operation name="inq">
+					<wsdl:input message="tns:InqRq"  name="InqRq"/>
+					<wsdl:output message="tns:InqRs" name="InqRs"/>
+				</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="BillPmtBindingType" type="tns:BillPmtPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+				<wsdl:operation name="add">
+					<soap:operation soapAction = "urn:IFX"/>
+					<wsdl:input name="AddRq">
+						<soap:body use="literal" />
+					</wsdl:input>
+					<wsdl:output name="AddRs">
+						<soap:body use="literal" />
+					</wsdl:output>
+				</wsdl:operation>
+				<wsdl:operation name="inq">
+					<soap:operation soapAction = "urn:IFX"/>
+					<wsdl:input name="InqRq">
+						<soap:body use="literal" />
+					</wsdl:input>
+					<wsdl:output name="InqRs">
+						<soap:body use="literal" />
+					</wsdl:output>
+				</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="BillPmt">
+		<wsdl:port name="BillPmtPort" binding="tns:BillPmtBindingType">
+			<soap:address location="http://localhost:8080" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

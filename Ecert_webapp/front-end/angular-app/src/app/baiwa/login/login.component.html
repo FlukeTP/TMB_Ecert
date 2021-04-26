@@ -1,0 +1,77 @@
+<!-- modal -->
+<ui-modal [modal]="modalObj">
+  <ng-template>...</ng-template>
+</ui-modal>
+<!-- modal -->
+
+<!-- menu -->
+<div class="ui borderless menu fixed">
+  <div class="item i-logo">
+    <img class="logo-main" routerLink="/home" src="assets/image/TMBLogo.png">
+    <img class="logo-partner" routerLink="/home" src="assets/image/footer.jpg">
+  </div>
+</div>
+<!-- menu -->
+
+<!-- content -->
+<div class="ui container login-content">
+  
+  <div class="ui active dimmer" *ngIf="loading">
+    <div class="ui text loader">กำลังโหลด</div>
+  </div>
+
+  <div class="ui one column grid login-page">
+
+    <div class="ui five wide column bg-login login">
+      <b>
+        <font color="#F0FFFF"> เข้าสู่ระบบ </font>
+      </b>
+      <form (submit)="onSubmit($event)" class="ui form segment bg-login form-login" ngNativeValidate>
+
+        <div class="ui negative message" [ngClass]="{'visible': showLoginMessage, 'hidden': !showLoginMessage }">
+          <i class="close icon" (click)="showLoginMessage=false"></i>
+          <div class="header"></div>
+          <p> {{loginMessage}}</p>
+        </div>
+
+        <div class="inline-fields">
+          <div class="ui left labeled icon input input-login">
+            <input type="text" placeholder="Username" id="username" name="username" [(ngModel)]="username" required>
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <div class="inline-fields">
+          <div class="ui left labeled icon input input-login">
+            <input type="password" placeholder="Password" id="password" name="password" [(ngModel)]="password" required>
+            <i class="lock icon"></i>
+          </div>
+        </div>
+
+        <div class="inline-fields">
+          <button class="ui button btn-login" type="submit">
+            <font color="#F0FFFF"> เข้าสู่ระบบ </font>
+          </button>
+        </div>
+
+        <div class="inline fields">
+          <div class="warning field">
+            <b>ข้อควรระวัง</b> : หากท่านใส่รหัสผิด 3 ครั้ง จะทำให้ User ของท่านถูกล็อค
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="ui eleven wide column frame-img">
+      <img class="ui small floated image" src="assets/image/Background.png">
+    </div>
+  </div>
+</div>
+<!-- content -->
+
+<!-- footer -->
+<div class="ui footer" style="background:#0079c0">
+  <div class="ui center aligned container" style="color: #FFF;">
+    <p>© สงวนลิขสิทธิ์ 2561 ธนาคารทหารไทย จำกัด (มหาชน)</p>Version 1.0.4.2
+  </div>
+</div>
+<!-- footer -->

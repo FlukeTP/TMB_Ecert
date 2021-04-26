@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://wsapi.svc.ecm.clevel.com/" name="IDocumentService" targetNamespace="http://wsapi.svc.ecm.clevel.com/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://wsapi.svc.ecm.clevel.com/" elementFormDefault="unqualified" targetNamespace="http://wsapi.svc.ecm.clevel.com/" version="1.0">
+
+  <xs:element name="bulkUploadDocument" type="tns:bulkUploadDocument"></xs:element>
+
+  <xs:element name="bulkUploadDocumentResponse" type="tns:bulkUploadDocumentResponse"></xs:element>
+
+  <xs:element name="checkStatus" type="tns:checkStatus"></xs:element>
+
+  <xs:element name="checkStatusResponse" type="tns:checkStatusResponse"></xs:element>
+
+  <xs:element name="deleteDocuments" type="tns:deleteDocuments"></xs:element>
+
+  <xs:element name="deleteDocumentsResponse" type="tns:deleteDocumentsResponse"></xs:element>
+
+  <xs:element name="documentIndex" type="tns:documentIndex"></xs:element>
+
+  <xs:element name="documentServiceRequest" type="tns:documentServiceRequest"></xs:element>
+
+  <xs:element name="documentServiceResponse" type="tns:documentServiceResponse"></xs:element>
+
+  <xs:element name="exportDocuments" type="tns:exportDocuments"></xs:element>
+
+  <xs:element name="exportDocumentsResponse" type="tns:exportDocumentsResponse"></xs:element>
+
+  <xs:element name="importDocuments" type="tns:importDocuments"></xs:element>
+
+  <xs:element name="importDocumentsResponse" type="tns:importDocumentsResponse"></xs:element>
+
+  <xs:element name="indexGroup" type="tns:documentIndexGroup"></xs:element>
+
+  <xs:element name="resubmitDocuments" type="tns:resubmitDocuments"></xs:element>
+
+  <xs:element name="resubmitDocumentsResponse" type="tns:resubmitDocumentsResponse"></xs:element>
+
+  <xs:element name="searchDocuments" type="tns:searchDocuments"></xs:element>
+
+  <xs:element name="searchDocumentsResponse" type="tns:searchDocumentsResponse"></xs:element>
+
+  <xs:element name="updateDocumentIndexes" type="tns:updateDocumentIndexes"></xs:element>
+
+  <xs:element name="updateDocumentIndexesResponse" type="tns:updateDocumentIndexesResponse"></xs:element>
+
+  <xs:element name="viewDocument" type="tns:viewDocument"></xs:element>
+
+  <xs:element name="viewDocumentResponse" type="tns:viewDocumentResponse"></xs:element>
+
+  <xs:complexType name="importDocuments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentServiceRequest">
+    <xs:sequence>
+      <xs:element name="reqId" type="xs:string"></xs:element>
+      <xs:element name="reqUserId" type="xs:string"></xs:element>
+      <xs:element name="caNumber" type="xs:string"></xs:element>
+      <xs:element name="channelId" type="xs:string"></xs:element>
+      <xs:element name="segmentCode" type="xs:string"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="indexGroups" type="tns:documentIndexGroup"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentIndexGroup">
+    <xs:sequence>
+      <xs:element name="no" type="xs:int"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="documentIndexs" type="tns:documentIndex"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentIndex">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="indexKey" type="tns:documentIndexKey"></xs:element>
+      <xs:element minOccurs="0" name="value" type="xs:string"></xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="values" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="importDocumentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="documentServiceResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:documentServiceRequest">
+        <xs:sequence>
+          <xs:element name="resCode" type="xs:string"></xs:element>
+          <xs:element minOccurs="0" name="resDesc" type="xs:string"></xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="deleteDocuments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteDocumentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="checkStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="checkStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resubmitDocuments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resubmitDocumentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bulkUploadDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="bulkUploadDocumentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="viewDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="viewDocumentResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchDocuments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="searchDocumentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateDocumentIndexes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateDocumentIndexesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exportDocuments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="documentRequest" type="tns:documentServiceRequest"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exportDocumentsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentServiceResponse"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="documentIndexKey">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FILE_RES_CODE"></xs:enumeration>
+      <xs:enumeration value="FILE_RES_DESC"></xs:enumeration>
+      <xs:enumeration value="ECM_DOC_ID"></xs:enumeration>
+      <xs:enumeration value="FILE_NAME"></xs:enumeration>
+      <xs:enumeration value="DOC_TYPE_CODE"></xs:enumeration>
+      <xs:enumeration value="ECM_CUS_ID"></xs:enumeration>
+      <xs:enumeration value="TMB_CUS_ID"></xs:enumeration>
+      <xs:enumeration value="CITIZEN_ID"></xs:enumeration>
+      <xs:enumeration value="REGISTRATION_ID"></xs:enumeration>
+      <xs:enumeration value="PASSPORT_NO"></xs:enumeration>
+      <xs:enumeration value="IMPORT_DATE"></xs:enumeration>
+      <xs:enumeration value="EXPIRYDATE"></xs:enumeration>
+      <xs:enumeration value="MIME_TYPE"></xs:enumeration>
+      <xs:enumeration value="STATUS_CODE"></xs:enumeration>
+      <xs:enumeration value="STATUS_DESC"></xs:enumeration>
+      <xs:enumeration value="REASON_CODE"></xs:enumeration>
+      <xs:enumeration value="REASON_DESC"></xs:enumeration>
+      <xs:enumeration value="CREATE_ZONE"></xs:enumeration>
+      <xs:enumeration value="REMARK"></xs:enumeration>
+      <xs:enumeration value="CREATE_BY"></xs:enumeration>
+      <xs:enumeration value="CREATE_DATE"></xs:enumeration>
+      <xs:enumeration value="MODIFY_BY"></xs:enumeration>
+      <xs:enumeration value="MODIFY_DATE"></xs:enumeration>
+      <xs:enumeration value="NEW_FILE_NAME"></xs:enumeration>
+      <xs:enumeration value="APPLICATION_NO"></xs:enumeration>
+      <xs:enumeration value="REF_APP_NO"></xs:enumeration>
+      <xs:enumeration value="REF_APP_NO_2"></xs:enumeration>
+      <xs:enumeration value="REF_APP_NO_3"></xs:enumeration>
+      <xs:enumeration value="REF_APP_NO_4"></xs:enumeration>
+      <xs:enumeration value="REF_APP_NO_5"></xs:enumeration>
+      <xs:enumeration value="APP_TYPE_CODE"></xs:enumeration>
+      <xs:enumeration value="ACCOUNT_NO"></xs:enumeration>
+      <xs:enumeration value="CUS_NAME"></xs:enumeration>
+      <xs:enumeration value="CUS_MID_NAME"></xs:enumeration>
+      <xs:enumeration value="CUS_SURNAME"></xs:enumeration>
+      <xs:enumeration value="APP_STATUS_CODE"></xs:enumeration>
+      <xs:enumeration value="UPLOAD_TIMESTAMP"></xs:enumeration>
+      <xs:enumeration value="PUBLISH_FLAG"></xs:enumeration>
+      <xs:enumeration value="DOC_VIEWER_URL"></xs:enumeration>
+      <xs:enumeration value="PUBLISH_DATE"></xs:enumeration>
+      <xs:enumeration value="REF_CHANNEL_ID"></xs:enumeration>
+      <xs:enumeration value="ECM_DOC_ID_RESUBMIT"></xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="deleteDocuments">
+    <wsdl:part element="ns1:deleteDocuments" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkStatus">
+    <wsdl:part element="ns1:checkStatus" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateDocumentIndexesResponse">
+    <wsdl:part element="ns1:updateDocumentIndexesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bulkUploadDocument">
+    <wsdl:part element="ns1:bulkUploadDocument" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="importDocumentsResponse">
+    <wsdl:part element="ns1:importDocumentsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDocumentsResponse">
+    <wsdl:part element="ns1:deleteDocumentsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchDocuments">
+    <wsdl:part element="ns1:searchDocuments" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchDocumentsResponse">
+    <wsdl:part element="ns1:searchDocumentsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkStatusResponse">
+    <wsdl:part element="ns1:checkStatusResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="importDocuments">
+    <wsdl:part element="ns1:importDocuments" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="exportDocumentsResponse">
+    <wsdl:part element="ns1:exportDocumentsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resubmitDocumentsResponse">
+    <wsdl:part element="ns1:resubmitDocumentsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resubmitDocuments">
+    <wsdl:part element="ns1:resubmitDocuments" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bulkUploadDocumentResponse">
+    <wsdl:part element="ns1:bulkUploadDocumentResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="viewDocument">
+    <wsdl:part element="ns1:viewDocument" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="viewDocumentResponse">
+    <wsdl:part element="ns1:viewDocumentResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateDocumentIndexes">
+    <wsdl:part element="ns1:updateDocumentIndexes" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="exportDocuments">
+    <wsdl:part element="ns1:exportDocuments" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IDocumentService">
+    <wsdl:operation name="importDocuments">
+      <wsdl:input message="ns1:importDocuments" name="importDocuments">
+    </wsdl:input>
+      <wsdl:output message="ns1:importDocumentsResponse" name="importDocumentsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocuments">
+      <wsdl:input message="ns1:deleteDocuments" name="deleteDocuments">
+    </wsdl:input>
+      <wsdl:output message="ns1:deleteDocumentsResponse" name="deleteDocumentsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkStatus">
+      <wsdl:input message="ns1:checkStatus" name="checkStatus">
+    </wsdl:input>
+      <wsdl:output message="ns1:checkStatusResponse" name="checkStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resubmitDocuments">
+      <wsdl:input message="ns1:resubmitDocuments" name="resubmitDocuments">
+    </wsdl:input>
+      <wsdl:output message="ns1:resubmitDocumentsResponse" name="resubmitDocumentsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bulkUploadDocument">
+      <wsdl:input message="ns1:bulkUploadDocument" name="bulkUploadDocument">
+    </wsdl:input>
+      <wsdl:output message="ns1:bulkUploadDocumentResponse" name="bulkUploadDocumentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewDocument">
+      <wsdl:input message="ns1:viewDocument" name="viewDocument">
+    </wsdl:input>
+      <wsdl:output message="ns1:viewDocumentResponse" name="viewDocumentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchDocuments">
+      <wsdl:input message="ns1:searchDocuments" name="searchDocuments">
+    </wsdl:input>
+      <wsdl:output message="ns1:searchDocumentsResponse" name="searchDocumentsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDocumentIndexes">
+      <wsdl:input message="ns1:updateDocumentIndexes" name="updateDocumentIndexes">
+    </wsdl:input>
+      <wsdl:output message="ns1:updateDocumentIndexesResponse" name="updateDocumentIndexesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="exportDocuments">
+      <wsdl:input message="ns1:exportDocuments" name="exportDocuments">
+    </wsdl:input>
+      <wsdl:output message="ns1:exportDocumentsResponse" name="exportDocumentsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,61 @@
+.download-link {
+    color: #000;
+    cursor: pointer;
+}
+
+.download-link:hover {
+    color: rgb(88, 88, 88);
+}
+
+.ui.checkbox>label {
+    color: black !important;
+    opacity: 1;
+}
+
+.divider-header {
+    margin: 2em 0 0 0 !important;
+}
+
+.divider-header .fourteen {
+    text-align: left !important;
+    padding: 0 !important;
+}
+
+.divider-header .fourteen .divider {
+    margin-top: 0 !important;
+}
+
+.header-title {
+    /* width: 62.5%; */
+    cursor: pointer;
+}
+
+[class*="bg"] {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px grey, 0 0 5px darkgrey;
+}
+
+.bg-yellow {
+    background: yellow;
+}
+
+.bg-red {
+    background: #f53d3d;
+}
+
+.bg-pink {
+    background: #ff66a3;
+}
+
+td>label {
+    font-size: 1.1em !important;
+}
+
+.ui.checkbox>label {
+    font-size: .85em !important;
+}
+
+.break-line {
+    width: 210px !important;
+    white-space: pre-line !important;
+}

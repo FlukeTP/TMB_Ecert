@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ifx="urn:ifxforum-org:XSD:1" xmlns:fnis="http://www.fnf.com/xes" xmlns="http://www.fnf.com/xes" targetNamespace="http://www.fnf.com/xes" elementFormDefault="qualified">
+	<xsd:import namespace="urn:ifxforum-org:XSD:1" schemaLocation="../fniscommon/IFX_Common.xsd"/>
+	<xsd:include schemaLocation="FNIS_BillPmtRef.xsd"/>
+	<xsd:complexType name="BillPmtAddRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID"/>
+			<xsd:element ref="ifx:MsgRqHdr" minOccurs="0"/>
+			<xsd:element ref="BillPmtInfo"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtAddRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="ifx:Status" minOccurs="0"/>
+				<xsd:element ref="ifx:RqUID"/>
+				<xsd:element ref="ifx:MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+				<xsd:choice>
+					<xsd:element ref="BillPmtRec"/>
+				</xsd:choice>
+			</xsd:sequence>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtInqRq_Type">
+		<xsd:sequence>
+			<xsd:element ref="ifx:RqUID"/>
+			<xsd:element ref="ifx:MsgRqHdr" minOccurs="0"/>
+			<xsd:element ref="ifx:RecCtrlIn" minOccurs="0"/>
+			<xsd:choice maxOccurs="unbounded">
+				<xsd:element ref="BillPmtSel"/>
+				<xsd:element ref="ifx:RecSelect"/>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BillPmtInqRs_Type">
+		<xsd:sequence>
+			<xsd:sequence>
+				<xsd:element ref="ifx:Status" minOccurs="0"/>
+				<xsd:element ref="ifx:RqUID"/>
+				<xsd:element ref="ifx:MsgRsHdr" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="ifx:RecCtrlOut" minOccurs="0"/>
+				<xsd:element ref="BillPmtRec" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="BillPmtAddRq" type="BillPmtAddRq_Type"/>
+	<xsd:element name="BillPmtAddRs" type="BillPmtAddRs_Type"/>
+	<xsd:element name="BillPmtInqRq" type="BillPmtInqRq_Type"/>
+	<xsd:element name="BillPmtInqRs" type="BillPmtInqRs_Type"/>
+	
+</xsd:schema>
