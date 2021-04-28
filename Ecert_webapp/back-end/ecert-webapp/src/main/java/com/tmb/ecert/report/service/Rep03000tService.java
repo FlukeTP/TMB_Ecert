@@ -142,7 +142,8 @@ public class Rep03000tService {
 			cell = row.createCell(1);
 //			cell.setCellValue((dataTestList.size()==0)?"-":dataTestList.get(0).getCustomerName());
 //			sheet.addMergedRegion(new CellRangeAddress(rowNum,rowNum, 3, 9)); //tr colspan=7
-			cell.setCellValue("บมจ.ธนาคารทหารไทย จำกัด (มหาชน)");
+			// cell.setCellValue("บมจ.ธนาคารทหารไทย จำกัด (มหาชน)");
+			cell.setCellValue("บมจ.ธนาคารทหารไทยธนชาต จำกัด (มหาชน)");
 
 //			row = sheet.createRow(rowNum);
 			cell = row.createCell(6);
@@ -161,7 +162,8 @@ public class Rep03000tService {
 			cell.setCellStyle(fontHeader);
 //			sheet.addMergedRegion(new CellRangeAddress(rowNum,rowNum, 0, 2)); //tr colspan=3
 			cell = row.createCell(1);
-			cell.setCellValue("บมจ.ธนาคารทหารไทย จำกัด (มหาชน)");
+			cell.setCellValue("บมจ.ธนาคารทหารไทยธนชาต จำกัด (มหาชน)");
+			// cell.setCellValue("บมจ.ธนาคารทหารไทย จำกัด (มหาชน)");
 //			cell.setCellValue((dataTestList.size()==0)?"-":dataTestList.get(0).getCompanyName());
 //			sheet.addMergedRegion(new CellRangeAddress(rowNum,rowNum, 3, 9)); //tr colspan=7
 		
