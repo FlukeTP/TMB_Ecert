@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RP_COVER_SHEET" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="009e85bd-c726-4380-be6b-6190d9bb83db">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="title" hTextAlign="Left" hImageAlign="Center" vTextAlign="Middle" vImageAlign="Middle" fontName="Cordia New" fontSize="22" isBold="true"/>
@@ -7,15 +7,12 @@
 	<style name="label" vTextAlign="Middle" vImageAlign="Middle" pattern="" fontName="Cordia New" fontSize="14" isBold="true"/>
 	<parameter name="logoTmbCover01" class="java.io.InputStream"/>
 	<parameter name="logoTmbCover02" class="java.io.InputStream"/>
+	<parameter name="logoTTB" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<title>
 		<band height="351" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="-27" width="150" height="100" uuid="cadb90a5-6b4a-4865-ab88-b2ebeccb50be"/>
-				<imageExpression><![CDATA[$P{logoTmbCover01}]]></imageExpression>
-			</image>
 			<textField>
 				<reportElement key="" style="title" x="180" y="0" width="200" height="30" uuid="7719f08e-f048-4c8e-9a80-d337599fdaba"/>
 				<textElement textAlignment="Center"/>
@@ -252,6 +249,10 @@
 				<textElement textAlignment="Left"/>
 				<textFieldExpression><![CDATA["XXXXXXX"]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="-1" y="10" width="215" height="38" uuid="b25611cb-27ab-49ae-812e-5fe06a6bb3b5"/>
+				<imageExpression><![CDATA[$P{logoTTB}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>
@@ -345,10 +346,6 @@
 	</detail>
 	<lastPageFooter>
 		<band height="156">
-			<image>
-				<reportElement x="280" y="16" width="100" height="90" uuid="b4402128-d2d8-469a-a43a-1d4191c0f8b3"/>
-				<imageExpression><![CDATA[$P{logoTmbCover02}]]></imageExpression>
-			</image>
 			<textField>
 				<reportElement style="detail" x="430" y="87" width="92" height="17" uuid="538b5966-42e6-4af6-bdf7-21fd83257030"/>
 				<box>

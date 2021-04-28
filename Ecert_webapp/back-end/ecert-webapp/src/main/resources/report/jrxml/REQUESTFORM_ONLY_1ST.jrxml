@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.5.1  -->
-<!-- 2018-11-28T16:44:16 -->
+<!-- Created with Jaspersoft Studio version 6.12.0.final using JasperReports Library version 6.12.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consent_letter" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" whenResourceMissingType="Key" uuid="5fde1f75-6bd1-4f3b-8bca-f81e464f17db">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="consent_title" hTextAlign="Center" vTextAlign="Middle" vImageAlign="Middle" fontName="Cordia New" fontSize="18" isBold="true"/>
 	<style name="consent_detail" hTextAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Cordia New" fontSize="16"/>
-	<parameter name="logoTmb" class="java.io.InputStream"/>
+	<parameter name="logoTTB" class="java.io.InputStream"/>
 	<parameter name="tmpReqNo" class="java.lang.String"/>
 	<parameter name="reqDate" class="java.lang.String"/>
 	<queryString>
@@ -14,8 +13,8 @@
 	<title>
 		<band height="772" splitType="Stretch">
 			<image isUsingCache="false">
-				<reportElement x="0" y="-20" width="320" height="80" uuid="67662d21-c920-437c-bbd6-737e2e549c44"/>
-				<imageExpression><![CDATA[$P{logoTmb}]]></imageExpression>
+				<reportElement x="0" y="0" width="320" height="57" uuid="67662d21-c920-437c-bbd6-737e2e549c44"/>
+				<imageExpression><![CDATA[$P{logoTTB}]]></imageExpression>
 			</image>
 			<textField isBlankWhenNull="true">
 				<reportElement x="44" y="107" width="89" height="18" uuid="94ea28ad-f9bf-4bd4-95dc-f56622d59f63"/>
