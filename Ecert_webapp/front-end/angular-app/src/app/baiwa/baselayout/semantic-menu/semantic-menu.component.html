@@ -1,5 +1,5 @@
-<div class="ui fixed borderless menu" style="background:#0079c0;z-index: 999;height: 75px;">
-  <img class="logo-main" routerLink="/home" src="assets/image/TMBLogo.png">
+<div class="ui borderless menu fixed" style="background:#0079c0;z-index: 999;height: 75px;">
+  <img class="logo-main" routerLink="/home" src="assets/image/TTBLogo.png">
   <img class="logo-partner" routerLink="/home" src="assets/image/footer.jpg">
   <ng-container *ngFor="let main of routes">
     <ng-container *ngIf="main.func">
@@ -42,7 +42,8 @@
                               <a class="ui dropdown item" (click)="sub3.func()">{{sub3.label}}</a>
                             </ng-container>
                             <ng-container *ngIf="sub3.url&&!sub3.func&&sub3.role">
-                              <a class="ui dropdown item" routerLink="{{sub3.url}}" routerLinkActive="active">{{sub3.label}}</a>
+                              <a class="ui dropdown item" routerLink="{{sub3.url}}"
+                                routerLinkActive="active">{{sub3.label}}</a>
                             </ng-container>
                             <ng-container *ngIf="!sub3.url&&sub3.child&&sub3.child.length>0&&!sub3.func&&sub3.role">
                               <i class="dropdown icon"></i>
@@ -53,7 +54,8 @@
                                     <a class="ui dropdown item" (click)="sub4.func()">{{sub4.label}}</a>
                                   </ng-container>
                                   <ng-container *ngIf="sub4.url&&!sub4.func&&sub4.role">
-                                    <a class="ui dropdown item" routerLink="{{sub4.url}}" routerLinkActive="active">{{sub4.label}}</a>
+                                    <a class="ui dropdown item" routerLink="{{sub4.url}}"
+                                      routerLinkActive="active">{{sub4.label}}</a>
                                   </ng-container>
                                 </ng-container>
                               </div>
@@ -75,7 +77,8 @@
     ออกจากระบบ
   </div>
   <div class="right menu">
-    <div class="ui simple  item " style=" color:rgb(255, 255, 255);line-height: 150%;margin-right: 20px;min-width: 275px;">
+    <div class="ui simple  item "
+      style=" color:rgb(255, 255, 255);line-height: 150%;margin-right: 20px;min-width: 275px;">
       {{(user|async).userId}} {{(user|async).firstName}} {{(user|async).lastName}} {{(user|async).roles[0]}}
       <br> วันที่ {{ currentDate | dateString }} เวลา {{clockdisplay.text}} น. {{(user|async).department}}
     </div>

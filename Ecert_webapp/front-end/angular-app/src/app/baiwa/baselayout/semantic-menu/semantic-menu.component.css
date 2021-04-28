@@ -30,14 +30,15 @@ img:focus {
 }
 
 .logo-main {
-    width: 105px !important;
+    margin: 9px 0 0 10px !important;
+    width: 85px !important;
+    height: 57.075px !important;
 }
 
 .logo-partner {
-    margin-top: 17px !important;
-    margin-right: 17px;
-    height: 44px !important;
-    width: 44px !important;
+    margin-top: 9px !important;
+    height: 57.075px !important;
+    width: 57.075px !important;
 }
 
 .ui.menu .active.item {
