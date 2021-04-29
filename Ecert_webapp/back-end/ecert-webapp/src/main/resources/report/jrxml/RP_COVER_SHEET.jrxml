@@ -85,7 +85,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
 				</box>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["3594 / นิติกรรมสัญญา ปรับโครงสร้างหนี้ (TTB e-Certificate Center)"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3592 / ปฎิบัติการนิติกรรมสัญญาสินเชื่อธุรกิจ (TTB eCertificate Center)"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="detail" x="149" y="113" width="372" height="17" uuid="bb2a76be-d55b-432a-b743-43ddb4918040"/>
@@ -108,7 +108,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
 				</box>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["TMB_Certificate@tmbbank.com"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["ttb_certificate@ttbbank.com"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="detail" x="149" y="164" width="151" height="17" forecolor="#FF0000" uuid="ae94f23c-9960-4ab8-9fdd-b2e3bb3b9ae8"/>
