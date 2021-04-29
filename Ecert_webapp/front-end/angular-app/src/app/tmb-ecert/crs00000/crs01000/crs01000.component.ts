@@ -10,7 +10,7 @@ import { ROLES } from 'app/baiwa/common/constants';
 import { DatatableCofnig, DatatableDirective } from 'app/baiwa/common/directives/datatable/datatable.directive';
 import { NgCalendarConfig } from 'app/baiwa/common/components/calendar/ng-calendar.component';
 import * as moment from 'moment';
-import { ThDateToEnDate,dateLocale,EnDateToThDate} from 'app/baiwa/common/helpers';
+import { ThDateToEnDate, dateLocale, EnDateToThDate } from 'app/baiwa/common/helpers';
 
 declare var $: any;
 
@@ -61,7 +61,7 @@ export class Crs01000Component implements OnInit, AfterViewInit {
       toReqDate: new FormControl(now), //ถึงวันที่
       organizeId: new FormControl(''),                      //เลขที่นิติบุคคล
       companyName: new FormControl(''),                     //ชื่อนิติบุคคล
-      tmbReqNo: new FormControl(''),                        //TMB Req. No.
+      tmbReqNo: new FormControl(''),                        //TTB Req. No.
       status: new FormControl(''),
     });
 
@@ -157,11 +157,11 @@ export class Crs01000Component implements OnInit, AfterViewInit {
         queryParams: { codeStatus: code }
       });
     } else {
-      
-      if (code == 10010 ){
+
+      if (code == 10010) {
         let now = EnDateToThDate(moment().format('DD/MM/YYYY'));
         this.form.setValue({ status: code, reqDate: now, toReqDate: now, organizeId: "", companyName: "", tmbReqNo: "" });
-      }else {
+      } else {
         this.form.setValue({ status: code, reqDate: "", toReqDate: "", organizeId: "", companyName: "", tmbReqNo: "" });
       }
       $('.ui.sidebar')
@@ -170,7 +170,7 @@ export class Crs01000Component implements OnInit, AfterViewInit {
         })
         .sidebar('setting', 'transition', 'push')
         .sidebar('toggle');
-        // this.form.setValue({ status: code, reqDate: "", toReqDate: "", organizeId: "", companyName: "", tmbReqNo: "" });
+      // this.form.setValue({ status: code, reqDate: "", toReqDate: "", organizeId: "", companyName: "", tmbReqNo: "" });
       this.dataDt.searchParams(this.form.value);
       this.dataDt.search();
     }
