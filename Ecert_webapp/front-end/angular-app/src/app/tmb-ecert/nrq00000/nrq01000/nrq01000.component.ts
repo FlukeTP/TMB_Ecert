@@ -27,7 +27,7 @@ export class Nrq01000Component implements OnInit, OnDestroy {
       modalId: "nrq01000",
       type: "custom",
       title: "Request Form (พิมพ์ใบคำขอเปล่าให้ลูกค้าลงนาม และบันทึกข้อมูลภายหลัง)",
-      msg: "TMB Req. No:  - "
+      msg: "TTB Req. No:  - "
     };
     window.addEventListener("beforeunload", (e) => {
       const confirmationMessage = "\o/";
@@ -47,8 +47,8 @@ export class Nrq01000Component implements OnInit, OnDestroy {
   }
 
   canDeactivate(): Observable<boolean> | boolean {
-      // Not Allow Redirect
-      return this.canMove;
+    // Not Allow Redirect
+    return this.canMove;
   }
 
   confirm = async () => {

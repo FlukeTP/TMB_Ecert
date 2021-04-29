@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 const URL = {
     SUP_API_SAVE: "/api/setup/sup01000/saveUserRole",
-    SUP_API_GET:"/api/setup/sup01000/getRolePermission/"
+    SUP_API_GET: "/api/setup/sup01000/getRolePermission/"
 }
 
 @Injectable({
@@ -22,7 +22,7 @@ export class sup01100Service {
             {
                 status: 0,
                 functionCode: PAGE_AUTH.P0000200,
-                roleName:"UI-00002 - ยินดีต้อนรับ"
+                roleName: "UI-00002 - ยินดีต้อนรับ"
             },
             {
                 status: 0,
@@ -197,7 +197,7 @@ export class sup01100Service {
             {
                 status: 0,
                 functionCode: PAGE_AUTH.P0001600,
-                roleName: "UI-00016 - บันทึกข้อมูลจากเลขที่คำขอ (TMB Req No.)"
+                roleName: "UI-00016 - บันทึกข้อมูลจากเลขที่คำขอ (TTB Req No.)"
             }]
     }
 

@@ -2,7 +2,7 @@
 
 
   <div class="sixteen wide column">
-    <h2 class="ui header">บันทึกข้อมูลจากเลขที่คำขอ (TMB Req No.)</h2>
+    <h2 class="ui header">บันทึกข้อมูลจากเลขที่คำขอ (TTB Req No.)</h2>
     <div class="ui one column">
       <div class="row">
         <div class="ui top attached header segment">
@@ -16,11 +16,12 @@
               <div class="column twelve wide">
                 <div class="inline fields">
                   <div class="four wide field ">
-                    <label>TMB Req. No. </label>
+                    <label>TTB Req. No. </label>
                   </div>
-                  
-                  <div class="ten wide field " [ngClass]="{'error':(tmbReqNo.invalid && (tmbReqNo.dirty || tmbReqNo.touched))}">
-                    <input type="text" formControlName="tmbReqNo" placeholder="TMB Req. No.">
+
+                  <div class="ten wide field "
+                    [ngClass]="{'error':(tmbReqNo.invalid && (tmbReqNo.dirty || tmbReqNo.touched))}">
+                    <input type="text" formControlName="tmbReqNo" placeholder="TTB Req. No.">
                   </div>
                 </div>
               </div>
@@ -52,13 +53,13 @@
             <ng-datatable-search [ng-datatable]="dataDt"></ng-datatable-search>
             <br>
             <div style="overflow-x: auto;white-space: nowrap;">
-              <table [ngDatatable]="dataConfig" #dataDt="ngDatatable" class="ui small celled table nowrap" style="width: 100%"
-                id="table">
+              <table [ngDatatable]="dataConfig" #dataDt="ngDatatable" class="ui small celled table nowrap"
+                style="width: 100%" id="table">
                 <thead>
                   <tr>
                     <th class="collapsing">ลำดับ</th>
                     <th>วันที่ยื่นคำขอ</th>
-                    <th>TMB Req. No.</th>
+                    <th>TTB Req. No.</th>
                     <th>เลขที่คำขอ (Ref.1)</th>
                     <th>เลขที่ตรวจสอบ (Ref.2)</th>
                     <th>จำนวนเงิน</th>
@@ -73,7 +74,8 @@
                   <tr class="text-center" *ngIf="dataDt.isEmpty">
                     <td colspan="21" style="text-align: center !important;">ไม่พบรายการ</td>
                   </tr>
-                  <tr class="text-center" *ngFor="let data of dataDt.datas; let i=index" [ngStyle]="{'color': getFontStyeColor(data.statusCode, data.lockFlag, data.makerById)}">
+                  <tr class="text-center" *ngFor="let data of dataDt.datas; let i=index"
+                    [ngStyle]="{'color': getFontStyeColor(data.statusCode, data.lockFlag, data.makerById)}">
                     <td style="text-align: center !important;">{{i+1}}</td>
                     <td style="text-align: center !important;">{{data.reqDateStr}}</td>
                     <td style="text-align: center !important;">{{data.tmbReqNo | tmbReqNo}}</td>
@@ -86,11 +88,13 @@
                     <td style="text-align: left !important;">{{data.companyName| emptyString}}</td>
                     <td style="text-align: left !important;">{{data.statusName}}</td>
                     <td>
-                      <button *ngIf="data.statusCode!=='10003'" [ngClass]="getButtonStlyeColor(data.statusCode, data.lockFlag, data.makerById)"
+                      <button *ngIf="data.statusCode!=='10003'"
+                        [ngClass]="getButtonStlyeColor(data.statusCode, data.lockFlag, data.makerById)"
                         (click)="detail(data.id,data.statusCode, data.lockFlag, data.makerById)">แสดง
                         <i class="arrow alternate circle right outline icon"></i>
                       </button>
-                      <button *ngIf="data.statusCode=='10003'" [ngClass]="getButtonStlyeColor(data.statusCode, data.lockFlag, data.makerById)"
+                      <button *ngIf="data.statusCode=='10003'"
+                        [ngClass]="getButtonStlyeColor(data.statusCode, data.lockFlag, data.makerById)"
                         (click)="detail(data.id,data.statusCode, data.lockFlag, data.createdById)">แสดง
                         <i class="arrow alternate circle right outline icon"></i>
                       </button>

@@ -45,7 +45,7 @@ export class SemanticMenuComponent implements OnInit, OnDestroy, AfterViewInit {
          * this.checkA(PAGE_AUTH.P0001501) 
          * this.checkRA(ROLES.ADMIN, PAGE_AUTH.P0001501)
          */
-        role: this.checkAuthMenu([PAGE_AUTH.P0000600 , PAGE_AUTH.P0000500]),
+        role: this.checkAuthMenu([PAGE_AUTH.P0000600, PAGE_AUTH.P0000500]),
         child: [ // Sub Menu 1.1 
           {
             label: "Request Form (พิมพ์ใบคำขอเปล่าให้ลูกค้าลงนาม และบันทึกข้อมูลภายหลัง)",
@@ -59,7 +59,7 @@ export class SemanticMenuComponent implements OnInit, OnDestroy, AfterViewInit {
         ]
       },
       { // Main Menu New
-        label: "บันทึกข้อมูลจากเลขที่คำขอ (TMB Req No.)",
+        label: "บันทึกข้อมูลจากเลขที่คำขอ (TTB Req No.)",
         url: "/srn/srn01000",
         role: this.checkA(PAGE_AUTH.P0001600),
       },
@@ -71,7 +71,7 @@ export class SemanticMenuComponent implements OnInit, OnDestroy, AfterViewInit {
       { // Main Menu 3
         label: "รายงาน",
         url: null,
-        role: this.checkAuthMenu([PAGE_AUTH.P0000700 , PAGE_AUTH.P0000800 , PAGE_AUTH.P0000900]),
+        role: this.checkAuthMenu([PAGE_AUTH.P0000700, PAGE_AUTH.P0000800, PAGE_AUTH.P0000900]),
         child: [ // Sub Menu 3.1
           {
             label: "รายงานสรุปการให้บริการขอหนังสือรับรองนิติบุคคล ( e-Certificate ) : End day",
@@ -103,7 +103,7 @@ export class SemanticMenuComponent implements OnInit, OnDestroy, AfterViewInit {
       { // Main Menu 6
         label: "Setup",
         url: null,
-        role: this.checkAuthMenu([PAGE_AUTH.P0001300 , PAGE_AUTH.P0001400 , PAGE_AUTH.P0001500]),
+        role: this.checkAuthMenu([PAGE_AUTH.P0001300, PAGE_AUTH.P0001400, PAGE_AUTH.P0001500]),
         child: [ // Sub Menu 6.1
           { label: "Role Management", url: "/sup/sup01000", role: this.checkA(PAGE_AUTH.P0001300) },
           { label: "Parameter Configuration", url: "/sup/sup02000", role: this.checkA(PAGE_AUTH.P0001400) },
@@ -116,7 +116,7 @@ export class SemanticMenuComponent implements OnInit, OnDestroy, AfterViewInit {
         role: true,
         child: [ // Sub Menu 6.1
           { label: "Video การใช้งานสำหรับ Requester", url: "/man/man02000", role: true },
-          { label: "เอกสารคู่มือการใช้งานระบบ", url: "/man/man01000" , role: true },
+          { label: "เอกสารคู่มือการใช้งานระบบ", url: "/man/man01000", role: true },
 
         ]
       },
@@ -150,7 +150,7 @@ export class SemanticMenuComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.commonsv.isRole(_roles) || this.commonsv.isAuth(_auths);
   }
 
-  downloadManual(){
+  downloadManual() {
     return this.commonsv.downloadManual();
   }
 
@@ -173,7 +173,7 @@ export class SemanticMenuComponent implements OnInit, OnDestroy, AfterViewInit {
           lastName: "",
           auths: [],
           segment: "",
-          department:""
+          department: ""
         };
         this.store.dispatch(new UpdateUser(INIT_USER_DETAIL));
         this.router.navigate(['/login']);

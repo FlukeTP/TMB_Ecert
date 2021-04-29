@@ -26,11 +26,11 @@ export class sup01100Component implements OnInit {
   responseObj: any;
   storeRole: Observable<Sup01000>
   sup01000: Sup01000;
-  listRoleForm:FormGroup;
-  roleStatus:boolean;
+  listRoleForm: FormGroup;
+  roleStatus: boolean;
 
-  constructor(private store: Store<AppState>,private router: Router, private route: ActivatedRoute,
-     private service: sup01100Service, private modal: ModalService, private fb: FormBuilder ) {
+  constructor(private store: Store<AppState>, private router: Router, private route: ActivatedRoute,
+    private service: sup01100Service, private modal: ModalService, private fb: FormBuilder) {
     this.rolepermisson = [
       {
         rolename: "UI-00002 - ยินดีต้อนรับ",
@@ -246,7 +246,7 @@ export class sup01100Component implements OnInit {
       }
       ,
       {
-        rolename: "UI-00016 - บันทึกข้อมูลจากเลขที่คำขอ (TMB Req No.)",
+        rolename: "UI-00016 - บันทึกข้อมูลจากเลขที่คำขอ (TTB Req No.)",
         status: 0,
         fuctioncode: PAGE_AUTH.P0001600,
         chliddata: []
@@ -281,7 +281,7 @@ export class sup01100Component implements OnInit {
     this.storeRole = this.store.select(state => state.sup00000.sup01000);
     this.storeRole.subscribe(data => {
       this.sup01000 = data;
-      if (this.sup01000.status != null ){
+      if (this.sup01000.status != null) {
         this.roleStatus = true;
         this.form.setValue({ roleName: this.sup01000.roleName, status: this.sup01000.status });
       }
@@ -318,18 +318,18 @@ export class sup01100Component implements OnInit {
       }
       this.modal.confirm((e) => {
         if (e) {
-          this.service.saveNewRole(this.form, this.rolepermisson, this.sup01000.roldId ).subscribe(res => {
+          this.service.saveNewRole(this.form, this.rolepermisson, this.sup01000.roldId).subscribe(res => {
             this.responseObj = res;
             if (this.responseObj.message == MESSAGE_STATUS.FAILED) {
               this.modal.alert({ msg: "ทำรายการไม่สำเร็จ กรุณาดำเนินการอีกครั้งหรือติดต่อผู้ดูแลระบบ โทร. 02-299-2765" });
             } else {
-              modalresp.msg  = "ทำรายการสำเร็จ";
+              modalresp.msg = "ทำรายการสำเร็จ";
               this.modal.confirm((e) => {
                 if (e) {
-              // this.modal.alert({ msg: this.responseObj.message });
-                this.router.navigate(["/sup/sup01000"], {});
+                  // this.modal.alert({ msg: this.responseObj.message });
+                  this.router.navigate(["/sup/sup01000"], {});
                 }
-              },modalresp);
+              }, modalresp);
             }
           }, error => {
           });
@@ -346,10 +346,10 @@ export class sup01100Component implements OnInit {
     if (index2 == -1) {
       if (this.rolepermisson[index].status == 0) {
         this.rolepermisson[index].status = 1
-        this.changeStatusChlid(index,1);
+        this.changeStatusChlid(index, 1);
       } else {
         this.rolepermisson[index].status = 0
-        this.changeStatusChlid(index,0);
+        this.changeStatusChlid(index, 0);
       }
     } else {
       if (this.rolepermisson[index].chliddata[index2].status == 0) {
@@ -360,15 +360,15 @@ export class sup01100Component implements OnInit {
     }
   }
 
-  changeStatusChlid(index,status){
+  changeStatusChlid(index, status) {
 
     for (let i = 0; i < this.rolepermisson[index].chliddata.length; i++) {
-      if (status ==0 ){
+      if (status == 0) {
         this.rolepermisson[index].chliddata[i].status = 0;
-      }else{
+      } else {
         this.rolepermisson[index].chliddata[i].status = 1;
       }
-   }
+    }
 
   }
 
@@ -404,7 +404,7 @@ export class sup01100Component implements OnInit {
     }
 
   }
-  
+
   get formPropArray(): FormArray {
     return this.listRoleForm.get('formArray') as FormArray;
   }

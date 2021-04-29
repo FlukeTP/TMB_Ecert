@@ -8,22 +8,24 @@
         </div>
 
         <div class="ui attached segment">
-            <form class="ui form" #ngForm="ngForm" [formGroup]="form" >
+            <form class="ui form" #ngForm="ngForm" [formGroup]="form">
                 <div class="inline fields">
                     <div class="one wide field"></div>
                     <div class="two wide field">
                         <label class="custom-label-w-25">วันที่ขอ</label>
                     </div>
-                    <div class="five wide field" >
+                    <div class="five wide field">
                         <!-- <ui-calendar [calendar]="calendar1" (calendarValue)="calendarValue('dateForm',$event)" style="width:100%"></ui-calendar> -->
-                        <ng-calendar [config]="calendarFromConig" #calendarFrom="ng-calendar"  style="width:100%"></ng-calendar>
+                        <ng-calendar [config]="calendarFromConig" #calendarFrom="ng-calendar" style="width:100%">
+                        </ng-calendar>
                     </div>
                     <div class="two wide field ">
                         <label>ถึงวันที่</label>
                     </div>
-                    <div class="five wide field" >
+                    <div class="five wide field">
                         <!-- <ui-calendar [calendar]="calendar2" (calendarValue)="calendarValue('dateTo',$event)" style="width:100%"></ui-calendar> -->
-                        <ng-calendar [config]="calendarToConig" #calendarTo="ng-calendar"  style="width:100%"></ng-calendar>
+                        <ng-calendar [config]="calendarToConig" #calendarTo="ng-calendar" style="width:100%">
+                        </ng-calendar>
                     </div>
                 </div>
 
@@ -32,16 +34,18 @@
                     <div class="two wide field">
                         <label class="custom-label-w-25">วันที่ชำระเงิน</label>
                     </div>
-                    <div class="five wide field" >
+                    <div class="five wide field">
                         <!-- <ui-calendar [calendar]="calendar1" (calendarValue)="calendarValue('dateForm',$event)" style="width:100%"></ui-calendar> -->
-                        <ng-calendar [config]="calendarPaymentFromConig" #calendarPaymentFrom="ng-calendar"  style="width:100%"></ng-calendar>
+                        <ng-calendar [config]="calendarPaymentFromConig" #calendarPaymentFrom="ng-calendar"
+                            style="width:100%"></ng-calendar>
                     </div>
                     <div class="two wide field ">
                         <label>ถึงวันที่</label>
                     </div>
-                    <div class="five wide field" >
+                    <div class="five wide field">
                         <!-- <ui-calendar [calendar]="calendar2" (calendarValue)="calendarValue('dateTo',$event)" style="width:100%"></ui-calendar> -->
-                        <ng-calendar [config]="calendarPaymentToConig" #calendarPaymentTo="ng-calendar"  style="width:100%"></ng-calendar>
+                        <ng-calendar [config]="calendarPaymentToConig" #calendarPaymentTo="ng-calendar"
+                            style="width:100%"></ng-calendar>
                     </div>
                 </div>
 
@@ -51,7 +55,8 @@
                         <label>เลขที่นิติบุคคล </label>
                     </div>
                     <div class="five wide field">
-                        <input type="text" (keypress)="onlyNumber($event)" formControlName="organizeId" placeholder="เลขที่นิติบุคคล">
+                        <input type="text" (keypress)="onlyNumber($event)" formControlName="organizeId"
+                            placeholder="เลขที่นิติบุคคล">
                     </div>
                     <div class="two wide field ">
                         <label>ชื่อนิติบุคคล</label>
@@ -67,13 +72,15 @@
                         <label>ประเภทคำขอ</label>
                     </div>
                     <div class="five wide field">
-                        <ui-dropdown [dropdown]="dropdownObj.reqType" (valueChange)="reqTypeChange($event)"></ui-dropdown>
+                        <ui-dropdown [dropdown]="dropdownObj.reqType" (valueChange)="reqTypeChange($event)">
+                        </ui-dropdown>
                     </div>
                     <div class="two wide field ">
                         <label>ประเภทการชำระเงิน</label>
                     </div>
                     <div class="five wide field ">
-                        <ui-dropdown [dropdown]="dropdownObj.paidType" (valueChange)="paidTypeChange($event)"></ui-dropdown>
+                        <ui-dropdown [dropdown]="dropdownObj.paidType" (valueChange)="paidTypeChange($event)">
+                        </ui-dropdown>
                     </div>
                 </div>
                 <div class="inline field">
@@ -96,7 +103,7 @@
     </div>
 </div>
 <br>
-<div class="sixteen wide column"  [hidden]="!repDT.isSearch">
+<div class="sixteen wide column" [hidden]="!repDT.isSearch">
     <div class="ui top attached header segment">
         <span>ผลการค้นหา </span>
     </div>
@@ -105,12 +112,13 @@
             <div class="sixteen wide column">
                 <div style="overflow-x: auto;white-space: nowrap;">
                     <ng-datatable-search [ng-datatable]="repDT"></ng-datatable-search>
-                    <table [ngDatatable]="repDTConfig" #repDT="ngDatatable"  class="ui small celled table" style="width: 100%" id="table">
+                    <table [ngDatatable]="repDTConfig" #repDT="ngDatatable" class="ui small celled table"
+                        style="width: 100%" id="table">
                         <thead>
                             <tr>
                                 <th rowspan="2">ลำดับ</th>
                                 <th rowspan="2">วันที่</th>
-                                <th rowspan="2">เลขที่อ้างอิง (TMB Req No.)</th>
+                                <th rowspan="2">เลขที่อ้างอิง (TTB Req No.)</th>
                                 <th rowspan="2">เลขที่นิติบุคคล</th>
                                 <th rowspan="2">ชื่อ</th>
                                 <th rowspan="2">Segment</th>
@@ -119,7 +127,7 @@
                                 <th rowspan="2">เลขที่บัญชี</th>
                                 <!-- <th colspan="3">จำนวนเงิน : บาท</th> -->
                                 <th colspan="3">หักบัญชีลูกค้า</th>
-                                <th colspan="3">Fee income/expense - TMB</th>
+                                <th colspan="3">Fee income/expense - TTB</th>
                                 <!-- <th rowspan="2">รวม</th> -->
                                 <th rowspan="2">ประเภทการชำระเงิน</th>
                                 <th rowspan="2">Maker ID</th>
@@ -131,7 +139,7 @@
                             </tr>
                             <tr>
                                 <th>DBD - หัก<br>บัญชีลูกค้า</th>
-                                <th>TMB Fee <br>(Include VAT)</th>
+                                <th>TTB Fee <br>(Include VAT)</th>
                                 <th>รวม</th>
                                 <th>Fee expense</th>
                                 <th>Fee income</th>
@@ -152,22 +160,42 @@
                                 <td style="text-align: left   !important;">{{data.companyName}}</td>
                                 <td style="text-align: left   !important;">{{data.custsegmentDesc}}</td>
                                 <td style="text-align: left   !important;">{{data.certypeDesc}}</td>
-                                <td style="text-align: left   !important;"><span *ngFor="let requestTypeDesc of data.requestTypeDesc | commaStringBr ">{{requestTypeDesc}}<br></span></td>
+                                <td style="text-align: left   !important;"><span
+                                        *ngFor="let requestTypeDesc of data.requestTypeDesc | commaStringBr ">{{requestTypeDesc}}<br></span>
+                                </td>
                                 <td style="text-align: center !important;">{{data.accountNo | accountNo}}</td>
-                                
-                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30001||data.paidtypeCode==30002 ||data.paidtypeCode==30004">{{data.amountDbd | decimalFormat :"###,###.00"}}</span>
-                                    <span *ngIf="data.paidtypeCode==30003">0.00</span></td>
-                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30001">{{data.amountTmb+data.totalAmountVat | decimalFormat :"###,###.00"}}</span>
-                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span></td>
-                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode!=30003">{{data.amountDbd+data.amountTmb+data.totalAmountVat | decimalFormat:"###,###.00"}}</span>
-                                    <span *ngIf="data.paidtypeCode==30003">0.00</span></td>
 
-                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30003">{{data.amountDbd | decimalFormat :"###,###.00"}}</span>
-                                    <span *ngIf="data.paidtypeCode!=30003">0.00</span></td>
-                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30001">{{data.amountTmb | decimalFormat  :"###,###.00"}}</span>
-                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span></td>
-                                <td style="text-align: right  !important;"><span *ngIf="data.paidtypeCode==30001">{{data.totalAmountVat | decimalFormat :"###,###.00"}}</span>
-                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span></td>
+                                <td style="text-align: right  !important;"><span
+                                        *ngIf="data.paidtypeCode==30001||data.paidtypeCode==30002 ||data.paidtypeCode==30004">{{data.amountDbd
+                                        | decimalFormat :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode==30003">0.00</span>
+                                </td>
+                                <td style="text-align: right  !important;"><span
+                                        *ngIf="data.paidtypeCode==30001">{{data.amountTmb+data.totalAmountVat |
+                                        decimalFormat :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span>
+                                </td>
+                                <td style="text-align: right  !important;"><span
+                                        *ngIf="data.paidtypeCode!=30003">{{data.amountDbd+data.amountTmb+data.totalAmountVat
+                                        | decimalFormat:"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode==30003">0.00</span>
+                                </td>
+
+                                <td style="text-align: right  !important;"><span
+                                        *ngIf="data.paidtypeCode==30003">{{data.amountDbd | decimalFormat
+                                        :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode!=30003">0.00</span>
+                                </td>
+                                <td style="text-align: right  !important;"><span
+                                        *ngIf="data.paidtypeCode==30001">{{data.amountTmb | decimalFormat
+                                        :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span>
+                                </td>
+                                <td style="text-align: right  !important;"><span
+                                        *ngIf="data.paidtypeCode==30001">{{data.totalAmountVat | decimalFormat
+                                        :"###,###.00"}}</span>
+                                    <span *ngIf="data.paidtypeCode!=30001">0.00</span>
+                                </td>
 
                                 <!-- <td style="text-align: right  !important;">{{data.amount | decimalFormat
                                     :"###,###.00"}}</td> -->
@@ -182,13 +210,14 @@
                                     </span>
                                 </td>
                                 <td style="text-align: center !important;">
-                                    <span *ngIf="data.status=='10003' || data.status=='10004' || data.status=='10007' || data.status=='10008' ">
+                                    <span
+                                        *ngIf="data.status=='10003' || data.status=='10004' || data.status=='10007' || data.status=='10008' ">
                                         <i class="check icon"></i>
                                     </span>
                                 </td>
                                 <td style="text-align: center !important;">{{data.remark}}</td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>

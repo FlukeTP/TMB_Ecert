@@ -53,7 +53,8 @@
       <div class="row">
         <div class="one column">
           <h3 class="ui header side-menu">
-            <div class="ui grey button icon" data-position="right center" (click)="onToggle()" data-tooltip="แสดงรายการ">
+            <div class="ui grey button icon" data-position="right center" (click)="onToggle()"
+              data-tooltip="แสดงรายการ">
               <i class="list icon"></i>
             </div>
             <div class="content">
@@ -76,13 +77,15 @@
               <div class="two wide field">
                 <label class="custom-label-w-22">วันที่ขอ</label>
               </div>
-              <div class="five wide field" [ngClass]="{'error':(reqDate.invalid && (reqDate.dirty || reqDate.touched))}">
+              <div class="five wide field"
+                [ngClass]="{'error':(reqDate.invalid && (reqDate.dirty || reqDate.touched))}">
                 <ng-calendar [config]="calendar1" style="width:100%"></ng-calendar>
               </div>
               <div class="two wide field ">
                 <label>ถึงวันที่</label>
               </div>
-              <div class="five wide field" [ngClass]="{'error':(toReqDate.invalid && (toReqDate.dirty || toReqDate.touched))}">
+              <div class="five wide field"
+                [ngClass]="{'error':(toReqDate.invalid && (toReqDate.dirty || toReqDate.touched))}">
                 <ng-calendar [config]="calendar2" style="width:100%"></ng-calendar>
               </div>
             </div>
@@ -94,22 +97,24 @@
                 </label>
               </div>
               <div class="five wide field">
-                <input type="text" formControlName="organizeId" (keypress)="numberOnly($event)" placeholder="เลขที่นิติบุคคล">
+                <input type="text" formControlName="organizeId" (keypress)="numberOnly($event)"
+                  placeholder="เลขที่นิติบุคคล">
               </div>
               <div class="two wide field ">
                 <label>ชื่อนิติบุคคล</label>
               </div>
               <div class="five wide field">
-                <input type="text" formControlName="companyName" (keypress)="noSymbol($event)" placeholder="ชื่อนิติบุคคล">
+                <input type="text" formControlName="companyName" (keypress)="noSymbol($event)"
+                  placeholder="ชื่อนิติบุคคล">
               </div>
             </div>
 
             <div class="inline fields">
               <div class="two wide field ">
-                <label>TMB Req. No. </label>
+                <label>TTB Req. No. </label>
               </div>
               <div class="five wide field">
-                <input type="text" formControlName="tmbReqNo" (keypress)="noSymbol($event)" placeholder="TMB Req. No.">
+                <input type="text" formControlName="tmbReqNo" (keypress)="noSymbol($event)" placeholder="TTB Req. No.">
               </div>
             </div>
 
@@ -145,7 +150,7 @@
                   <tr>
                     <th class="collapsing">ลำดับ</th>
                     <th>วันที่ยื่นคำขอ</th>
-                    <th>TMB Req. No.</th>
+                    <th>TTB Req. No.</th>
                     <th>เลขที่คำขอ (Ref.1)</th>
                     <th>เลขที่ตรวจสอบ (Ref.2)</th>
                     <th>จำนวนเงิน</th>
@@ -161,7 +166,8 @@
                   <tr class="text-center" *ngIf="dataDt.isEmpty">
                     <td colspan="21" style="text-align: center !important;">ไม่พบรายการ</td>
                   </tr>
-                  <tr class="text-center" *ngFor="let data of dataDt.datas; let i=index" [ngStyle]="{'color': getFontStyeColor(data.statusCode, data.lockFlag, data.makerById)}">
+                  <tr class="text-center" *ngFor="let data of dataDt.datas; let i=index"
+                    [ngStyle]="{'color': getFontStyeColor(data.statusCode, data.lockFlag, data.makerById)}">
                     <td style="text-align: center !important;">{{ i+1}}</td>
                     <td style="text-align: center !important;">{{ data.reqDateStr | dateFromString }}</td>
                     <td style="text-align: center !important;">{{ data.tmbReqNo | tmbReqNo }}</td>
@@ -174,11 +180,13 @@
                     <td style="text-align: left   !important;">{{ data.companyName| emptyString }}</td>
                     <td style="text-align: left   !important;">{{ data.statusName }}</td>
                     <td>
-                      <button *ngIf="data.statusCode!=='10003'" [ngClass]="getButtonStlyeColor(data.statusCode, data.lockFlag, data.makerById)"
+                      <button *ngIf="data.statusCode!=='10003'"
+                        [ngClass]="getButtonStlyeColor(data.statusCode, data.lockFlag, data.makerById)"
                         (click)="detail(data.id,data.statusCode, data.lockFlag, data.makerById)">แสดง
                         <i class="arrow alternate circle right outline icon"></i>
                       </button>
-                      <button *ngIf="data.statusCode=='10003'" [ngClass]="getButtonStlyeColor(data.statusCode, data.lockFlag, data.makerById)"
+                      <button *ngIf="data.statusCode=='10003'"
+                        [ngClass]="getButtonStlyeColor(data.statusCode, data.lockFlag, data.makerById)"
                         (click)="detail(data.id,data.statusCode, data.lockFlag, data.createdById)">แสดง
                         <i class="arrow alternate circle right outline icon"></i>
                       </button>

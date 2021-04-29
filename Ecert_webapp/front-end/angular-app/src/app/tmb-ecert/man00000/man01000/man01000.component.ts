@@ -10,11 +10,11 @@ import { Modal } from 'app/baiwa/common/models';
 })
 export class Man01000Component implements OnInit {
 
-  constructor(private ajax: AjaxService,private router: Router, private modalService: ModalService,) { }
+  constructor(private ajax: AjaxService, private router: Router, private modalService: ModalService,) { }
 
   ngOnInit() {
     const modalConf: Modal = {
-      msg: `<label>ท่านต้องการดาวน์โหลดเอกสารคู่มือการใช้งานระะบบ หรือไม่</label>`,
+      msg: `<label>ท่านต้องการดาวน์โหลดเอกสารคู่มือการใช้งานระบบ หรือไม่</label>`,
       title: "ยืนยันการดาวน์โหลดเอกสาร",
       color: "notification"
     }
@@ -22,7 +22,7 @@ export class Man01000Component implements OnInit {
       if (e) {
         this.ajax.download("/api/manual/pdf");
         this.router.navigate(["/"], {})
-      }else{
+      } else {
         this.router.navigate(["/"], {})
       }
     }, modalConf);

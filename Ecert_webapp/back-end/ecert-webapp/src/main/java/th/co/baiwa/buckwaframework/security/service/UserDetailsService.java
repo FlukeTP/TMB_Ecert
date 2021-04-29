@@ -154,14 +154,14 @@ public class UserDetailsService implements org.springframework.security.core.use
 		if("BATCHOPER".equalsIgnoreCase(username)) {
 			grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_BATCH));
 			userDetails.setFirstName("Batch Operator");
-			userDetails.setLastName("TMB");
+			userDetails.setLastName("TTB");
 			userDetails.setUserId("0015");
 			userDetails.setBranchCode("001");
 		}
 		if("ACCOUNT".equalsIgnoreCase(username)) {
 			grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_ACCM));
 			userDetails.setFirstName("Account Management");
-			userDetails.setLastName("TMB");
+			userDetails.setLastName("TTB");
 			userDetails.setUserId("0016");
 			userDetails.setBranchCode("001");
 		}
@@ -189,12 +189,12 @@ public class UserDetailsService implements org.springframework.security.core.use
 		// Initial Granted Authority
 		List<GrantedAuthority> grantedAuthorityList = new ArrayList<GrantedAuthority>();
 		//Roles
-		List<String> rolesInAd = tMBPerson.getMemberOfs();
-		for (String role : rolesInAd) {
-			//TODO debug if AD OK
-			logger.debug("rolesInAd : {}", role); // TODO plz checked
-			grantedAuthorityList.add(new SimpleGrantedAuthority(role));
-		}
+//		List<String> rolesInAd = tMBPerson.getMemberOfs();
+//		for (String role : rolesInAd) {
+//			//TODO debug if AD OK
+//			logger.debug("rolesInAd : {}", role); // TODO plz checked
+//			grantedAuthorityList.add(new SimpleGrantedAuthority(role));
+//		}
 		
 	
 		UserDetails rs = new UserDetails(username, "" ,grantedAuthorityList	);
@@ -223,7 +223,8 @@ public class UserDetailsService implements org.springframework.security.core.use
 			rs.setLastName(" ");
 		}
 
-		
+
+		grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_REQUESTER));
 		List<String> roles = new ArrayList<>();
 		for ( GrantedAuthority g : grantedAuthorityList) {
 			roles.add(g.toString());
