@@ -41,21 +41,21 @@ public class UserDetailsService implements org.springframework.security.core.use
 		if("ADMIN".equalsIgnoreCase(username)) {
 			grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_ADMIN));
 			userDetails.setFirstName("ผู้ดูแลระบบ");
-			userDetails.setLastName("ธนาคารทหารไทย");
+			userDetails.setLastName("ธนาคารทหารไทยธนชาต");
 			userDetails.setUserId("0001");
 			userDetails.setBranchCode("001");
 		}
 		if("ADMIN2".equalsIgnoreCase(username)) {
 			grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_ADMIN));
 			userDetails.setFirstName("ผู้ดูแลระบบ 2");
-			userDetails.setLastName("ธนาคารทหารไทย");
+			userDetails.setLastName("ธนาคารทหารไทยธนชาต");
 			userDetails.setUserId("0007");
 			userDetails.setBranchCode("001");
 		}
 		if("ADMIN3".equalsIgnoreCase(username)) {
 			grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_ADMIN));
 			userDetails.setFirstName("ผู้ดูแลระบบ 3");
-			userDetails.setLastName("ธนาคารทหารไทย");
+			userDetails.setLastName("ธนาคารทหารไทยธนชาต");
 			userDetails.setUserId("0008");
 			userDetails.setBranchCode("001");
 		}
@@ -189,12 +189,12 @@ public class UserDetailsService implements org.springframework.security.core.use
 		// Initial Granted Authority
 		List<GrantedAuthority> grantedAuthorityList = new ArrayList<GrantedAuthority>();
 		//Roles
-//		List<String> rolesInAd = tMBPerson.getMemberOfs();
-//		for (String role : rolesInAd) {
-//			//TODO debug if AD OK
-//			logger.debug("rolesInAd : {}", role); // TODO plz checked
-//			grantedAuthorityList.add(new SimpleGrantedAuthority(role));
-//		}
+		List<String> rolesInAd = tMBPerson.getMemberOfs();
+		for (String role : rolesInAd) {
+			//TODO debug if AD OK
+			logger.debug("rolesInAd : {}", role); // TODO plz checked
+			grantedAuthorityList.add(new SimpleGrantedAuthority(role));
+		}
 		
 	
 		UserDetails rs = new UserDetails(username, "" ,grantedAuthorityList	);
@@ -224,7 +224,7 @@ public class UserDetailsService implements org.springframework.security.core.use
 		}
 
 
-		grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_REQUESTER));
+//		grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_REQUESTER));	//hardcode role
 		List<String> roles = new ArrayList<>();
 		for ( GrantedAuthority g : grantedAuthorityList) {
 			roles.add(g.toString());
