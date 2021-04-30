@@ -27,7 +27,7 @@ export class Nrq01000Component implements OnInit, OnDestroy {
       modalId: "nrq01000",
       type: "custom",
       title: "Request Form (พิมพ์ใบคำขอเปล่าให้ลูกค้าลงนาม และบันทึกข้อมูลภายหลัง)",
-      msg: "TTB Req. No:  - "
+      msg: "ttb Req. No:  - "
     };
     window.addEventListener("beforeunload", (e) => {
       const confirmationMessage = "\o/";

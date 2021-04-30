@@ -128,9 +128,9 @@ public class Rep01000tService {
 			
 //			String[] tbTH1 = formVo.getTrHtml1();
 			
-			String[] tbTH1 = { "ลำดับ","วันที่","เลขที่อ้างอิง (TTB Req No.)","เลขที่นิติบุคคล", "ชื่อ",
+			String[] tbTH1 = { "ลำดับ","วันที่","เลขที่อ้างอิง (ttb Req No.)","เลขที่นิติบุคคล", "ชื่อ",
 		             "Segment", "ประเภทคำขอ","รายละเอียดคำขอ","เลขที่บัญชี","หักบัญชีลูกค้า"      ,"","",
-		             "Fee income/expense - TTB","","","ประเภทการชำระเงิน" ,"Maker ID","Maker Name","Checker ID","Checker Name","Payment Date","สถานะ","หมายเหตุ"};
+		             "Fee income/expense - ttb","","","ประเภทการชำระเงิน" ,"Maker ID","Maker Name","Checker ID","Checker Name","Payment Date","สถานะ","หมายเหตุ"};
 			row = sheet.createRow(rowNum++);
 			for (cellNum = 0; cellNum < tbTH1.length; cellNum++) {
 				cell = row.createCell(cellNum);
@@ -140,7 +140,7 @@ public class Rep01000tService {
 			
 			
 //			String[] tbTH2 = formVo.getTrHtml2();
-			String[] tbTH2 = { "","","","","","","","","","DBD - หักบัญชีลูกค้า", "TTB Fee (Include VAT)","รวม","Fee expense", "Fee income","VAT","","","","","","","",""};
+			String[] tbTH2 = { "","","","","","","","","","DBD - หักบัญชีลูกค้า", "ttb Fee (Include VAT)","รวม","Fee expense", "Fee income","VAT","","","","","","","",""};
 			row = sheet.createRow(rowNum);
 			int cellNumtbTH2 = 0;
 			for (int i = 0; i < tbTH2.length; i++) {

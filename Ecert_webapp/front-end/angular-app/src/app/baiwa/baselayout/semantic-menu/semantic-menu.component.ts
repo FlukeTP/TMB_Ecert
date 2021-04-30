@@ -59,7 +59,7 @@ export class SemanticMenuComponent implements OnInit, OnDestroy, AfterViewInit {
         ]
       },
       { // Main Menu New
-        label: "บันทึกข้อมูลจากเลขที่คำขอ (TTB Req No.)",
+        label: "บันทึกข้อมูลจากเลขที่คำขอ (ttb Req No.)",
         url: "/srn/srn01000",
         role: this.checkA(PAGE_AUTH.P0001600),
       },

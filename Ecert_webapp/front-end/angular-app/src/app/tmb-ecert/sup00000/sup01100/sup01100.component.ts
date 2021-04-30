@@ -246,7 +246,7 @@ export class sup01100Component implements OnInit {
       }
       ,
       {
-        rolename: "UI-00016 - บันทึกข้อมูลจากเลขที่คำขอ (TTB Req No.)",
+        rolename: "UI-00016 - บันทึกข้อมูลจากเลขที่คำขอ (ttb Req No.)",
         status: 0,
         fuctioncode: PAGE_AUTH.P0001600,
         chliddata: []

@@ -154,14 +154,14 @@ public class UserDetailsService implements org.springframework.security.core.use
 		if("BATCHOPER".equalsIgnoreCase(username)) {
 			grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_BATCH));
 			userDetails.setFirstName("Batch Operator");
-			userDetails.setLastName("TTB");
+			userDetails.setLastName("ttb");
 			userDetails.setUserId("0015");
 			userDetails.setBranchCode("001");
 		}
 		if("ACCOUNT".equalsIgnoreCase(username)) {
 			grantedAuthorityList.add(new SimpleGrantedAuthority(ADConstant.ROLE_ACCM));
 			userDetails.setFirstName("Account Management");
-			userDetails.setLastName("TTB");
+			userDetails.setLastName("ttb");
 			userDetails.setUserId("0016");
 			userDetails.setBranchCode("001");
 		}

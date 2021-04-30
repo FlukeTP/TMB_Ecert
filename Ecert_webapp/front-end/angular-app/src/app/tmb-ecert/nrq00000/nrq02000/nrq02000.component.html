@@ -104,7 +104,7 @@
 
       <div class="inline fields">
         <div class="two wide field">
-          <label>TTB Req. No.
+          <label>ttb Req. No.
           </label>
         </div>
         <div class="five wide field">
@@ -438,7 +438,7 @@
       </div>
       <div class="inline fields">
         <div class="four wide field">
-          <label>ชื่อบนใบเสร็จธนาคาร TTB</label>
+          <label>ชื่อบนใบเสร็จธนาคาร ttb</label>
         </div>
         <div class="five wide field" [ngClass]="{'error': invalid('corpName1'), 'disabled': isMakerAndSelectPaidType }">
           <input type="text" (keypress)="noPipe($event)" class="txt-red" #corpName1 formControlName="corpName1"
@@ -506,7 +506,7 @@
 
       <div class="inline fields" *ngIf="btnMaker" [ngClass]="{'hidden': hiddenReceipt4 || hiddenReceipt3}">
         <div class="four wide field required" *ngIf="btnMaker">
-          <label>จำนวนเงิน TTB (บาท)</label>
+          <label>จำนวนเงิน ttb (บาท)</label>
         </div>
         <div class="five wide field" [ngClass]="{ 'error': invalid('amountTmb') }" *ngIf="btnMaker">
           <input type="text" maxlength="18" name="amountTmb" (blur)="amountBlur('amountTmb')"

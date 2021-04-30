@@ -99,7 +99,7 @@ public class Sup01000Service {
 			"รายงานสรุปการให้บริการ ขอหนังสือรับรองนิติบุคคล \n  ( e-Certificate ) : Monthly(UI-00008)", "",
 			"รายงาน Output VAT(UI-00009)", "", "Batch Monitoring(UI-00011)", "", "Audit Log(UI-00012)", "",
 			" Role Manament(UI-00013)", "", "", "", "", " Parameter Configuration \n (UI-00014)", "",
-			" Email Configuration \n (UI-00015)", ""," บันทึกข้อมูลจากเลขที่คำขอ (TTB Req No.) \n (UI-00016)" };
+			" Email Configuration \n (UI-00015)", ""," บันทึกข้อมูลจากเลขที่คำขอ (ttb Req No.) \n (UI-00016)" };
 
 	private static String[] headerTableSub = { "", "", "", "เมนู", "แสดงรายละเอียด", "เมนู", "ดำเนินการชำระเงิน",
 			"อนุมัติการชำระเงิน", "ปฏิเสธ", "พิมพ์ใบเสร็จ", "พิมพ์ Cover Sheet", "Upload Certificate",

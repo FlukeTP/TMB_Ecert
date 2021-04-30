@@ -11,14 +11,14 @@ export interface Nrq02000 {
     corpName1: string;            // ชื่อนิติบุคคล 1
     acceptNo: string;             // เลขที่ CA/มติอนุมัติ
     departmentName: string;       // ชื่อหน่วยงาน
-    // tmbReceiptChk: boolean;       // ชื่อบนใบเสร็จธนาคาร TTB
+    // tmbReceiptChk: boolean;       // ชื่อบนใบเสร็จธนาคาร ttb
     telReq: string;               // เบอร์โทรผู้ขอ/ลูกค้า
     address: string;              // ที่อยู่
     note: string;                 // หมายเหตุ
     requestFile: File;            // ใบคำขอหนังสือรับรองนิติบุคคลและหนังสือยินยอมให้หักเงินจากบัญชีเงินฝาก
     copyFile: File;               // สำเนาบัตรประชาชน
     changeNameFile?: File;        // สำเนาใบเปลี่ยนชื่อหรือนามสกุล
-    tmbReqFormNo: string;         // TTB Req No.
+    tmbReqFormNo: string;         // ttb Req No.
     lockFlag: number;
     requestFileName?: string;
     copyFileName?: string;

@@ -158,7 +158,7 @@ public class BatchJobConstant {
 	
 	public static class ONDEMAND{
 		public static final String REQ_DATE = "REQ DATE";
-		public static final String TMB_REQ_NO = "TTB REQ NO.";
+		public static final String TMB_REQ_NO = "ttb REQ NO.";
 		public static final String ORG_ID = "ORG ID";
 		public static final String SEGMENT = "SEGMENT";
 		public static final String PAID_TYPE = "PAID TYPE";

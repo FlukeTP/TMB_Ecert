@@ -61,7 +61,7 @@ export class Crs01000Component implements OnInit, AfterViewInit {
       toReqDate: new FormControl(now), //ถึงวันที่
       organizeId: new FormControl(''),                      //เลขที่นิติบุคคล
       companyName: new FormControl(''),                     //ชื่อนิติบุคคล
-      tmbReqNo: new FormControl(''),                        //TTB Req. No.
+      tmbReqNo: new FormControl(''),                        //ttb Req. No.
       status: new FormControl(''),
     });
 

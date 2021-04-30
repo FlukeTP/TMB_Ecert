@@ -116,9 +116,9 @@ public class Rep02000tService {
 		;
 
 		// String[] tbTH2 = formVo.getTrHtml2();
-		String[] tbTH2 = { "ลูกค้าชำระค่าธรรมเนียม DBD,TTB",
-				"ลูกค้าชำระค่าธรรมเนียม DBD ยกเว้น TTB", "TTB ชำระค่าธรรมเนียม  DBD ทั้งหมด",
-				"ไม่ได้ดำเนินการชำระเงินผ่านระบบ E-Cert","หนังสือรับรอง", "รับรองสำเนา", "DBD", "TTB", "", "Success", "Fail" };
+		String[] tbTH2 = { "ลูกค้าชำระค่าธรรมเนียม DBD,ttb",
+				"ลูกค้าชำระค่าธรรมเนียม DBD ยกเว้น ttb", "ttb ชำระค่าธรรมเนียม  DBD ทั้งหมด",
+				"ไม่ได้ดำเนินการชำระเงินผ่านระบบ E-Cert","หนังสือรับรอง", "รับรองสำเนา", "DBD", "ttb", "", "Success", "Fail" };
 		row = sheet.createRow(rowNum);
 		int cellNumtbTH2 = 2;
 		for (int i = 0; i < tbTH2.length; i++) {

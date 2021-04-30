@@ -227,7 +227,7 @@
         <div class="ui thirteen wide form column" [formGroup]="cancelForm">
           <div class="inline fields">
             <div class="four wide field">
-              <label class="full-width text-right">ชื่อบนใบเสร็จธนาคาร TTB</label>
+              <label class="full-width text-right">ชื่อบนใบเสร็จธนาคาร ttb</label>
             </div>
             <div class="eleven wide field" [ngClass]="{ 'error': cancelSubmitted && companyName.invalid }">
               <input type="text" formControlName="companyName" name="companyName" />
@@ -310,7 +310,7 @@
       <div class="inline fields">
         <div class="one wide field "></div>
         <div class="two wide field ">
-          <label>TTB Req.No.</label>
+          <label>ttb Req.No.</label>
         </div>
         <div class="five wide field ">
           {{ data.tmbRequestNo | tmbReqNo }}
@@ -578,7 +578,7 @@
         <div class="inline fields" *ngIf="data.customerNameReceipt">
           <div class="one wide field"></div>
           <div class="three wide field">
-            <label>ชื่อบนใบเสร็จธนาคาร TTB</label>
+            <label>ชื่อบนใบเสร็จธนาคาร ttb</label>
           </div>
           <div class="eleven wide field">
             {{ data.customerNameReceipt | emptyString }}
@@ -632,7 +632,7 @@
         <div class="inline fields" *ngIf="(onlyMaker||onlyChecker||data.amountTmb)&&data.paidTypeCode!='10004'">
           <div class="one wide field "></div>
           <div class="three wide field ">
-            <label>จำนวนเงิน TTB (บาท)</label>
+            <label>จำนวนเงิน ttb (บาท)</label>
           </div>
           <div class="eleven wide field ">
             {{ (data.amountTmb||0) | decimalFormat: "###,###.00" }} บาท
@@ -807,7 +807,7 @@
                 <th>วันเวลาที่ดำเนินการ</th>
                 <th>ผู้ดำเนินการ </th>
                 <th>วันที่ยื่นคำขอ</th>
-                <th>TTB Req. No</th>
+                <th>ttb Req. No</th>
                 <th>เลขที่คำขอ (Ref.1)</th>
                 <th>เลขที่ตรวจสอบ (Ref.2)</th>
                 <th>จำนวนเงิน </th>
@@ -860,7 +860,7 @@
                 <th>ผู้ดำเนินการ </th>
                 <th>เลขที่ใบเสร็จ</th>
                 <th>เลขประจำตัวผู้เสียภาษี</th>
-                <th>ชื่อบนใบเสร็จธนาคาร TTB</th>
+                <th>ชื่อบนใบเสร็จธนาคาร ttb</th>
                 <th>สำนักงานใหญ่/ <br>สาขาที่ของลูกค้า</th>
                 <th>ที่อยู่</th>
                 <th>สถานะการดำเนินการ</th>

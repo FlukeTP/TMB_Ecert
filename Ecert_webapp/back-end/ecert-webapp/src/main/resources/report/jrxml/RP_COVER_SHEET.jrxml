@@ -42,7 +42,7 @@
 				<textElement textAlignment="Center">
 					<font isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["TTB 06092018001"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["ttb 06092018001"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="label" x="60" y="79" width="80" height="17" forecolor="#000000" uuid="23793109-d1e8-4308-b432-8aa9960a2765"/>
@@ -85,7 +85,7 @@
 					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
 				</box>
 				<textElement textAlignment="Left"/>
-				<textFieldExpression><![CDATA["3592 / ปฎิบัติการนิติกรรมสัญญาสินเชื่อธุรกิจ (TTB eCertificate Center)"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["3592 / ปฎิบัติการนิติกรรมสัญญาสินเชื่อธุรกิจ (ttb eCertificate Center)"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="detail" x="149" y="113" width="372" height="17" uuid="bb2a76be-d55b-432a-b743-43ddb4918040"/>
@@ -292,7 +292,7 @@
 				<textElement textAlignment="Center">
 					<font isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["TTB Req No."]]></textFieldExpression>
+				<textFieldExpression><![CDATA["ttb Req No."]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="label" x="400" y="0" width="40" height="17" forecolor="#000000" uuid="f838377b-2d6d-4f77-b830-00b18e7a206a"/>

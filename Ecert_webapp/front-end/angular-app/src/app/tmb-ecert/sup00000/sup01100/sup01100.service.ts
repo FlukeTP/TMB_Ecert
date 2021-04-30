@@ -197,7 +197,7 @@ export class sup01100Service {
             {
                 status: 0,
                 functionCode: PAGE_AUTH.P0001600,
-                roleName: "UI-00016 - บันทึกข้อมูลจากเลขที่คำขอ (TTB Req No.)"
+                roleName: "UI-00016 - บันทึกข้อมูลจากเลขที่คำขอ (ttb Req No.)"
             }]
     }
 
