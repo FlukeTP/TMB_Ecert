@@ -993,7 +993,8 @@ public class ReportPdfService {
 			Map<String, Object> params01 = new HashMap<>();
 
 //			params01.put("logoDbd", ReportUtils.getResourceFile(PATH.IMAGE_PATH, "logoDbd.png"));
-			params01.put("logoTmb", ReportUtils.getResourceFile(PATH.IMAGE_PATH, "logoTmb.png"));
+//			params01.put("logoTmb", ReportUtils.getResourceFile(PATH.IMAGE_PATH, "logoTmb.png"));
+			params01.put("logoTTB", ReportUtils.getResourceFile(PATH.IMAGE_PATH, "logoTTB.png"));
 			if ("50001".equals(vo.getTypeCertificate())) {
 				params01.put("typeCertificate", "นิติบุคคล");
 			} else if ("50002".equals(vo.getTypeCertificate())) {

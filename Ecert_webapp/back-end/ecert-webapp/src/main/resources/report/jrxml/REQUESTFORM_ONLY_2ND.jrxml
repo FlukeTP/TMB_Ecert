@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<!-- Created with Jaspersoft Studio version 6.12.0.final using JasperReports Library version 6.12.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consent_letter" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" whenResourceMissingType="Key" uuid="5fde1f75-6bd1-4f3b-8bca-f81e464f17db">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<style name="consent_title" hTextAlign="Center" vTextAlign="Middle" vImageAlign="Middle" fontName="Cordia New" fontSize="18" isBold="true"/>
 	<style name="consent_detail" hTextAlign="Left" vTextAlign="Middle" vImageAlign="Middle" fontName="Cordia New" fontSize="16"/>
-	<parameter name="logoTmb" class="java.io.InputStream"/>
 	<parameter name="tmpReqNo" class="java.lang.String"/>
 	<parameter name="reqDate" class="java.lang.String"/>
 	<parameter name="typeCertificate" class="java.lang.String"/>
@@ -920,20 +919,6 @@
 				<textFieldExpression><![CDATA[" การลงนามในช่องเจ้าของบัญชี ให้เป็นไปตามตัวอย่างลายมือชื่อที่ให้ไว้กับธนาคาร"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="consent_detail" x="70" y="754" width="484" height="18" uuid="e806bb87-0b9e-441c-b306-8d1114e93fb7"/>
-				<textElement textAlignment="Left">
-					<font size="13"/>
-				</textElement>
-				<textFieldExpression><![CDATA[" ธนาคารยกเว้นเรียกเก็บค่าธรรมเนียมบริการของธนาคาร ตั้งแต่วันที่ 18 กุมภาพันธ์ ถึง 30 เมษายน พ.ศ.2562"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="consent_detail" x="0" y="754" width="70" height="18" uuid="f98a39cc-4304-4df0-af1e-30eec6def248"/>
-				<textElement textAlignment="Right" markup="styled">
-					<font size="13" isBold="false" isItalic="false" isUnderline="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA["<style isBold = \"true\" isUnderline=\"true\">หมายเหตุ</style> :"]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="200" y="678" width="170" height="18" uuid="7c8163cb-a86a-43d2-9b04-fe8a0a79119d"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Cordia New" size="13"/>
@@ -941,7 +926,7 @@
 				<textFieldExpression><![CDATA[$P{accountName}]]></textFieldExpression>
 			</textField>
 			<image isUsingCache="false">
-				<reportElement x="8" y="10" width="329" height="40" uuid="8bf0dfde-5d0e-4fec-a962-4c27130395b8"/>
+				<reportElement x="0" y="10" width="329" height="40" uuid="8bf0dfde-5d0e-4fec-a962-4c27130395b8"/>
 				<imageExpression><![CDATA[$P{logoTTB}]]></imageExpression>
 			</image>
 		</band>
